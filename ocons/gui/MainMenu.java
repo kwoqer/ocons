@@ -14,13 +14,13 @@ public class MainMenu extends JMenuBar{
       JMenu beginMenu = new JMenu("Управление");
       Action DBConfigAction = new DBConfigAction("Настройки");
       DBConfigAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\config.gif"));
+         new ImageIcon("pict\\configure22.png"));
       Action dbAction = new ConfigAction("Действующий прайс");
       dbAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("z:\\usr\\jk\\src\\jk\\gui\\db.gif"));
+         new ImageIcon("pict\\textfile22.png"));
       Action loginAction = new ConfigAction("Прайс текущего каталога");
       loginAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("z:\\usr\\jk\\src\\jk\\gui\\login.gif"));
+         new ImageIcon("pict\\documents22.png"));
       //Action logoutAction = new ConfigAction("Другой пользователь");
       //logoutAction.putValue(Action.SMALL_ICON,
       //   new ImageIcon("z:\\usr\\jk\\src\\jk\\gui\\logout.gif"));
@@ -84,7 +84,7 @@ class AboutAction extends AbstractAction{
 
    public void actionPerformed(ActionEvent event)
    {
-     String mess = "Oriflame Consultant v."+GlobalData.getVersion();
+     String mess = GlobalData.getAppName()+ " v."+GlobalData.getVersion();
      JOptionPane.showMessageDialog(null,mess,"О программе",
     		 JOptionPane.INFORMATION_MESSAGE);
    }
@@ -97,8 +97,9 @@ class DBConfigAction extends AbstractAction
    public void actionPerformed(ActionEvent event)
    {
       //DBConfigDialog DBConfig = new DBConfigDialog(GlobalData.getFrame(),true);
-	   String mess = "jKey v."+GlobalData.getVersion();
-	   JOptionPane.showMessageDialog(null,mess,"О программе",
+	   String mess = "App Path = "+GlobalData.getAppPath()+'\n'+
+	   				 "DB Path = "+GlobalData.getDBPath();
+	   JOptionPane.showMessageDialog(null,mess,"App Paths",
 	   JOptionPane.INFORMATION_MESSAGE);
    }
 }
