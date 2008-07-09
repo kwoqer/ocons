@@ -9,6 +9,9 @@ public class GlobalData{
   // версия
   private final String OCONS_VERSION = "0.01 alpha";
   private final String OCONS_APPNAME = "Oriflame Consultant";
+  // путь приложения
+  private String OCONS_APPPATH = "";
+  private String OCONS_DBPATH = "";
   // разрешение монитора
   private int OCONS_MONITOR_WIDTH;
   private int OCONS_MONITOR_HEIGHT;
@@ -28,12 +31,29 @@ public class GlobalData{
 	  OCONS_FRAME_HEIGHT = 0;
 	  OCONS_FRAME_X = 0;
 	  OCONS_FRAME_Y = 0;
+	  setAppPath();
+  }
+  private void setAppPath(){
+	  OCONS_APPPATH = System.getProperty("user.dir");
+	  OCONS_DBPATH = OCONS_APPPATH+"\\db";
   }
   
   public static String getVersion(){
       return GLOBSET.OCONS_VERSION;
   }
+  
+  public static String getAppName(){
+	  return GLOBSET.OCONS_APPNAME;
+  }
+  
+  public static String getAppPath(){
+	  return GLOBSET.OCONS_APPPATH;
+  } 
 
+  public static String getDBPath(){
+	  return GLOBSET.OCONS_DBPATH;
+  }
+  
   public static int getMonitorWidth(){
       return GLOBSET.OCONS_MONITOR_WIDTH;
   }
@@ -81,7 +101,7 @@ public class GlobalData{
       return GLOBSET.OCONS_FRAME;
   }
   
-  private static GlobalData GLOBSET;
+  public static GlobalData GLOBSET;
   static {
 	  GLOBSET = new GlobalData();
   }
