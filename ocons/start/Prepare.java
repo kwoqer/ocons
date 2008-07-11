@@ -1,38 +1,32 @@
 package start;
 
 import java.sql.*;
+import java.io.*;
+import java.util.ArrayList;
+
 
 public class Prepare {
+			
 	public static void PrepareDB() throws Exception {
-		Class.forName("org.sqlite.JDBC");
-		String DB_fp = GlobalData.getDBPath()+"\test.db";
-	    Connection conn = DriverManager.getConnection("jdbc:sqlite:"+DB_fp);
-	    Statement stat = conn.createStatement();
-	    stat.executeUpdate("drop table if exists people;");
-	    stat.executeUpdate("create table people (name, occupation);");
-	    PreparedStatement prep = conn.prepareStatement(
-        "insert into people values (?, ?);");
-
-	    prep.setString(1, "Gandhi");
-	    prep.setString(2, "politics");
-	    prep.addBatch();
-	    prep.setString(1, "Turing");
-	    prep.setString(2, "computers");
-	    prep.addBatch();
-	    prep.setString(1, "Wittgenstein");
-	    prep.setString(2, "smartypants");
-	    prep.addBatch();
-
-	    conn.setAutoCommit(false);
-	    prep.executeBatch();
-	    conn.setAutoCommit(true);
-
-	    ResultSet rs = stat.executeQuery("select * from people;");
-	    while (rs.next()) {
-	    	System.out.println("name = " + rs.getString("name"));
-	    	System.out.println("job = " + rs.getString("occupation"));
-    }
-    rs.close();
-    conn.close();
+		boolean fileexist=false;
+		{
+			File dbfile = new File("db\\ocons.db");
+			fileexist = dbfile.exists(); 
+		}
+		if (!fileexist){
+			// если файл системной БД не существует - создаем его и формируем структуру таблиц
+			// из файла ocons.sql
+			MyTools.MessageBox("Файл надо создать");
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:db\\ocons.db");
+			Statement stat = conn.createStatement();	
+	    
+			ArrayList<String> SQLst = MyTools.convSQL("db\\ocons.sql");
+			for (String s: SQLst){
+				stat.execute(s);
+			}
+			conn.close();
+		}
+	    
 	}
 }

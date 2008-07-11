@@ -34,8 +34,21 @@ public class MainMenu extends JMenuBar{
       beginMenu.add(new ExitAction("Выход"));
       add(beginMenu);
       
-      //Консультатнт
+      //Консультант
       JMenu workMenu = new JMenu("Консультант");
+      Action AddConsAction = new ConfigAction("Новый консультант");
+      AddConsAction.putValue(Action.SMALL_ICON,
+         new ImageIcon("pict\\adduser22.png"));
+      Action ConsAction = new ConfigAction("Вход");
+      ConsAction.putValue(Action.SMALL_ICON,
+         new ImageIcon("pict\\user22.png"));
+      Action OtherAction = new ConfigAction("Другой консультант");
+      OtherAction.putValue(Action.SMALL_ICON,
+         new ImageIcon("pict\\users22.png"));
+      OtherAction.setEnabled(false);
+      workMenu.add(ConsAction);
+      workMenu.add(AddConsAction);
+      workMenu.add(OtherAction);
       add(workMenu);
       
       //Клиенты

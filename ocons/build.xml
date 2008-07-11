@@ -4,7 +4,7 @@
 	
 	<property name="srcDir" location=""/>
 	<property name="buildDir" location="bin"/>
-	<property name="distDir" location="dist"/>
+	<property name="distDir" location="F:/Developing/Ocons Project/dist"/>
 	<property name="version" value="0.01"/>
 
 	<target name="init">
