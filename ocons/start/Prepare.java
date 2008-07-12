@@ -1,6 +1,10 @@
 package start;
 
+import gui.MainFrame;
+
 import java.sql.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -16,9 +20,7 @@ public class Prepare {
 		if (!fileexist){
 			// если файл системной БД не существует - создаем его и формируем структуру таблиц
 			// из файла ocons.sql
-			MyTools.MessageBox("Файл надо создать");
-			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:db\\ocons.db");
+			Connection conn = MyTools.ConnectDB();
 			Statement stat = conn.createStatement();	
 	    
 			ArrayList<String> SQLst = MyTools.convSQL("db\\ocons.sql");
@@ -27,6 +29,13 @@ public class Prepare {
 			}
 			conn.close();
 		}
+		    
+	}
+	
+	public static void PrepareGD(){
+		Toolkit kit = Toolkit.getDefaultToolkit();
+	    Dimension screensize = kit.getScreenSize();
+	    GlobalData.setMonitorDimension(screensize.width,screensize.height);
 	    
 	}
 }

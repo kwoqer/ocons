@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import start.*;
@@ -36,7 +37,7 @@ public class MainMenu extends JMenuBar{
       
       //Консультант
       JMenu workMenu = new JMenu("Консультант");
-      Action AddConsAction = new ConfigAction("Новый консультант");
+      Action AddConsAction = new AddConsultantAction("Новый консультант");
       AddConsAction.putValue(Action.SMALL_ICON,
          new ImageIcon("pict\\adduser22.png"));
       Action ConsAction = new ConfigAction("Вход");
@@ -78,6 +79,16 @@ class ConfigAction extends AbstractAction
       System.out.println(getValue(Action.NAME)
          + " selected.");
    }
+}
+
+class AddConsultantAction extends AbstractAction{
+	public AddConsultantAction(String name) {
+		super(name);
+	}
+	public void actionPerformed(ActionEvent e) {
+		AddConsultantDialog ACDialog = new AddConsultantDialog(GlobalData.getFrame());
+		ACDialog.setVisible(true);
+	}
 }
 
 class ExitAction extends AbstractAction{
