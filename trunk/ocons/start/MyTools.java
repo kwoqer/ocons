@@ -1,8 +1,12 @@
 package start;
 
+import java.awt.Point;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
+import start.*;
 
 import javax.swing.JOptionPane;
 
@@ -36,4 +40,26 @@ public class MyTools {
 	    		 JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public static void  MessageBox(String h, String s){
+		JOptionPane.showMessageDialog(null,s,h,
+	    		 JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public static Point FramePosition(int width, int height){
+		int x = GlobalData.getMonitorWidth()/2-width/2;
+		int y = GlobalData.getMonitorHeight()/2-height/2;
+		return new Point(x,y);
+	}
+	
+	public static Connection ConnectDB(){
+		try{
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:db\\ocons.db");
+			return conn;
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

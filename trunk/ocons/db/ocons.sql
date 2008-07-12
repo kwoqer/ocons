@@ -74,5 +74,6 @@ CREATE TABLE Conultants (
 	Cons_ID		INTEGER PRIMARY KEY,
 	Name		VARCHAR(30),
 	Phone		VARCHAR(20),
-	EMail		VARCHAR(30)	
+	EMail		VARCHAR(30),
+	First		BOOL	
 );
