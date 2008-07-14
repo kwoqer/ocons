@@ -45,6 +45,11 @@ public class MyTools {
 	    		 JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public static void  ErrorBox(String h, String s){
+		JOptionPane.showMessageDialog(null,s,h,
+	    		 JOptionPane.ERROR_MESSAGE);
+	}
+	
 	public static Point FramePosition(int width, int height){
 		int x = GlobalData.getMonitorWidth()/2-width/2;
 		int y = GlobalData.getMonitorHeight()/2-height/2;

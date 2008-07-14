@@ -1,14 +1,13 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.text.*;
 
+import java.text.*;
 import data.Consultant;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-
-
 import start.*;
 
 
@@ -51,7 +50,15 @@ public class AddConsultantDialog extends JDialog {
 			jContentPaneACD.setLayout(new GridBagLayout());
 			LabelID = new JLabel("Личный номер");
 			LabelID.setForeground(Color.RED);
-			FieldID = new JTextField();
+			FieldID = new JFormattedTextField(new 
+						DefaultFormatter()
+						{
+							protected DocumentFilter getDocumentFilter(){
+								return filter;
+							}
+							private DocumentFilter filter = new IntFilter();
+						});
+			
 			LabelName = new JLabel("Фамилия И.О.");
 			FieldName = new JTextField();
 			LabelPhone = new JLabel("Телефон");
@@ -73,7 +80,8 @@ public class AddConsultantDialog extends JDialog {
 			Cancel.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent e){
-							setVisible(false);
+							//setVisible(false);
+							dispose();
 						}
 					});
 			Save.addActionListener(new ActionListener()
@@ -85,20 +93,22 @@ public class AddConsultantDialog extends JDialog {
 					c.setPhone(FieldPhone.getText());
 					c.setEMail(FieldEmail.getText());
 					c.setDefault(First.isSelected());
-					if (Pass1.getPassword()==Pass2.getPassword()){
-						c.setPassword(Pass1.getPassword());
-						Connection conn = MyTools.ConnectDB();
-						try{
-							c.savetoDB(conn);
-							conn.close();
+					String p1 = new String(Pass1.getPassword());
+					String p2 = new String(Pass2.getPassword());
+					if (p1.equals(p2)){
+						c.setPasswordHash(p1.hashCode());
+						if (c.ConsultantPresent(id)) {
+							MyTools.ErrorBox("Будьте внимательнее!","Консультант с таким номером уже есть!");
 						}
-						catch (SQLException E){
-							E.printStackTrace();
+						else {
+							c.addToDB();
+							dispose();
 						}
-						setVisible(false);
+						//setVisible(false);
+						
 					}
 					else{
-						MyTools.MessageBox("Внимательнее!", "Пароли не совпадают");
+						MyTools.ErrorBox("Будьте внимательнее!", "Пароли не совпадают!");
 					}
 					
 				}
@@ -126,7 +136,7 @@ public class AddConsultantDialog extends JDialog {
 	}
 	//private JPanel DataPanel;
 	private JLabel LabelID;
-	private JTextField FieldID;
+	private JFormattedTextField FieldID;
 	private JLabel LabelName;
 	private JTextField FieldName;
 	private JLabel LabelPhone;
@@ -146,6 +156,53 @@ public class AddConsultantDialog extends JDialog {
 	
 	
 
-}  //  @jve:decl-index=0:visual-constraint="2,20"
+} 
+
+class IntFilter extends DocumentFilter
+{
+   public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) 
+      throws BadLocationException 
+   {
+      StringBuilder builder = new StringBuilder(string);
+      for (int i = builder.length() - 1; i >= 0; i--)
+      {
+         int cp = builder.codePointAt(i);
+         if (!Character.isDigit(cp))    // && cp != '-') 
+         {
+            builder.deleteCharAt(i);
+            if (Character.isSupplementaryCodePoint(cp))
+            {
+               i--;
+               builder.deleteCharAt(i);
+            }
+         }
+      }
+      super.insertString(fb, offset, builder.toString(), attr);
+   }
+   
+   public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attr) 
+   throws BadLocationException 
+{
+   if (string != null) 
+   {
+      StringBuilder builder = new StringBuilder(string);
+      for (int i = builder.length() - 1; i >= 0; i--)
+      {
+         int cp = builder.codePointAt(i);
+         if (!Character.isDigit(cp)) // && cp != '-') 
+         {
+            builder.deleteCharAt(i);
+            if (Character.isSupplementaryCodePoint(cp))
+            {
+               i--;
+               builder.deleteCharAt(i);
+            }
+         }
+      }
+      string = builder.toString();
+   }
+   super.replace(fb, offset, length, string, attr);
+}
+}
 
  
