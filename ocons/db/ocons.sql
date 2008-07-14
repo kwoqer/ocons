@@ -70,10 +70,11 @@ CREATE TABLE CatCalendar (
 );
 
 -- Консультанты
-CREATE TABLE Conultants (
+CREATE TABLE Consultants (
 	Cons_ID		INTEGER PRIMARY KEY,
 	Name		VARCHAR(30),
 	Phone		VARCHAR(20),
 	EMail		VARCHAR(30),
-	First		BOOL	
+	First		BOOL,
+	PasswordHash	INTEGER	
 );

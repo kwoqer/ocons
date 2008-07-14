@@ -1,6 +1,7 @@
 package data;
 
-import java.sql.Connection;
+import java.sql.*;
+import start.MyTools;
 
 public class Consultant {
 	private int ID;
@@ -8,7 +9,7 @@ public class Consultant {
 	private String Phone;
 	private String EMail;
 	private boolean IsDefault;
-	private char[] Password;
+	private int PasswordHash;
 	
 	public Consultant(int id){
 		ID = id;
@@ -45,19 +46,50 @@ public class Consultant {
 		Phone = phone;
 	}
 	
-	public void readfromDB(int id, Connection conn){
+	public void readFromDB(int id, Connection conn){
 		
 	}
 	
-	public void savetoDB(Connection conn){
-		
+	public boolean ConsultantPresent(int id){
+		Boolean cp = false;
+		Connection conn = MyTools.ConnectDB();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(id)+";");
+			if (rs.next()){
+				cp = true;
+			}
+			conn.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return cp;
+	}
+	
+	public void addToDB(){
+		Connection conn = MyTools.ConnectDB();
+		try{
+			PreparedStatement st = conn.prepareStatement("INSERT INTO Consultants VALUES(?,?,?,?,?,?);");
+			st.setInt(1, ID);
+			st.setString(2, Name);
+			st.setString(3, Phone);
+			st.setString(4, EMail);
+			st.setBoolean(5, IsDefault);
+			st.setInt(6, PasswordHash);
+			st.execute();
+			conn.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
 	}
 
-	public char[] getPassword() {
-		return Password;
+	public int getPasswordHash() {
+		return PasswordHash;
 	}
 
-	public void setPassword(char[] password) {
-		Password = password;
+	public void setPasswordHash(int passwordhash) {
+		PasswordHash = passwordhash;
 	}
 }
