@@ -46,7 +46,28 @@ public class Consultant {
 		Phone = phone;
 	}
 	
-	public void readFromDB(int id, Connection conn){
+	public Consultant readFromDB(int id){
+		Consultant c = new Consultant(id);
+		Connection conn = MyTools.ConnectDB();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(id)+";");
+			if (rs.next()){
+				c.Name = rs.getString("Name");
+				c.Phone = rs.getString("Phone");
+				c.EMail = rs.getString("EMail");
+				c.IsDefault = rs.getBoolean("First");
+				c.PasswordHash = rs.getInt("PasswordHash");
+			}
+			else{
+				c = null;
+			}
+			conn.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return c;
 		
 	}
 	
@@ -70,6 +91,7 @@ public class Consultant {
 	public void addToDB(){
 		Connection conn = MyTools.ConnectDB();
 		try{
+			//TODO Проверка - если установлен isDefault - сбросить у предыдущего
 			PreparedStatement st = conn.prepareStatement("INSERT INTO Consultants VALUES(?,?,?,?,?,?);");
 			st.setInt(1, ID);
 			st.setString(2, Name);
