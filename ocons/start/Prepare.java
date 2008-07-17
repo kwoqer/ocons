@@ -1,7 +1,5 @@
 package start;
 
-import gui.MainFrame;
-
 import java.sql.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;

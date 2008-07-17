@@ -2,12 +2,9 @@ package gui;
 
 import javax.swing.*;
 import javax.swing.text.*;
-
-import java.text.*;
 import data.Consultant;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 import start.*;
 
 
@@ -15,19 +12,13 @@ public class AddConsultantDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPaneACD = null;
-	/**
-	 * @param owner
-	 */
+	
 	public AddConsultantDialog(Frame owner) {
 		super(owner);
 		initialize();
 	}
 
-	/**
-	 * This method initializes this
-	 * 
-	 * @return void
-	 */
+	
 	private void initialize() {
 		int width = 280;
 		int height = 250;
@@ -39,11 +30,7 @@ public class AddConsultantDialog extends JDialog {
 		
 	}
 
-	/**
-	 * This method initializes jContentPaneACD	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
+	
 	private JPanel getJContentPaneACD() {
 		if (jContentPaneACD == null) {
 			jContentPaneACD = new JPanel();
@@ -53,6 +40,7 @@ public class AddConsultantDialog extends JDialog {
 			FieldID = new JFormattedTextField(new 
 						DefaultFormatter()
 						{
+							private static final long serialVersionUID = 1L;
 							protected DocumentFilter getDocumentFilter(){
 								return filter;
 							}
@@ -84,8 +72,7 @@ public class AddConsultantDialog extends JDialog {
 							dispose();
 						}
 					});
-			Save.addActionListener(new ActionListener()
-			{
+			Save.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					int id = Integer.parseInt(FieldID.getText()); 
 					Consultant c = new Consultant(id);
@@ -158,51 +145,6 @@ public class AddConsultantDialog extends JDialog {
 
 } 
 
-class IntFilter extends DocumentFilter
-{
-   public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) 
-      throws BadLocationException 
-   {
-      StringBuilder builder = new StringBuilder(string);
-      for (int i = builder.length() - 1; i >= 0; i--)
-      {
-         int cp = builder.codePointAt(i);
-         if (!Character.isDigit(cp))    // && cp != '-') 
-         {
-            builder.deleteCharAt(i);
-            if (Character.isSupplementaryCodePoint(cp))
-            {
-               i--;
-               builder.deleteCharAt(i);
-            }
-         }
-      }
-      super.insertString(fb, offset, builder.toString(), attr);
-   }
-   
-   public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attr) 
-   throws BadLocationException 
-{
-   if (string != null) 
-   {
-      StringBuilder builder = new StringBuilder(string);
-      for (int i = builder.length() - 1; i >= 0; i--)
-      {
-         int cp = builder.codePointAt(i);
-         if (!Character.isDigit(cp)) // && cp != '-') 
-         {
-            builder.deleteCharAt(i);
-            if (Character.isSupplementaryCodePoint(cp))
-            {
-               i--;
-               builder.deleteCharAt(i);
-            }
-         }
-      }
-      string = builder.toString();
-   }
-   super.replace(fb, offset, length, string, attr);
-}
-}
+
 
  
