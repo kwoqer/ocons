@@ -3,15 +3,17 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+
 import javax.swing.*;
 import javax.swing.text.*;
-
-
-import start.MyTools;
+import data.Consultant;
+import start.*;
 
 public class LoginDialog extends JDialog {
 	
 	private static final long serialVersionUID = 1L;
+	private boolean emptyNumber;
 	private JPanel jContentPaneLD = null;
 	private JLabel Pict;
 	private JLabel LabelID;
@@ -26,7 +28,13 @@ public class LoginDialog extends JDialog {
 	public LoginDialog(Frame owner) {
 		super(owner);
 		initialize();
-		
+		emptyNumber = false;
+	}
+	
+	public LoginDialog(Frame owner, boolean en) {
+		super(owner);
+		initialize();
+		emptyNumber = en;
 	}
 
 	private void initialize() {
@@ -56,12 +64,45 @@ public class LoginDialog extends JDialog {
 						}
 						private DocumentFilter filter = new IntFilter();
 					});
+			// Подставляем консультанта по умолчанию, если он есть
+			if (!emptyNumber){
+				int n = MyTools.findDefaultConsultant();
+				if (n != -1){
+					Integer ni = new Integer(n);
+					FieldID.setValue(ni.toString());
+				}
+				
+			}
 			LabelPassword = new JLabel("Пароль");
 			FieldPassword = new JPasswordField();
 			LoginButton = new JButton("Вход");
+			LoginButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					if (FieldID.getText().equals("")){
+						MyTools.ErrorBox("Будьте внимательнее!", "Номер консультанта не задан!");						
+					}
+					else{
+						Consultant c = new Consultant(Integer.parseInt(FieldID.getText()));
+						if (c.readFromDB()){
+							String psw = new String(FieldPassword.getPassword());
+							if (psw.hashCode()==c.getPasswordHash()){
+								// Вход в режим работы консультанта
+								GlobalData.setConsultantNumber(c.getID());
+								GlobalData.getMenu().AfterLoginConsultantSettings();
+								dispose();
+							}
+							else{
+								MyTools.ErrorBox("Будьте внимательнее!", "Неправильный пароль!");
+							}
+						}
+						else{
+							MyTools.ErrorBox("Будьте внимательнее!", "Консультант с таким номером отсутствует!");
+						}
+					}							
+				}
+			});
 			CancelButton = new JButton("Отмена");
-			CancelButton.addActionListener(new ActionListener()
-			{
+			CancelButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//setVisible(false);
 					dispose();

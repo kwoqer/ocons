@@ -3,16 +3,22 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 import javax.swing.event.*;
 import start.*;
 
 public class MainMenu extends JMenuBar{
-
-   public MainMenu(){
+	
+	private static final long serialVersionUID = 1L;
+	private JMenu beginMenu;
+	private JMenu consultantMenu;
+	private Action addConsultantAction;
+	private Action loginAction;
+	private Action otherConsultantAction;
+	
+	public MainMenu(){
 	   // Управление
-      JMenu beginMenu = new JMenu("Управление");
+      beginMenu = new JMenu("Управление");
       Action DBConfigAction = new DBConfigAction("Настройки");
       DBConfigAction.putValue(Action.SMALL_ICON,
          new ImageIcon("pict\\configure22.png"));
@@ -36,20 +42,19 @@ public class MainMenu extends JMenuBar{
       add(beginMenu);
       
       //Консультант
-      JMenu consultantMenu = new JMenu("Консультант");
-      Action AddConsAction = new AddConsultantAction("Новый консультант");
-      AddConsAction.putValue(Action.SMALL_ICON,
+      consultantMenu = new JMenu("Консультант");
+      addConsultantAction = new AddConsultantAction("Новый консультант");
+      addConsultantAction.putValue(Action.SMALL_ICON,
          new ImageIcon("pict\\adduser22.png"));
-      Action loginAction = new LoginAction("Вход");
+      loginAction = new LoginAction("Вход");
       loginAction.putValue(Action.SMALL_ICON,
          new ImageIcon("pict\\user22.png"));
-      Action OtherAction = new ConfigAction("Другой консультант");
-      OtherAction.putValue(Action.SMALL_ICON,
+      otherConsultantAction = new OtherAction("Другой консультант");
+      otherConsultantAction.putValue(Action.SMALL_ICON,
          new ImageIcon("pict\\users22.png"));
-      OtherAction.setEnabled(false);
       consultantMenu.add(loginAction);
-      consultantMenu.add(AddConsAction);
-      consultantMenu.add(OtherAction);
+      consultantMenu.add(addConsultantAction);
+      consultantMenu.add(otherConsultantAction);
       add(consultantMenu);
       
       //Клиенты
@@ -68,17 +73,32 @@ public class MainMenu extends JMenuBar{
       add(resultMenu);
       
    }
+   
+   public void BeforeLoginConsultantSettings(){
+	   loginAction.setEnabled(true);
+	   addConsultantAction.setEnabled(true);
+	   otherConsultantAction.setEnabled(false);
+   }
+   
+   public void AfterLoginConsultantSettings(){
+	   loginAction.setEnabled(false);
+	   addConsultantAction.setEnabled(false);
+	   otherConsultantAction.setEnabled(true);
+   }
 }
 
 class ConfigAction extends AbstractAction
 {
-   public ConfigAction(String name) { super(name); }
+   
+	private static final long serialVersionUID = 1L;
 
-   public void actionPerformed(ActionEvent event)
-   {
+	public ConfigAction(String name) { super(name); }
+
+	public void actionPerformed(ActionEvent event)
+	{
       System.out.println(getValue(Action.NAME)
          + " selected.");
-   }
+	}
 }
 
 class AddConsultantAction extends AbstractAction{
@@ -103,10 +123,28 @@ class LoginAction extends AbstractAction{
 	}
 }
 
+class OtherAction extends AbstractAction{
+	private static final long serialVersionUID = 1L;
+	public OtherAction(String name) {
+		super(name);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		int a = MyTools.ConfirmBox("Внимание!", "Вы действительно хотите зайти другим консультантом?"); 
+		if (a==0){
+			GlobalData.setConsultantNumber(-1);
+			GlobalData.getMenu().BeforeLoginConsultantSettings();
+			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),true);
+			LDialog.setVisible(true);
+		}
+	}
+}
 
 class ExitAction extends AbstractAction{
 
-   public ExitAction(String name) { super(name); }
+	private static final long serialVersionUID = 1L;
+
+public ExitAction(String name) { super(name); }
 
    public void actionPerformed(ActionEvent event)
    {
@@ -117,7 +155,9 @@ class ExitAction extends AbstractAction{
 
 class AboutAction extends AbstractAction{
 
-   public AboutAction(String name) { super(name); }
+	private static final long serialVersionUID = 1L;
+
+public AboutAction(String name) { super(name); }
 
    public void actionPerformed(ActionEvent event)
    {
@@ -129,7 +169,9 @@ class AboutAction extends AbstractAction{
 
 class DBConfigAction extends AbstractAction
 {
-   public DBConfigAction(String name) { super(name); }
+	private static final long serialVersionUID = 1L;
+
+public DBConfigAction(String name) { super(name); }
 
    public void actionPerformed(ActionEvent event)
    {

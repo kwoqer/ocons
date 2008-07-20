@@ -5,6 +5,7 @@ import javax.swing.text.*;
 import data.Consultant;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 import start.*;
 
 
@@ -88,6 +89,21 @@ public class AddConsultantDialog extends JDialog {
 							MyTools.ErrorBox("Будьте внимательнее!","Консультант с таким номером уже есть!");
 						}
 						else {
+							// В случае установки нового консультанта по умолчанию убираем предыдущего по умолчанию 
+							if (c.isDefault()){
+								int cn = MyTools.findDefaultConsultant();
+								if (cn!=-1){
+									Connection conn = MyTools.ConnectDB();
+									try{
+										Statement stat = conn.createStatement();
+										String scn = new Integer(cn).toString();
+										int r = stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+scn+";");
+									}
+									catch (SQLException E){
+										E.printStackTrace();
+									}
+								}
+							}
 							c.addToDB();
 							dispose();
 						}
