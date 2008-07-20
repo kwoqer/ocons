@@ -3,11 +3,12 @@ package start;
 
 import java.awt.*;
 import javax.swing.*;
+import gui.*;
 
 public class GlobalData{
 
   // верси€
-  private static final String OCONS_VERSION = "0.01 alpha";
+  private static final String OCONS_VERSION = "0.02 alpha";
   private static final String OCONS_APPNAME = "Oriflame Consultant";
   // путь приложени€
   private static String OCONS_APPPATH = "";
@@ -22,7 +23,22 @@ public class GlobalData{
   private static int OCONS_FRAME_X = 0;
   private static int OCONS_FRAME_Y = 0;
   //ссылка на главное окно
-  private static Frame OCONS_FRAME = null;
+  private static JFrame OCONS_FRAME = null;
+  private static MainMenu OCONS_MENU = null;
+  
+  private static int OCONS_LOGGED_CONSULTANT = -1;
+
+
+  /*
+ * Ќомер залогинившегос€ консультатнта. ≈сли никто не залогинилс€ возвращает -1 
+ */
+  public static int getConsultantNumber() {
+	return OCONS_LOGGED_CONSULTANT;
+  }
+
+  public static void setConsultantNumber(int ocons_logged_consultant) {
+	OCONS_LOGGED_CONSULTANT = ocons_logged_consultant;
+  }
 
   public static void setAppPath(){
 	  OCONS_APPPATH = System.getProperty("user.dir");
@@ -84,12 +100,20 @@ public class GlobalData{
 	  OCONS_FRAME_Y = y;
   }
 
-  public static void setFrame(Frame frame){
+  public static void setFrame(JFrame frame){
 	  OCONS_FRAME = frame;
   }
 
   public static Frame getFrame(){
       return OCONS_FRAME;
+  }
+
+  public static MainMenu getMenu() {
+	return OCONS_MENU;
+  }
+
+  public static void setMenu(MainMenu ocons_menu) {
+	OCONS_MENU = ocons_menu;
   }
   
   

@@ -1,13 +1,10 @@
 package start;
 
 import java.awt.Point;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import start.*;
-
 import javax.swing.JOptionPane;
 
 public class MyTools {
@@ -50,6 +47,10 @@ public class MyTools {
 	    		 JOptionPane.ERROR_MESSAGE);
 	}
 	
+	public static int ConfirmBox(String h, String s){
+		return  JOptionPane.showConfirmDialog(null, s, h, JOptionPane.YES_NO_OPTION);
+	}
+	
 	public static Point FramePosition(int width, int height){
 		int x = GlobalData.getMonitorWidth()/2-width/2;
 		int y = GlobalData.getMonitorHeight()/2-height/2;
@@ -66,5 +67,22 @@ public class MyTools {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static int findDefaultConsultant(){
+		int cn = -1;
+		Connection conn = ConnectDB();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE First=1;");
+			if (rs.next()){
+				cn = rs.getInt("Cons_ID");
+			}
+			conn.close();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return cn;
 	}
 }

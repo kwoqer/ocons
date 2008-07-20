@@ -10,9 +10,11 @@ public class MainFrame extends JFrame {
 	public MainFrame(){
     
 		 
-	      JMenuBar mainmenu = new MainMenu();
-	      setJMenuBar(mainmenu);
-	      	      
+	      MainMenu mainMenu = new MainMenu();
+	      GlobalData.setMenu(mainMenu);
+	      mainMenu.BeforeLoginConsultantSettings();
+	      setJMenuBar(mainMenu);
+	            
 
 	      addWindowListener(new WindowAdapter() {
 	            public void windowClosing(WindowEvent e) {

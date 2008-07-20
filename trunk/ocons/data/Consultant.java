@@ -46,29 +46,27 @@ public class Consultant {
 		Phone = phone;
 	}
 	
-	public Consultant readFromDB(int id){
-		Consultant c = new Consultant(id);
+	public boolean readFromDB(){
+		//Consultant c = new Consultant(id);
+		boolean find = false;
 		Connection conn = MyTools.ConnectDB();
 		try{
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(id)+";");
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(ID)+";");
 			if (rs.next()){
-				c.Name = rs.getString("Name");
-				c.Phone = rs.getString("Phone");
-				c.EMail = rs.getString("EMail");
-				c.IsDefault = rs.getBoolean("First");
-				c.PasswordHash = rs.getInt("PasswordHash");
-			}
-			else{
-				c = null;
+				Name = rs.getString("Name");
+				Phone = rs.getString("Phone");
+				EMail = rs.getString("EMail");
+				IsDefault = rs.getBoolean("First");
+				PasswordHash = rs.getInt("PasswordHash");
+				find = true;
 			}
 			conn.close();
 		}
 		catch (SQLException e){
 			e.printStackTrace();
 		}
-		return c;
-		
+		return find;
 	}
 	
 	public boolean ConsultantPresent(int id){
