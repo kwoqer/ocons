@@ -1,12 +1,15 @@
 package gui;
 
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import start.*;
 
 public class MainFrame extends JFrame {
-
+	
+	private static final long serialVersionUID = 1L;
+	private StatusBar statusBar;
+	
 	public MainFrame(){
     
 		 
@@ -14,7 +17,7 @@ public class MainFrame extends JFrame {
 	      GlobalData.setMenu(mainMenu);
 	      mainMenu.BeforeLoginConsultantSettings();
 	      setJMenuBar(mainMenu);
-	            
+	      setLayout(new BorderLayout());      
 
 	      addWindowListener(new WindowAdapter() {
 	            public void windowClosing(WindowEvent e) {
@@ -22,16 +25,11 @@ public class MainFrame extends JFrame {
 	                System.exit(0);
 	            }
 	      });    
-	      
-	      //addPropertyChangeListener(new WindowAdapter()  {      
-	      //      public void PropertyChange(WindowEvent e){
-	      //          Point p = getLocationOnScreen();
-	      //          System.out.println("Window Moved!");
-	      //          GlobalData.setFrameLocation(p.x,p.y);
-	      //      }
-
-	      //});
-
+	      	      
 
 	   }
+
+	public StatusBar getStatusBar() {
+		return statusBar;
+	}
 }

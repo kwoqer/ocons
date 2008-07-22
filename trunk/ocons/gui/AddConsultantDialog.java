@@ -97,7 +97,7 @@ public class AddConsultantDialog extends JDialog {
 									try{
 										Statement stat = conn.createStatement();
 										String scn = new Integer(cn).toString();
-										int r = stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+scn+";");
+										stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+scn+";");
 									}
 									catch (SQLException E){
 										E.printStackTrace();
