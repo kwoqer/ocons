@@ -3,8 +3,6 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-
 import javax.swing.*;
 import javax.swing.text.*;
 import data.Consultant;
@@ -13,7 +11,7 @@ import start.*;
 public class LoginDialog extends JDialog {
 	
 	private static final long serialVersionUID = 1L;
-	private boolean emptyNumber;
+	private int emptyNumber;
 	private JPanel jContentPaneLD = null;
 	private JLabel Pict;
 	private JLabel LabelID;
@@ -25,16 +23,18 @@ public class LoginDialog extends JDialog {
 	private JButton CancelButton;
 	
 	
-	public LoginDialog(Frame owner) {
+	public LoginDialog(Frame owner) {		
 		super(owner);
+		setEmptyNumber(0);
 		initialize();
-		emptyNumber = false;
+		
 	}
 	
-	public LoginDialog(Frame owner, boolean en) {
+	public LoginDialog(Frame owner, int en) {		
 		super(owner);
+		setEmptyNumber(en);
 		initialize();
-		emptyNumber = en;
+		
 	}
 
 	private void initialize() {
@@ -65,7 +65,7 @@ public class LoginDialog extends JDialog {
 						private DocumentFilter filter = new IntFilter();
 					});
 			// Подставляем консультанта по умолчанию, если он есть
-			if (!emptyNumber){
+			if (getEmptyNumber()==0){				
 				int n = MyTools.findDefaultConsultant();
 				if (n != -1){
 					Integer ni = new Integer(n);
@@ -121,5 +121,13 @@ public class LoginDialog extends JDialog {
 			jContentPaneLD.add(ButtonPanel,new GBC(0,2,3,1).setAnchor(GBC.CENTER));
 		}
 		return jContentPaneLD;
+	}
+
+	private int getEmptyNumber() {
+		return emptyNumber;
+	}
+
+	private void setEmptyNumber(int emptyNumber) {
+		this.emptyNumber = emptyNumber;
 	}
 }

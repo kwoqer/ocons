@@ -134,7 +134,7 @@ class OtherAction extends AbstractAction{
 		if (a==0){
 			GlobalData.setConsultantNumber(-1);
 			GlobalData.getMenu().BeforeLoginConsultantSettings();
-			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),true);
+			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),1);
 			LDialog.setVisible(true);
 		}
 	}
