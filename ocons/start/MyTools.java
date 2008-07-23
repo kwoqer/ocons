@@ -1,10 +1,9 @@
 package start;
 
-import java.awt.Point;
+import java.awt.*;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
-import start.*;
 import javax.swing.JOptionPane;
 
 public class MyTools {
@@ -84,5 +83,13 @@ public class MyTools {
 			e.printStackTrace();
 		}
 		return cn;
+	}
+	
+	public static void setStatusBarConsultant(String cn){
+		GlobalData.getFrame().getStatusBar().setConsultantName(cn);
+	}
+	
+	public static void setStatusBarMessage(String m){
+		GlobalData.getFrame().getStatusBar().setMessageField(m);
 	}
 }

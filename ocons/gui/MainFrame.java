@@ -9,6 +9,7 @@ public class MainFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private StatusBar statusBar;
+	//private JPanel workArea;
 	
 	public MainFrame(){
     
@@ -17,8 +18,15 @@ public class MainFrame extends JFrame {
 	      GlobalData.setMenu(mainMenu);
 	      mainMenu.BeforeLoginConsultantSettings();
 	      setJMenuBar(mainMenu);
-	      setLayout(new BorderLayout());      
-
+	      //workArea = new JPanel();
+	      setLayout(new BorderLayout()); 
+	      statusBar = new StatusBar();
+	      
+	      //JPanel statusPanel = new JPanel();
+	      //statusPanel.add(statusBar);
+	      //add(workArea, new GBC(0,0).setFill(GBC.BOTH));	      
+	      add(statusBar, BorderLayout.SOUTH);
+	      
 	      addWindowListener(new WindowAdapter() {
 	            public void windowClosing(WindowEvent e) {
 	                dispose();
