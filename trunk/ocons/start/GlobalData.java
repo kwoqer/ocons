@@ -23,7 +23,7 @@ public class GlobalData{
   private static int OCONS_FRAME_X = 0;
   private static int OCONS_FRAME_Y = 0;
   //ссылка на главное окно
-  private static JFrame OCONS_FRAME = null;
+  private static MainFrame OCONS_FRAME = null;
   private static MainMenu OCONS_MENU = null;
   
   private static int OCONS_LOGGED_CONSULTANT = -1;
@@ -100,11 +100,11 @@ public class GlobalData{
 	  OCONS_FRAME_Y = y;
   }
 
-  public static void setFrame(JFrame frame){
+  public static void setFrame(MainFrame frame){
 	  OCONS_FRAME = frame;
   }
 
-  public static Frame getFrame(){
+  public static MainFrame getFrame(){
       return OCONS_FRAME;
   }
 

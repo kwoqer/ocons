@@ -89,6 +89,7 @@ public class LoginDialog extends JDialog {
 								// ¬ход в режим работы консультанта
 								GlobalData.setConsultantNumber(c.getID());
 								GlobalData.getMenu().AfterLoginConsultantSettings();
+								MyTools.setStatusBarConsultant(c.getName());
 								dispose();
 							}
 							else{
