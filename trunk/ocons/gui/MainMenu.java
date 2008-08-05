@@ -135,6 +135,8 @@ class OtherAction extends AbstractAction{
 			GlobalData.setConsultantNumber(-1);
 			GlobalData.getMenu().BeforeLoginConsultantSettings();
 			MyTools.setStatusBarConsultant("");
+			//GlobalData.getFrame().getWorkArea().setVisible(false);
+			GlobalData.getFrame().closeWorkArea();
 			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),1);
 			LDialog.setVisible(true);
 		}
@@ -145,12 +147,12 @@ class ExitAction extends AbstractAction{
 
 	private static final long serialVersionUID = 1L;
 
-public ExitAction(String name) { super(name); }
+	public ExitAction(String name) { super(name); }
 
-   public void actionPerformed(ActionEvent event)
-   {
+	public void actionPerformed(ActionEvent event)
+	{
       System.exit(0);
-   }
+	}
 
 }
 

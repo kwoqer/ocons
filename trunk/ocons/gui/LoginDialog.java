@@ -90,6 +90,11 @@ public class LoginDialog extends JDialog {
 								GlobalData.setConsultantNumber(c.getID());
 								GlobalData.getMenu().AfterLoginConsultantSettings();
 								MyTools.setStatusBarConsultant(c.getName());
+								GlobalData.getFrame().openWorkArea(c.getID());
+								//GlobalData.getFrame().getNavigationTree().setConsultantNumber(c.getID());
+								//GlobalData.getFrame().getNavigationTree().setVisible(true);
+								//GlobalData.getFrame().getNavigationTree().repaint();								
+								//GlobalData.getFrame().getWorkArea().setVisible(true);								
 								dispose();
 							}
 							else{
@@ -118,8 +123,8 @@ public class LoginDialog extends JDialog {
 			jContentPaneLD.add(FieldID, new GBC(2,0).setFill(GBC.HORIZONTAL).setInsets(1));
 			jContentPaneLD.add(LabelPassword, new GBC(1,1).setAnchor(GBC.EAST));
 			jContentPaneLD.add(FieldPassword, new GBC(2,1).setFill(GBC.HORIZONTAL).setInsets(1));
-			
 			jContentPaneLD.add(ButtonPanel,new GBC(0,2,3,1).setAnchor(GBC.CENTER));
+			
 		}
 		return jContentPaneLD;
 	}
