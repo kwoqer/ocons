@@ -1,37 +1,32 @@
 package gui;
 
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class TreeItem {
 	
 	private Icon icon;
 	private String name;
-	private String id;
+	private String id;	// root - "0", далее 10, 20, 30..., листья - 11, 12..
 	
+	public TreeItem(String name, String id, String ipath){
+		this.name = name;
+		this.id = id;
+		icon = new ImageIcon(ipath);
+		
+	}
 	
 	public Icon getIcon() {
 		return icon;
-	}
-	
-	public void setIcon(String path) {
-		Icon i = new ImageIcon(path);		
-		this.icon = i;
 	}
 	
 	public String getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
 	public String getName() {
 		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	public String toString(){
