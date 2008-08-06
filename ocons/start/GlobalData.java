@@ -8,7 +8,7 @@ import gui.*;
 public class GlobalData{
 
   // версия
-  private static final String OCONS_VERSION = "0.02 alpha";
+  private static final String OCONS_VERSION = "0.05 alpha";
   private static final String OCONS_APPNAME = "Oriflame Consultant";
   // путь приложения
   private static String OCONS_APPPATH = "";

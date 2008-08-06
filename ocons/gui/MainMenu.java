@@ -21,13 +21,13 @@ public class MainMenu extends JMenuBar{
       beginMenu = new JMenu("Управление");
       Action DBConfigAction = new DBConfigAction("Настройки");
       DBConfigAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\configure22.png"));
+         new ImageIcon("pict/configure22.png"));
       Action dbAction = new ConfigAction("Действующий прайс");
       dbAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\textfile22.png"));
+         new ImageIcon("pict/money22.png"));
       Action ginAction = new ConfigAction("Прайс текущего каталога");
       ginAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\documents22.png"));
+         new ImageIcon("pict/favbadd22.png"));
       //Action logoutAction = new ConfigAction("Другой пользователь");
       //logoutAction.putValue(Action.SMALL_ICON,
       //   new ImageIcon("z:\\usr\\jk\\src\\jk\\gui\\logout.gif"));
@@ -135,7 +135,7 @@ class OtherAction extends AbstractAction{
 			GlobalData.setConsultantNumber(-1);
 			GlobalData.getMenu().BeforeLoginConsultantSettings();
 			MyTools.setStatusBarConsultant("");
-			//GlobalData.getFrame().getWorkArea().setVisible(false);
+			GlobalData.setConsultantNumber(-1);			
 			GlobalData.getFrame().closeWorkArea();
 			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),1);
 			LDialog.setVisible(true);

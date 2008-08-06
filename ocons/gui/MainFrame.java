@@ -70,8 +70,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void openWorkArea(int cn){
-		// TODO Переделать. В дереве будут объекты класса TreeItem 
-		String so = (String)navigationTree.getRootObject();
+		String so = ((TreeItem)navigationTree.getRootObject()).getName();
 		Integer si = new Integer(so); 
 	    if (si.intValue()!=cn){
 	    	navigationTree.setConsultantNumber(cn);

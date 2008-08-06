@@ -90,11 +90,7 @@ public class LoginDialog extends JDialog {
 								GlobalData.setConsultantNumber(c.getID());
 								GlobalData.getMenu().AfterLoginConsultantSettings();
 								MyTools.setStatusBarConsultant(c.getName());
-								GlobalData.getFrame().openWorkArea(c.getID());
-								//GlobalData.getFrame().getNavigationTree().setConsultantNumber(c.getID());
-								//GlobalData.getFrame().getNavigationTree().setVisible(true);
-								//GlobalData.getFrame().getNavigationTree().repaint();								
-								//GlobalData.getFrame().getWorkArea().setVisible(true);								
+								GlobalData.getFrame().openWorkArea(c.getID());													
 								dispose();
 							}
 							else{
