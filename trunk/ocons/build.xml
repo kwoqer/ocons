@@ -5,23 +5,51 @@
 	<property name="srcDir" location=""/>
 	<property name="buildDir" location="bin"/>
 	<property name="distDir" location="F:/Developing/Ocons Project/dist"/>
-	<property name="version" value="0.01"/>
+	<property name="version" value="0.05"/>
+	<property name="libDir" value="lib"/>
+	<pathconvert property="libs.project" pathsep=" ">
+						            <mapper>
+						                <chainedmapper>
+						                    <!-- убрать абсолютный путь у jar файлов -->
+						                    <flattenmapper/>
+						                    <!-- дописать lib/ -->
+						                    <globmapper from="*" to="lib/*"/>
+						                </chainedmapper>
+						            </mapper>
+
+						            <path>
+						                <!-- JAR`ы из ранее обьявленной папки lib.dir -->
+						                <fileset dir="${libDir}">
+						                    <include name="**/*.jar"/>
+						                </fileset>
+						            </path>
+	</pathconvert>
 
 	<target name="init">
 		<tstamp/>
 		<mkdir dir="${buildDir}"/>
 		<mkdir dir="${distDir}"/>
+		
+		
+		
 	</target>
 
 	<target name="compile" depends="init">
 		<javac srcdir="${srcDir}" destdir="${buildDir}"/>
 	</target>
 
+	
+
+	
+	
 	<target name="dist" depends="compile">
+		
+		
 		<jar destfile="${distDir}/ocons-${version}-${DSTAMP}.jar" basedir="${buildDir}">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="start.Start"/>
+				<attribute name="Class-Path" value="${libs.project}"/>
 			</manifest>
 		</jar>
 	</target>
