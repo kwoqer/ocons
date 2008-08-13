@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import start.MyTools;
+
 public class TreeItem {
 	
 	private Icon icon;
@@ -13,7 +15,7 @@ public class TreeItem {
 	public TreeItem(String name, String id, String ipath){
 		this.name = name;
 		this.id = id;
-		icon = new ImageIcon(ipath);
+		icon = MyTools.getImageResource(ipath);
 		
 	}
 	

@@ -1,9 +1,12 @@
 package gui;
 
 import java.awt.*;
+
 import javax.swing.*;
+import javax.swing.event.*;
 import javax.swing.tree.*;
 import data.Consultant;
+import start.*;
 
 public class NavigationTree extends JPanel {
 	
@@ -32,6 +35,7 @@ public class NavigationTree extends JPanel {
 		navtree.putClientProperty("JTree.lineStyle", "None");
 		navtree.setRowHeight(24);
 		navtree.setCellRenderer(new CustomIconTreeCellRenderer());
+		navtree.addTreeSelectionListener(new TreeListener());
 		JScrollPane scrollPane = new JScrollPane(navtree);
 		
 		//Dimension d = new Dimension(200,10000);
@@ -55,7 +59,7 @@ public class NavigationTree extends JPanel {
 		return root.getUserObject();
 	}
 	
-	public static class CustomIconTreeCellRenderer extends DefaultTreeCellRenderer{
+	private static class CustomIconTreeCellRenderer extends DefaultTreeCellRenderer{
 		
 		private TreeItem item;
 		
@@ -84,6 +88,14 @@ public class NavigationTree extends JPanel {
 							boolean flag1, boolean flag2, int i, boolean flag3){
 			DefaultMutableTreeNode dmtn = (DefaultMutableTreeNode)obj;
 			item = (TreeItem)dmtn.getUserObject();
+			Font bbFont = new Font(Font.DIALOG,Font.BOLD,12);
+			Font nbFont = new Font(Font.DIALOG,Font.PLAIN,12);
+			if (item.getId()=="0"){				
+				setFont(bbFont);
+			}
+			else{
+				setFont(nbFont);
+			}
 			Component c = super.getTreeCellRendererComponent(jtree, obj, flag, flag1, flag2, i, flag3);
 			item = null;
 			return c;
@@ -91,6 +103,18 @@ public class NavigationTree extends JPanel {
 		
 		public CustomIconTreeCellRenderer(){
 			
+		}
+	}
+	
+	private static class TreeListener implements TreeSelectionListener{
+		
+		public void valueChanged(TreeSelectionEvent e){
+			TreePath path = e.getNewLeadSelectionPath();
+			if (path == null) return;
+			DefaultMutableTreeNode selectedNode = 
+				(DefaultMutableTreeNode)path.getLastPathComponent();
+			TreeItem item = (TreeItem)selectedNode.getUserObject();
+			MyTools.setStatusBarMessage(item.getName());
 		}
 	}
 }

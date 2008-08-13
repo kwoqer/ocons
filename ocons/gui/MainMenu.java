@@ -21,13 +21,13 @@ public class MainMenu extends JMenuBar{
       beginMenu = new JMenu("Управление");
       Action DBConfigAction = new DBConfigAction("Настройки");
       DBConfigAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict/configure22.png"));
+         MyTools.getImageResource("pict/configure22.png"));
       Action dbAction = new ConfigAction("Действующий прайс");
       dbAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict/money22.png"));
+    	 MyTools.getImageResource("pict/money22.png"));
       Action ginAction = new ConfigAction("Прайс текущего каталога");
       ginAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict/favbadd22.png"));
+    	 MyTools.getImageResource("pict/favbadd22.png"));
       //Action logoutAction = new ConfigAction("Другой пользователь");
       //logoutAction.putValue(Action.SMALL_ICON,
       //   new ImageIcon("z:\\usr\\jk\\src\\jk\\gui\\logout.gif"));
@@ -45,13 +45,13 @@ public class MainMenu extends JMenuBar{
       consultantMenu = new JMenu("Консультант");
       addConsultantAction = new AddConsultantAction("Новый консультант");
       addConsultantAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\adduser22.png"));
+    		  MyTools.getImageResource("pict/adduser22.png"));
       loginAction = new LoginAction("Вход");
       loginAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\user22.png"));
+    		  MyTools.getImageResource("pict/user22.png"));
       otherConsultantAction = new OtherAction("Другой консультант");
       otherConsultantAction.putValue(Action.SMALL_ICON,
-         new ImageIcon("pict\\users22.png"));
+    		  MyTools.getImageResource("pict/users22.png"));
       consultantMenu.add(loginAction);
       consultantMenu.add(addConsultantAction);
       consultantMenu.add(otherConsultantAction);

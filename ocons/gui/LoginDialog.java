@@ -52,7 +52,7 @@ public class LoginDialog extends JDialog {
 		if (jContentPaneLD == null){
 			jContentPaneLD = new JPanel();
 			jContentPaneLD.setLayout(new GridBagLayout());
-			Icon pict = new ImageIcon("pict\\user.png");
+			Icon pict = MyTools.getImageResource("pict/user.png");
 			Pict = new JLabel(pict);
 			LabelID = new JLabel("Номер");
 			FieldID = new JFormattedTextField(new 

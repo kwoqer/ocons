@@ -2,9 +2,10 @@ package start;
 
 import java.awt.*;
 import java.io.*;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class MyTools {
 	
@@ -91,5 +92,10 @@ public class MyTools {
 	
 	public static void setStatusBarMessage(String m){
 		GlobalData.getFrame().getStatusBar().setMessageField(m);
+	}
+	
+	public static ImageIcon getImageResource(String s){
+		URL u = MyTools.class.getResource(s);
+		return new ImageIcon(u);
 	}
 }
