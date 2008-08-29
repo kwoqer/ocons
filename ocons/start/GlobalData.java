@@ -26,17 +26,17 @@ public class GlobalData{
   private static MainFrame OCONS_FRAME = null;
   private static MainMenu OCONS_MENU = null;
   
-  private static int OCONS_LOGGED_CONSULTANT = -1;
+  private static String OCONS_LOGGED_CONSULTANT = null;
 
 
   /*
- * Номер залогинившегося консультатнта. Если никто не залогинился возвращает -1 
+ * Номер залогинившегося консультатнта. Если никто не залогинился возвращает null  
  */
-  public static int getConsultantNumber() {
+  public static String getConsultantNumber() {
 	return OCONS_LOGGED_CONSULTANT;
   }
 
-  public static void setConsultantNumber(int ocons_logged_consultant) {
+  public static void setConsultantNumber(String ocons_logged_consultant) {
 	OCONS_LOGGED_CONSULTANT = ocons_logged_consultant;
   }
 

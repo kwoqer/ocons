@@ -1,9 +1,6 @@
 package gui;
 
-import java.io.IOException;
-
 import javax.swing.*;
-
 import start.MyTools;
 
 public class TreeItem {

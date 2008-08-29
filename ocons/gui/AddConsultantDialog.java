@@ -75,7 +75,7 @@ public class AddConsultantDialog extends JDialog {
 					});
 			Save.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					int id = Integer.parseInt(FieldID.getText()); 
+					String id = FieldID.getText(); 
 					Consultant c = new Consultant(id);
 					c.setName(FieldName.getText());
 					c.setPhone(FieldPhone.getText());
@@ -91,13 +91,13 @@ public class AddConsultantDialog extends JDialog {
 						else {
 							// В случае установки нового консультанта по умолчанию убираем предыдущего по умолчанию 
 							if (c.isDefault()){
-								int cn = MyTools.findDefaultConsultant();
-								if (cn!=-1){
+								String cn = MyTools.findDefaultConsultant();
+								if (cn!=null){
 									Connection conn = MyTools.ConnectDB();
 									try{
-										Statement stat = conn.createStatement();
-										String scn = new Integer(cn).toString();
-										stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+scn+";");
+										Statement stat = conn.createStatement();										
+										stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+cn+";");
+										
 									}
 									catch (SQLException E){
 										E.printStackTrace();

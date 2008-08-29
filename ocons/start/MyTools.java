@@ -60,7 +60,7 @@ public class MyTools {
 	public static Connection ConnectDB(){
 		try{
 			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:db\\ocons.db");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:db/ocons.db");
 			return conn;
 		}
 		catch (Exception e){
@@ -69,14 +69,26 @@ public class MyTools {
 		}
 	}
 	
-	public static int findDefaultConsultant(){
-		int cn = -1;
+	public static Connection ConnectCDB(String c){		
+		try{
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:db/"+c+".db");
+			return conn;
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static String findDefaultConsultant(){
+		String cn = null;
 		Connection conn = ConnectDB();
 		try{
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE First=1;");
 			if (rs.next()){
-				cn = rs.getInt("Cons_ID");
+				cn = rs.getString("Cons_ID");
 			}
 			conn.close();
 		}

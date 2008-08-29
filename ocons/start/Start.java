@@ -6,7 +6,7 @@ import java.awt.*;
 public class Start {
 	
 		public static void main(String[] args) {
-
+			
 	        MainFrame frame = new MainFrame();
 	        Prepare.PrepareGD();
 	        GlobalData.setFrame(frame);
