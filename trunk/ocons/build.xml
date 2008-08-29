@@ -7,23 +7,23 @@
 	<property name="distDir" location="F:/Developing/Ocons Project/dist"/>
 	<property name="version" value="0.05"/>
 	<property name="libDir" value="lib"/>
-	<pathconvert property="libs.project" pathsep=" ">
+	<!--pathconvert property="libs.project" pathsep=" ">
 						            <mapper>
 						                <chainedmapper>
-						                    <!-- убрать абсолютный путь у jar файлов -->
+						                    < убрать абсолютный путь у jar файлов ->
 						                    <flattenmapper/>
-						                    <!-- дописать lib/ -->
+						                    < дописать lib/ ->
 						                    <globmapper from="*" to="lib/*"/>
 						                </chainedmapper>
 						            </mapper>
 
 						            <path>
-						                <!-- JAR`ы из ранее обьявленной папки lib.dir -->
+						                < JAR`ы из ранее обьявленной папки lib.dir ->
 						                <fileset dir="${libDir}">
 						                    <include name="**/*.jar"/>
 						                </fileset>
 						            </path>
-	</pathconvert>
+	</pathconvert-->
 
 	<target name="init">
 		<tstamp/>
@@ -49,7 +49,7 @@
 			<manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="start.Start"/>
-				<attribute name="Class-Path" value="${libs.project}"/>
+				<attribute name="Class-Path" value="${libDir}/sqlite-jdbc-3.5.9-universal.jar"/>
 			</manifest>
 		</jar>
 	</target>

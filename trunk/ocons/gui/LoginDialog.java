@@ -66,10 +66,9 @@ public class LoginDialog extends JDialog {
 					});
 			// Подставляем консультанта по умолчанию, если он есть
 			if (getEmptyNumber()==0){				
-				int n = MyTools.findDefaultConsultant();
-				if (n != -1){
-					Integer ni = new Integer(n);
-					FieldID.setValue(ni.toString());
+				String n = MyTools.findDefaultConsultant();
+				if (n != null){					
+					FieldID.setValue(n);
 				}
 				
 			}
@@ -82,7 +81,7 @@ public class LoginDialog extends JDialog {
 						MyTools.ErrorBox("Будьте внимательнее!", "Номер консультанта не задан!");						
 					}
 					else{
-						Consultant c = new Consultant(Integer.parseInt(FieldID.getText()));
+						Consultant c = new Consultant(FieldID.getText());
 						if (c.readFromDB()){
 							String psw = new String(FieldPassword.getPassword());
 							if (psw.hashCode()==c.getPasswordHash()){
@@ -90,6 +89,12 @@ public class LoginDialog extends JDialog {
 								GlobalData.setConsultantNumber(c.getID());
 								GlobalData.getMenu().AfterLoginConsultantSettings();
 								MyTools.setStatusBarConsultant(c.getName());
+								try {
+									Prepare.PrepareCDB(c.getID());
+								}
+								catch (Exception ex){
+									ex.printStackTrace();
+								}
 								GlobalData.getFrame().openWorkArea(c.getID());													
 								dispose();
 							}

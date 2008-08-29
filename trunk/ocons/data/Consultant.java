@@ -4,14 +4,14 @@ import java.sql.*;
 import start.MyTools;
 
 public class Consultant {
-	private int ID;
+	private String ID;
 	private String Name;
 	private String Phone;
 	private String EMail;
 	private boolean IsDefault;
 	private int PasswordHash;
 	
-	public Consultant(int id){
+	public Consultant(String id){
 		ID = id;
 	}
 	
@@ -21,10 +21,10 @@ public class Consultant {
 	public void setEMail(String mail) {
 		EMail = mail;
 	}
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
-	public void setID(int id) {
+	public void setID(String id) {
 		ID = id;
 	}
 	public boolean isDefault() {
@@ -52,7 +52,7 @@ public class Consultant {
 		Connection conn = MyTools.ConnectDB();
 		try{
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(ID)+";");
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+ID+";");
 			if (rs.next()){
 				Name = rs.getString("Name");
 				Phone = rs.getString("Phone");
@@ -69,12 +69,12 @@ public class Consultant {
 		return find;
 	}
 	
-	public boolean ConsultantPresent(int id){
-		Boolean cp = false;
+	public boolean ConsultantPresent(String id){
+		boolean cp = false;
 		Connection conn = MyTools.ConnectDB();
 		try{
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+Integer.toString(id)+";");
+			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+id+";");
 			if (rs.next()){
 				cp = true;
 			}
@@ -89,9 +89,8 @@ public class Consultant {
 	public void addToDB(){
 		Connection conn = MyTools.ConnectDB();
 		try{
-			//TODO Проверка - если установлен isDefault - сбросить у предыдущего
 			PreparedStatement st = conn.prepareStatement("INSERT INTO Consultants VALUES(?,?,?,?,?,?);");
-			st.setInt(1, ID);
+			st.setString(1, ID);
 			st.setString(2, Name);
 			st.setString(3, Phone);
 			st.setString(4, EMail);
@@ -99,6 +98,8 @@ public class Consultant {
 			st.setInt(6, PasswordHash);
 			st.execute();
 			conn.close();
+			String cs = new Integer(ID).toString();
+			MyTools.setStatusBarMessage("Консультант "+cs+" успешно добавлен!");
 		}
 		catch (SQLException e){
 			e.printStackTrace();

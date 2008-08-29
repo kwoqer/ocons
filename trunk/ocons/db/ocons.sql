@@ -71,7 +71,7 @@ CREATE TABLE CatCalendar (
 
 -- Консультанты
 CREATE TABLE Consultants (
-	Cons_ID		INTEGER PRIMARY KEY,
+	Cons_ID		VARCHAR(10),
 	Name		VARCHAR(30),
 	Phone		VARCHAR(20),
 	EMail		VARCHAR(30),

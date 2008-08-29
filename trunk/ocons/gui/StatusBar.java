@@ -35,11 +35,11 @@ public class StatusBar extends JPanel {
 		consultantName = new JTextField();
 		consultantName.setFont(bbFont);
 		consultantName.setEditable(false);
-		consultantName.setColumns(10);
+		consultantName.setColumns(15);
 		consultantName.setMaximumSize(consultantName.getPreferredSize());
 		consultantName.setMinimumSize(consultantName.getPreferredSize());
 		messageField = new JTextField();
-		messageField.setColumns(50);
+		messageField.setColumns(45);
 		messageField.setEditable(false);
 		messageField.setFont(bbFont);
 		messageField.setMinimumSize(messageField.getPreferredSize());

@@ -14,11 +14,10 @@ public class NavigationTree extends JPanel {
 	
 	private DefaultMutableTreeNode root; 
 
-	public NavigationTree(int cn){
+	public NavigationTree(String cn){
 		
-		// Tree
-		Integer ci = new Integer(cn);
-		root = new DefaultMutableTreeNode(new TreeItem(ci.toString(),"0","pict/user22.png"));
+		// Tree		
+		root = new DefaultMutableTreeNode(new TreeItem(cn,"0","pict/user22.png"));
 		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode(new TreeItem("Клиенты","10","pict/userb22.png"));
 		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode(new TreeItem("Накладные","20","pict/textfile22.png"));
 		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode(new TreeItem("Каталоги","30","pict/favb22.png"));
@@ -49,9 +48,8 @@ public class NavigationTree extends JPanel {
 		//setVisible(true);
 	}
 	
-	public void setConsultantNumber(int cn){
-		String ci = new Integer(cn).toString();
-		TreeItem newroot = new TreeItem(ci,"0","pict/user22.png");
+	public void setConsultantNumber(String cn){		
+		TreeItem newroot = new TreeItem(cn,"0","pict/user22.png");
 		root.setUserObject(newroot);
 	}
 	

@@ -132,10 +132,10 @@ class OtherAction extends AbstractAction{
 	public void actionPerformed(ActionEvent e) {
 		int a = MyTools.ConfirmBox("Внимание!", "Вы действительно хотите зайти другим консультантом?"); 
 		if (a==0){
-			GlobalData.setConsultantNumber(-1);
+			GlobalData.setConsultantNumber(null);
 			GlobalData.getMenu().BeforeLoginConsultantSettings();
 			MyTools.setStatusBarConsultant("");
-			GlobalData.setConsultantNumber(-1);			
+			//GlobalData.setConsultantNumber(-1);			
 			GlobalData.getFrame().closeWorkArea();
 			LoginDialog LDialog = new LoginDialog(GlobalData.getFrame(),1);
 			LDialog.setVisible(true);
