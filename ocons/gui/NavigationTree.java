@@ -18,11 +18,11 @@ public class NavigationTree extends JPanel {
 		
 		// Tree		
 		root = new DefaultMutableTreeNode(new TreeItem(cn,"0","pict/user22.png"));
-		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode(new TreeItem("Клиенты","10","pict/userb22.png"));
-		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode(new TreeItem("Накладные","20","pict/textfile22.png"));
-		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode(new TreeItem("Каталоги","30","pict/favb22.png"));
-		DefaultMutableTreeNode node40 = new DefaultMutableTreeNode(new TreeItem("Прайслист","40","pict/money22.png"));
-		DefaultMutableTreeNode node50 = new DefaultMutableTreeNode(new TreeItem("Отчеты","50","pict/documents22.png"));
+		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Clients,"10","pict/userb22.png"));
+		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Invoices,"20","pict/textfile22.png"));
+		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Catalogs,"30","pict/favb22.png"));
+		DefaultMutableTreeNode node40 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
+		DefaultMutableTreeNode node50 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Reports,"50","pict/documents22.png"));
 		root.add(node10);
 		root.add(node20);
 		root.add(node30);

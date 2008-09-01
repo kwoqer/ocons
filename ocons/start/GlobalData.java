@@ -28,8 +28,18 @@ public class GlobalData{
   
   private static String OCONS_LOGGED_CONSULTANT = null;
 
+  private static String OCONS_LANGUAGE = "UA";  
+ 
 
-  /*
+public static String getLanguage() {
+	return OCONS_LANGUAGE;
+}
+
+public static void setLanguage(String ocons_language) {
+	OCONS_LANGUAGE = ocons_language;
+}
+
+/*
  * Номер залогинившегося консультатнта. Если никто не залогинился возвращает null  
  */
   public static String getConsultantNumber() {

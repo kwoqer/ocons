@@ -44,7 +44,7 @@ public class LoginDialog extends JDialog {
 		Point p = MyTools.FramePosition(width, height);
 		this.setLocation(p.x,p.y);
 		this.setContentPane(getJContentPaneLD());
-		this.setTitle("Вход");
+		this.setTitle(Localizator.LD_Title);
 		
 	}
 
@@ -54,7 +54,7 @@ public class LoginDialog extends JDialog {
 			jContentPaneLD.setLayout(new GridBagLayout());
 			Icon pict = MyTools.getImageResource("pict/user.png");
 			Pict = new JLabel(pict);
-			LabelID = new JLabel("Номер");
+			LabelID = new JLabel(Localizator.LD_Number);
 			FieldID = new JFormattedTextField(new 
 					DefaultFormatter()
 					{
@@ -72,13 +72,13 @@ public class LoginDialog extends JDialog {
 				}
 				
 			}
-			LabelPassword = new JLabel("Пароль");
+			LabelPassword = new JLabel(Localizator.LD_Password);
 			FieldPassword = new JPasswordField();
-			LoginButton = new JButton("Вход");
+			LoginButton = new JButton(Localizator.LD_Enter);
 			LoginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					if (FieldID.getText().equals("")){
-						MyTools.ErrorBox("Будьте внимательнее!", "Номер консультанта не задан!");						
+						MyTools.ErrorBox(Localizator.G_Error, Localizator.LD_ConsultantNumberNotPoint);						
 					}
 					else{
 						Consultant c = new Consultant(FieldID.getText());
@@ -99,16 +99,16 @@ public class LoginDialog extends JDialog {
 								dispose();
 							}
 							else{
-								MyTools.ErrorBox("Будьте внимательнее!", "Неправильный пароль!");
+								MyTools.ErrorBox(Localizator.G_Error, Localizator.LD_IncorrectPassword);
 							}
 						}
 						else{
-							MyTools.ErrorBox("Будьте внимательнее!", "Консультант с таким номером отсутствует!");
+							MyTools.ErrorBox(Localizator.G_Error, Localizator.LD_ConsultantNumberNotFound);
 						}
 					}							
 				}
 			});
-			CancelButton = new JButton("Отмена");
+			CancelButton = new JButton(Localizator.G_Cancel);
 			CancelButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//setVisible(false);

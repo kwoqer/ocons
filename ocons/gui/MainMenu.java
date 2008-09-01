@@ -18,8 +18,8 @@ public class MainMenu extends JMenuBar{
 	
 	public MainMenu(){
 	   // Управление
-      beginMenu = new JMenu("Управление");
-      Action DBConfigAction = new DBConfigAction("Настройки");
+      beginMenu = new JMenu(Localizator.MM_1_Control);
+      Action DBConfigAction = new DBConfigAction(Localizator.MM_Config);
       DBConfigAction.putValue(Action.SMALL_ICON,
          MyTools.getImageResource("pict/configure22.png"));
       Action dbAction = new ConfigAction("Действующий прайс");
@@ -35,21 +35,21 @@ public class MainMenu extends JMenuBar{
       beginMenu.add(dbAction);
       beginMenu.add(ginAction);
       //beginMenu.add(logoutAction);
-      Action aboutAction = new AboutAction("О программе");
+      Action aboutAction = new AboutAction(Localizator.MM_AboutProgram);
       beginMenu.addSeparator();
       beginMenu.add(aboutAction);
-      beginMenu.add(new ExitAction("Выход"));
+      beginMenu.add(new ExitAction(Localizator.MM_Exit));
       add(beginMenu);
       
       //Консультант
-      consultantMenu = new JMenu("Консультант");
-      addConsultantAction = new AddConsultantAction("Новый консультант");
+      consultantMenu = new JMenu(Localizator.MM_2_Consultant);
+      addConsultantAction = new AddConsultantAction(Localizator.MM_NewConsultant);
       addConsultantAction.putValue(Action.SMALL_ICON,
     		  MyTools.getImageResource("pict/adduser22.png"));
-      loginAction = new LoginAction("Вход");
+      loginAction = new LoginAction(Localizator.MM_Enter);
       loginAction.putValue(Action.SMALL_ICON,
     		  MyTools.getImageResource("pict/user22.png"));
-      otherConsultantAction = new OtherAction("Другой консультант");
+      otherConsultantAction = new OtherAction(Localizator.MM_OtherConsultant);
       otherConsultantAction.putValue(Action.SMALL_ICON,
     		  MyTools.getImageResource("pict/users22.png"));
       consultantMenu.add(loginAction);
@@ -130,7 +130,7 @@ class OtherAction extends AbstractAction{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		int a = MyTools.ConfirmBox("Внимание!", "Вы действительно хотите зайти другим консультантом?"); 
+		int a = MyTools.ConfirmBox(Localizator.G_Attention, Localizator.MM_ConfirmOtherConsultant); 
 		if (a==0){
 			GlobalData.setConsultantNumber(null);
 			GlobalData.getMenu().BeforeLoginConsultantSettings();

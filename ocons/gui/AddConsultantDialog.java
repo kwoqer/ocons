@@ -27,7 +27,7 @@ public class AddConsultantDialog extends JDialog {
 		Point p = MyTools.FramePosition(width, height);
 		this.setLocation(p.x,p.y);
 		this.setContentPane(getJContentPaneACD());
-		this.setTitle("Новый консультант");
+		this.setTitle(Localizator.ACD_Title);
 		
 	}
 
@@ -36,7 +36,7 @@ public class AddConsultantDialog extends JDialog {
 		if (jContentPaneACD == null) {
 			jContentPaneACD = new JPanel();
 			jContentPaneACD.setLayout(new GridBagLayout());
-			LabelID = new JLabel("Личный номер");
+			LabelID = new JLabel(Localizator.ACD_PersonalNumber);
 			LabelID.setForeground(Color.RED);
 			FieldID = new JFormattedTextField(new 
 						DefaultFormatter()
@@ -48,24 +48,24 @@ public class AddConsultantDialog extends JDialog {
 							private DocumentFilter filter = new IntFilter();
 						});
 			
-			LabelName = new JLabel("Фамилия И.О.");
+			LabelName = new JLabel(Localizator.ACD_Name);
 			FieldName = new JTextField();
-			LabelPhone = new JLabel("Телефон");
+			LabelPhone = new JLabel(Localizator.ACD_Phone);
 			FieldPhone = new JTextField();
-			LabelEmail = new JLabel("E-Mail");
+			LabelEmail = new JLabel(Localizator.ACD_EMail);
 			FieldEmail = new JTextField();
 			//DataPanel = new JPanel();
-			First = new JCheckBox("Запомнить меня");
-			LabelPass1 = new JLabel("Пароль");
+			First = new JCheckBox(Localizator.ACD_Remember);
+			LabelPass1 = new JLabel(Localizator.ACD_Password);
 			LabelPass1.setForeground(Color.RED);
 			Pass1 = new JPasswordField();
-			LabelPass2 = new JLabel("Еще раз");
+			LabelPass2 = new JLabel(Localizator.ACD_RepeatPassword);
 			LabelPass2.setForeground(Color.RED);
 			Pass2 = new JPasswordField();
-			Warning = new JLabel("Красным выделены обязательные поля");
+			Warning = new JLabel(Localizator.ACD_RedLighting);
 			ButtonPanel = new JPanel();
-			Save = new JButton("Сохранить");
-			Cancel = new JButton("Отмена");
+			Save = new JButton(Localizator.G_Save);
+			Cancel = new JButton(Localizator.G_Cancel);
 			Cancel.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent e){
@@ -86,7 +86,7 @@ public class AddConsultantDialog extends JDialog {
 					if (p1.equals(p2)){
 						c.setPasswordHash(p1.hashCode());
 						if (c.ConsultantPresent(id)) {
-							MyTools.ErrorBox("Будьте внимательнее!","Консультант с таким номером уже есть!");
+							MyTools.ErrorBox(Localizator.G_Error,Localizator.ACD_ConsultantPresent);
 						}
 						else {
 							// В случае установки нового консультанта по умолчанию убираем предыдущего по умолчанию 
@@ -111,7 +111,7 @@ public class AddConsultantDialog extends JDialog {
 						
 					}
 					else{
-						MyTools.ErrorBox("Будьте внимательнее!", "Пароли не совпадают!");
+						MyTools.ErrorBox(Localizator.G_Error, Localizator.ACD_PasswordsNotCoincide);
 					}
 					
 				}

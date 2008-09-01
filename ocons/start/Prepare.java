@@ -27,6 +27,11 @@ public class Prepare {
 				//MyTools.MessageBox(s);
 				stat.execute(s);
 			}
+			// таблица локализации
+			ArrayList<String> SQLst2 = MyTools.convSQL("db/local.sql");
+			for (String s: SQLst2){				
+				stat.execute(s);
+			}
 			conn.close();
 		}
 		    
