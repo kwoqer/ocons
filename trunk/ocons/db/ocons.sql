@@ -71,10 +71,16 @@ CREATE TABLE CatCalendar (
 
 -- Консультанты
 CREATE TABLE Consultants (
-	Cons_ID		VARCHAR(10),
+	Cons_ID		VARCHAR(10) UNIQUE,
 	Name		VARCHAR(30),
 	Phone		VARCHAR(20),
 	EMail		VARCHAR(30),
 	First		BOOL,
 	PasswordHash	INTEGER	
+);
+
+CREATE TABLE Localization (
+	Name		VARCHAR(50),
+	RU			VARCHAR(50),
+	UA			VARCHAR(50)
 );
