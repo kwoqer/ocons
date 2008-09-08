@@ -14,6 +14,7 @@ public class MainFrame extends JFrame {
 	private StatusBar statusBar;
 	private NavigationTree navigationTree;
 	private JPanel workArea;
+	private JSplitPane workPanel;
 	
 	public MainFrame(){
     
@@ -28,11 +29,11 @@ public class MainFrame extends JFrame {
 	      workArea = new JPanel();
 		  workArea.setLayout(new BorderLayout());
 		  //String cn = MyTools.findDefaultConsultant();
-		  navigationTree = new NavigationTree(null);
-		  JSplitPane workPanel = new JSplitPane();
+		  navigationTree = null;
+		  workPanel = new JSplitPane();
 		  JPanel infoPanel = new JPanel();
-		  workPanel.setLeftComponent(navigationTree);
-		  workPanel.setRightComponent(infoPanel);
+		  //workPanel.setLeftComponent(navigationTree);
+		  //workPanel.setRightComponent(infoPanel);
 		  workPanel.setBorder(BorderFactory.createEmptyBorder());
 		  workPanel.setDividerSize(3);
 		  workPanel.setDividerLocation(170);
@@ -70,6 +71,11 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void openWorkArea(String cn){
+		if (navigationTree==null) {
+			navigationTree = new NavigationTree(cn);
+			workPanel.setLeftComponent(navigationTree);
+			workPanel.setRightComponent(new JPanel());
+		}
 		String so = ((TreeItem)navigationTree.getRootObject()).getName();		 
 	    if (so!=cn){
 	    	navigationTree.setConsultantNumber(cn);

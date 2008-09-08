@@ -11,23 +11,32 @@ import start.*;
 public class NavigationTree extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private DefaultMutableTreeNode root; 
+	private DefaultMutableTreeNode root;
+	private TreeManager tm; 
 
 	public NavigationTree(String cn){
 		
 		// Tree		
-		root = new DefaultMutableTreeNode(new TreeItem(cn,"0","pict/user22.png"));
-		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Clients,"10","pict/userb22.png"));
-		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Invoices,"20","pict/textfile22.png"));
-		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Catalogs,"30","pict/favb22.png"));
-		DefaultMutableTreeNode node40 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
-		DefaultMutableTreeNode node50 = new DefaultMutableTreeNode(new TreeItem(Localizator.NT_Reports,"50","pict/documents22.png"));
+		tm = new TreeManager();
+		
+		tm.addItem(new TreeItem(Localizator.NT_Clients,"10","pict/userb22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Invoices,"20","pict/textfile22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Catalogs,"30","pict/favb22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Reports,"50","pict/documents22.png"));
+		root = tm.BuildTree();
+		/*
+		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode();
+		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode();
+		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode();
+		DefaultMutableTreeNode node40 = new DefaultMutableTreeNode();
+		DefaultMutableTreeNode node50 = new DefaultMutableTreeNode();
 		root.add(node10);
 		root.add(node20);
 		root.add(node30);
 		root.add(node40);
 		root.add(node50);
+		*/
 		setLayout(new BorderLayout());
 		JTree navtree = new JTree(new DefaultTreeModel(root));
 		navtree.setShowsRootHandles(true);
