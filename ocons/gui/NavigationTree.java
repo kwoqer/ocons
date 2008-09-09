@@ -14,6 +14,10 @@ public class NavigationTree extends JPanel {
 	private DefaultMutableTreeNode root;
 	private TreeManager tm; 
 
+	public TreeManager getTreeManager() {
+		return tm;
+	}
+
 	public NavigationTree(String cn){
 		
 		// Tree		
