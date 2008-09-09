@@ -91,9 +91,40 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("NT_Catalogs","Каталоги","Каталоги");
 INSERT INTO Localization (Name, RU, UA) VALUES
+	("NT_Orders","Заказы","Закази");	
+INSERT INTO Localization (Name, RU, UA) VALUES
 	("NT_Pricelist","Прайслист","Прайслист");
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("NT_Reports","Отчеты","Звіти");
+
+
+-- InfoPanel
+-- -- Global
+-- -- -- Пункты дерева для подсказок
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_Clients","клиента","клієнта");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_Catalogs","каталог","каталог");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_Orders","заказ","заказ");	
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_Invoices","накладную","накладну");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_Prices","прайслист","прайсліст");
+		
+-- -- -- Действия
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_AddAction","Добавить","Додати");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_DeleteAction","Удалить","Видалити");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_EditAction","Редактировать","Редагувати");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_FindAction","Найти","Знайти");		
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_PreviewAction","Просмотреть","Передивитись");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_PrintAction","Печатать","Печатати");
 
 
 

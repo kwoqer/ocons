@@ -50,6 +50,22 @@ public class Localizator {
 	public static String NT_Catalogs;
 	public static String NT_Pricelist;
 	public static String NT_Reports;
+	public static String NT_Orders;
+	// InfoPanel
+	//  ---- GLOBAL
+	public static String IP_Clients;
+	public static String IP_Catalogs;
+	public static String IP_Orders;
+	public static String IP_Invoices;
+	public static String IP_Prices;
+	// ---- Actions
+	public static String IP_AddAction;
+	public static String IP_DeleteAction;
+	public static String IP_EditAction;
+	public static String IP_FindAction;
+	public static String IP_PreviewAction;
+	public static String IP_PrintAction;
+	 
 	
 	public  Localizator(String lang) throws SQLException{
 		Connection conn = MyTools.ConnectDB();
