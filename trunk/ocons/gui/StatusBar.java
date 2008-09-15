@@ -5,9 +5,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class StatusBar extends JPanel {
-
-	private static final long serialVersionUID = 1L;
-	
+		
 	private JTextField consultantName;
 	private JTextField messageField;
 	

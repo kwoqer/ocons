@@ -5,7 +5,7 @@ import javax.swing.*;
 import start.*;
 
 
-public class ItemAction extends AbstractAction {
+public class ToolBarAction extends AbstractAction {
 	
 	private String name;
 	private Icon icon;
@@ -14,7 +14,7 @@ public class ItemAction extends AbstractAction {
 	private RunnableForm executor;
 	
 	// ”прощенный конструктор - иконка и подсказка устанавливаетс€ исход€ из имени
-	public ItemAction(String name, RunnableForm executor){
+	public ToolBarAction(String name, RunnableForm executor){
 		
 		String icon = "";
 		String prompt = "";
@@ -70,7 +70,7 @@ public class ItemAction extends AbstractAction {
 	}
 	
 	// ѕолный конструктор
-	public ItemAction(String name, String icon, String prompt,RunnableForm executor){
+	public ToolBarAction(String name, String icon, String prompt,RunnableForm executor){
 		this.name = name;
 		this.prompt = prompt;
 		this.icon = MyTools.getImageResource(icon);

@@ -4,15 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
-import data.Consultant;
+import gui.infopanel.*;
 import start.*;
 
 public class MainFrame extends JFrame {
 	
-	private static final long serialVersionUID = 1L;
 	private StatusBar statusBar;
 	private NavigationTree navigationTree;
+	private InfoPanel infoPanel;
 	private JPanel workArea;
 	private JSplitPane workPanel;
 	
@@ -27,11 +26,10 @@ public class MainFrame extends JFrame {
 	      	      
 	      statusBar = new StatusBar();
 	      workArea = new JPanel();
-		  workArea.setLayout(new BorderLayout());
-		  //String cn = MyTools.findDefaultConsultant();
+		  workArea.setLayout(new BorderLayout());		  
 		  navigationTree = null;
 		  workPanel = new JSplitPane();
-		  JPanel infoPanel = new JPanel();
+		  infoPanel = new InfoPanel();
 		  //workPanel.setLeftComponent(navigationTree);
 		  //workPanel.setRightComponent(infoPanel);
 		  workPanel.setBorder(BorderFactory.createEmptyBorder());

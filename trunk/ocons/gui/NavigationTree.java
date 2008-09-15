@@ -10,7 +10,6 @@ import start.*;
 
 public class NavigationTree extends JPanel {
 	
-	private static final long serialVersionUID = 1L;
 	private DefaultMutableTreeNode root;
 	private TreeManager tm; 
 

@@ -124,9 +124,67 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_PreviewAction","Просмотреть","Передивитись");
 INSERT INTO Localization (Name, RU, UA) VALUES 
-	("IP_PrintAction","Печатать","Печатати");
-
-
+	("IP_PrintAction","Печатать","Друкувати");
+	
+-- -- -- Поля таблиц и форм
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_CatalogNumber","Номер каталога","Номер каталогу");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_CatalogGiveDate","Дата выдачи","Дата видачі");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_CatalogReturnDate","Вернуть","Повернути");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_CatalogReturned","Возвращен","Повернуто");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_CatalogInfo","Примечания","Помітки");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientName","Ф.И.О. Клиента","П.І.Б. Клієнта");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientPhone","Дом. телефон","Дом. телефон");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientPhoneMob","Моб. телефон","Моб. телефон");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientAdress","Адрес","Адрес");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientBirthday","День рождения","День народження");	
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientOther","Иное событие","Інша подія");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientOtherDate","Дата события","Дата події");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientDiscount","Скидка","Знижка");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_OrderDate","Дата заказа","Дата заказу");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_OrderQuantity","Количество товара","Кількість товару");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_InvoicesID","Номер накладной","Номер накладної");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_InvoicesOrdered","Заказано","Заказано");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_InvoicesReceived","Получено","Отримано");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_InvoicesPrice","Цена","Ціна");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_InvoicesPoints","Баллы","Бали");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ProductID","Код продукта","Код продукту");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ProductGetDate","Дата накладной","Дата накладної");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ProductGetPrice","Цена накладной","Ціна накладної");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ProductRealDate","Дата реализации","Дата реалізації");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ProductRealPrice","Цена реализации","Ціна реалізації");	
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_EventsComing","Начало события","Початок події");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_EventsCompletion","Конец события","Закінчення події");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_EventsFixed","Завершено","Завершено");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_EventInfo","Событие","Подія");	
 
 -- INSERT INTO Localization (Name, RU, UA) VALUES 
 --	("","","")

@@ -10,7 +10,6 @@ import start.*;
 
 public class LoginDialog extends JDialog {
 	
-	private static final long serialVersionUID = 1L;
 	private int emptyNumber;
 	private JPanel jContentPaneLD = null;
 	private JLabel Pict;

@@ -1,14 +1,24 @@
 package gui.infopanel;
 
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.sql.*;
+import start.*;
 
 public class TableView extends JPanel {
+	
+	private CommonTableModel tableModel;
 
-	private static final long serialVersionUID = 1L;
-
-	public TableView() {
-		// TODO јвтоматически созданна€ заглушка конструктора
+	public TableView(String sql) {
+		try {
+			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(sql);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		
 	}
 
 	
