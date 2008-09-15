@@ -11,7 +11,6 @@ import start.*;
 
 public class AddConsultantDialog extends JDialog {
 
-	private static final long serialVersionUID = 1L;
 	private JPanel jContentPaneACD = null;
 	
 	public AddConsultantDialog(Frame owner) {

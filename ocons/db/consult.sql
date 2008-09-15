@@ -7,13 +7,14 @@ CREATE TABLE Products (
 	GetPrice	NUMERIC(5,2),
 	RealDate	DATE,
 	RealPrice	NUMERIC(5,2),
+	Inv_ID		INTEGER,
 	Client_ID	INTEGER
 );
 
 -- Таблица клиентов
 CREATE TABLE Clients (
 	Client_ID	INTEGER PRIMARY KEY AUTOINCREMENT,
-	Name		VARCHAR(30),
+	Name		VARCHAR(40),
 	Phone		VARCHAR(15),
 	PhoneMob	VARCHAR(15),
 	Adress		VARCHAR(30),
@@ -29,7 +30,7 @@ CREATE TABLE Invoices (
 	Inv_ID		INTEGER PRIMARY KEY,
 	Prod_ID		INTEGER,
 	Ordered		NUMERIC(3),
-	Receive		NUMERIC(3),
+	Received	NUMERIC(3),
 	Price		NUMERIC(5,2),
 	Points		NUMERIC(3)
 );
@@ -61,7 +62,7 @@ CREATE TABLE Catalogs (
 CREATE TABLE Events (
 	Coming		DATETIME,
 	Completion	DATETIME,
-	Fixed		BOOLEAN,
+	Fixed		DATETIME,
 	Info		TEXT
 );
 
@@ -69,5 +70,6 @@ CREATE TABLE Events (
 CREATE TABLE Results (
 	Cat_ID		INTEGER,
 	Income		NUMERIC(7,2),
-	Expense		NUMERIC(7,2)
+	Expense		NUMERIC(7,2),
+	Points		NUMERIC(7)
 );

@@ -65,7 +65,37 @@ public class Localizator {
 	public static String IP_FindAction;
 	public static String IP_PreviewAction;
 	public static String IP_PrintAction;
-	 
+	// ---- Fields 
+	public static String IP_CatalogNumber;
+	public static String IP_CatalogGiveDate;
+	public static String IP_CatalogReturnDate;
+	public static String IP_CatalogReturned;
+	public static String IP_CatalogInfo;
+	public static String IP_ClientName;
+	public static String IP_ClientPhone;
+	public static String IP_ClientPhoneMob;
+	public static String IP_ClientAdress;
+	public static String IP_ClientBirthday;
+	public static String IP_ClientOther;
+	public static String IP_ClientOtherDate;
+	public static String IP_ClientDiscount;
+	public static String IP_OrderDate;
+	public static String IP_OrderQuantity;
+	public static String IP_InvoicesID;
+	public static String IP_InvoicesOrdered;
+	public static String IP_InvoicesReceived;
+	public static String IP_InvoicesPrice;
+	public static String IP_InvoicesPoints;
+	public static String IP_ProductID;
+	public static String IP_ProductGetDate;
+	public static String IP_ProductGetPrice;
+	public static String IP_ProductRealDate;
+	public static String IP_ProductRealPrice;
+	public static String IP_EventsComing;
+	public static String IP_EventsCompletion;
+	public static String IP_EventsFixed;
+	public static String IP_EventInfo;
+	
 	
 	public  Localizator(String lang) throws SQLException{
 		Connection conn = MyTools.ConnectDB();

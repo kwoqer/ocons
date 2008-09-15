@@ -9,7 +9,6 @@ import start.*;
 
 public class MainMenu extends JMenuBar{
 	
-	private static final long serialVersionUID = 1L;
 	private JMenu beginMenu;
 	private JMenu consultantMenu;
 	private Action addConsultantAction;
