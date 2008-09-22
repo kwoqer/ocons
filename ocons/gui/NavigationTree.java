@@ -125,6 +125,8 @@ public class NavigationTree extends JPanel {
 				(DefaultMutableTreeNode)path.getLastPathComponent();
 			TreeItem item = (TreeItem)selectedNode.getUserObject();
 			MyTools.setStatusBarMessage(item.getName());
+			GlobalData.getFrame().getInfoPanel().openPanel(item.getId());
+			GlobalData.getFrame().validate();
 		}
 	}
 }

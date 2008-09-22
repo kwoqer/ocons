@@ -119,8 +119,7 @@ public class Localizator {
 			catch (Exception e){
 				e.printStackTrace();
 			} 
-		}
-		//MyTools.MessageBox(MM_1_Control);
+		}		
 	}
 	
 }

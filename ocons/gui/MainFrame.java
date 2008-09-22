@@ -68,6 +68,14 @@ public class MainFrame extends JFrame {
 		return workArea;
 	}
 	
+	public JSplitPane getWorkPanel(){
+		return workPanel;
+	}
+	
+	public InfoPanel getInfoPanel(){
+		return infoPanel;
+	}
+	
 	public void openWorkArea(String cn){
 		if (navigationTree==null) {
 			navigationTree = new NavigationTree(cn);

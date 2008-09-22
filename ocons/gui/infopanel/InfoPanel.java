@@ -2,8 +2,8 @@ package gui.infopanel;
 
 import gui.TreeItem;
 import java.util.*;
-
-import javax.swing.JPanel;
+import javax.swing.*;
+import start.*;
 
 /**
  * 
@@ -18,6 +18,7 @@ public class InfoPanel extends JPanel {
 	
 	public InfoPanel(){
 		viewPanels = new HashMap<String, JPanel>();
+		currentPanel = null;
 	}
 	
 	public void openPanel(String id){
@@ -26,12 +27,19 @@ public class InfoPanel extends JPanel {
 		// Открываем новую
 		if (isCreated(id)){
 			currentPanel = viewPanels.get(id); 
-			currentPanel.setVisible(true);
+			//currentPanel.setVisible(true);
 		}
 		else {
 			String sql="";
+			String[] headers = {};			
 			if (id=="10") {
 				sql = "SELECT Name, Adress, Phone, PhoneMob FROM Clients";
+				String[] head = new String[4];
+				head[0] = Localizator.IP_ClientName;
+				head[1] = Localizator.IP_ClientAdress;
+				head[2] = Localizator.IP_ClientPhone;
+				head[3] = Localizator.IP_ClientPhoneMob;
+				headers = head;
 			}
 			else if (id=="20"){
 				
@@ -39,13 +47,19 @@ public class InfoPanel extends JPanel {
 			else {
 				
 			}
-			JPanel panel = new TableView(sql);
+			JPanel panel = new TableView(sql,headers);
 			viewPanels.put(id, panel);
+			currentPanel = panel;
 		}
+		GlobalData.getFrame().getWorkPanel().setRightComponent(currentPanel);
+		GlobalData.getFrame().validate();
 	}
 	
+	
 	public void closePanel(){
-		currentPanel.setVisible(false);
+		if (currentPanel != null) {
+			currentPanel.setVisible(false);
+		}
 	}
 	
 	// Проверяет, создана ли панель для данного пункта дерева

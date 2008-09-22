@@ -28,7 +28,7 @@ public class GlobalData{
   
   private static String OCONS_LOGGED_CONSULTANT = null;
 
-  private static String OCONS_LANGUAGE = "UA";  
+  private static String OCONS_LANGUAGE = "RU";  
  
 
 public static String getLanguage() {
