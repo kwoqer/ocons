@@ -41,7 +41,7 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("ACD_RepeatPassword","Еще раз","Ще раз");
 INSERT INTO Localization (Name, RU, UA) VALUES
-	("ACD_RedLighting","Красным выделены обязательные поля","Червоним виделено обов'язкові поля");
+	("ACD_RedLighting","Красным выделены обязательные поля","Червоним виділені обов'язкові поля");
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("ACD_ConsultantPresent","Консультант с таким номером уже есть!","Консультант з таким номером вже є!");
 INSERT INTO Localization (Name, RU, UA) VALUES
