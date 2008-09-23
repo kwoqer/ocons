@@ -2,6 +2,8 @@ package data;
 
 import java.util.*;
 
+import start.Localizator;
+
 public class Client {
 	
 	private int id;
@@ -10,9 +12,22 @@ public class Client {
 	private String mobile;
 	private String adress;
 	private GregorianCalendar birthday;
-	private String other_event;
-	private GregorianCalendar other_event_date;
+	private String otherEvent;
+	private GregorianCalendar otherEventDate;
 	private float discount;
+	
+	// Параметры отображения таблицы клиентов
+	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
+											Localizator.IP_ClientPhone,Localizator.IP_ClientPhoneMob};
+	private static String sql = "SELECT Name, Adress, Phone, PhoneMob FROM Clients";
+	
+	public static String[] getTableHeader(){
+		return tableHeader;
+	}
+	
+	public static String getSql(){
+		return sql;
+	}
 	
 	public String getAdress() {
 		return adress;
@@ -32,11 +47,11 @@ public class Client {
 	public String getName() {
 		return name;
 	}
-	public String getOther_event() {
-		return other_event;
+	public String getOtherEvent() {
+		return otherEvent;
 	}
-	public GregorianCalendar getOther_event_date() {
-		return other_event_date;
+	public GregorianCalendar getOtherEventDate() {
+		return otherEventDate;
 	}
 	public String getPhone() {
 		return phone;
