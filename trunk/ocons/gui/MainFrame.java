@@ -76,11 +76,16 @@ public class MainFrame extends JFrame {
 		return infoPanel;
 	}
 	
+	public void setInfoPanel(InfoPanel ip){
+		infoPanel = ip;
+		validate();
+	}
+	
 	public void openWorkArea(String cn){
 		if (navigationTree==null) {
 			navigationTree = new NavigationTree(cn);
 			workPanel.setLeftComponent(navigationTree);
-			workPanel.setRightComponent(new JPanel());
+			workPanel.setRightComponent(infoPanel);
 		}
 		String so = ((TreeItem)navigationTree.getRootObject()).getName();		 
 	    if (so!=cn){
@@ -94,6 +99,7 @@ public class MainFrame extends JFrame {
 		workArea.setVisible(false);
 	}
 	 
+	
 	 
 	
 }

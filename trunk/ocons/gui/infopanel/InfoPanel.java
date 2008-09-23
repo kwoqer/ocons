@@ -1,9 +1,12 @@
 package gui.infopanel;
 
 import gui.TreeItem;
+
+import java.awt.BorderLayout;
 import java.util.*;
 import javax.swing.*;
 import start.*;
+import data.*;
 
 /**
  * 
@@ -17,6 +20,7 @@ public class InfoPanel extends JPanel {
 	private JPanel currentPanel;
 	
 	public InfoPanel(){
+		setLayout(new BorderLayout());
 		viewPanels = new HashMap<String, JPanel>();
 		currentPanel = null;
 	}
@@ -26,39 +30,37 @@ public class InfoPanel extends JPanel {
 		closePanel();
 		// Открываем новую
 		if (isCreated(id)){
-			currentPanel = viewPanels.get(id); 
-			//currentPanel.setVisible(true);
+			currentPanel = viewPanels.get(id); 			
 		}
 		else {
 			String sql="";
-			String[] headers = {};			
+			String[] headers = {};	
+			JPanel panel;
 			if (id=="10") {
-				sql = "SELECT Name, Adress, Phone, PhoneMob FROM Clients";
-				String[] head = new String[4];
-				head[0] = Localizator.IP_ClientName;
-				head[1] = Localizator.IP_ClientAdress;
-				head[2] = Localizator.IP_ClientPhone;
-				head[3] = Localizator.IP_ClientPhoneMob;
-				headers = head;
+				sql = Client.getSql();				
+				headers = Client.getTableHeader();
+				panel = new TableView(sql,headers);
 			}
 			else if (id=="20"){
-				
+				panel = new JPanel();
 			}
 			else {
-				
+				panel = new JPanel();
 			}
-			JPanel panel = new TableView(sql,headers);
 			viewPanels.put(id, panel);
-			currentPanel = panel;
+			currentPanel = panel;			
 		}
-		GlobalData.getFrame().getWorkPanel().setRightComponent(currentPanel);
-		GlobalData.getFrame().validate();
+		//GlobalData.getFrame().getWorkPanel().setRightComponent(currentPanel);
+		add(currentPanel);
+		validate();
+		GlobalData.getFrame().repaint();
 	}
 	
 	
 	public void closePanel(){
 		if (currentPanel != null) {
-			currentPanel.setVisible(false);
+			//currentPanel.setVisible(false);
+			removeAll();
 		}
 	}
 	
