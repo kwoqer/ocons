@@ -43,8 +43,7 @@ public class LoginDialog extends JDialog {
 		Point p = MyTools.FramePosition(width, height);
 		this.setLocation(p.x,p.y);
 		this.setContentPane(getJContentPaneLD());
-		this.setTitle(Localizator.LD_Title);
-		
+		this.setTitle(Localizator.LD_Title);		
 	}
 
 	private JPanel getJContentPaneLD(){
@@ -64,10 +63,12 @@ public class LoginDialog extends JDialog {
 						private DocumentFilter filter = new IntFilter();
 					});
 			// ѕодставл€ем консультанта по умолчанию, если он есть
+			this.setFocusTraversalPolicy(new LoginDialogFocusPolicy(false));
 			if (getEmptyNumber()==0){				
 				String n = MyTools.findDefaultConsultant();
 				if (n != null){					
 					FieldID.setValue(n);
+					this.setFocusTraversalPolicy(new LoginDialogFocusPolicy(true));
 				}
 				
 			}
@@ -106,7 +107,7 @@ public class LoginDialog extends JDialog {
 						}
 					}							
 				}
-			});
+			});			
 			CancelButton = new JButton(Localizator.G_Cancel);
 			CancelButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -124,6 +125,7 @@ public class LoginDialog extends JDialog {
 			jContentPaneLD.add(LabelPassword, new GBC(1,1).setAnchor(GBC.EAST));
 			jContentPaneLD.add(FieldPassword, new GBC(2,1).setFill(GBC.HORIZONTAL).setInsets(1));
 			jContentPaneLD.add(ButtonPanel,new GBC(0,2,3,1).setAnchor(GBC.CENTER));
+			this.getRootPane().setDefaultButton(LoginButton);
 			
 		}
 		return jContentPaneLD;
@@ -136,4 +138,62 @@ public class LoginDialog extends JDialog {
 	private void setEmptyNumber(int emptyNumber) {
 		this.emptyNumber = emptyNumber;
 	}
+	
+	private class LoginDialogFocusPolicy extends FocusTraversalPolicy{
+
+		private boolean numberDefault;
+		
+		public LoginDialogFocusPolicy(boolean nd){
+			numberDefault = nd;
+		}
+		
+		@Override
+		public Component getComponentAfter(Container aContainer, Component aComponent) {
+			if (aComponent==FieldID) 
+				return FieldPassword;
+			if (aComponent==FieldPassword) 
+				return LoginButton;
+			if (aComponent==LoginButton) 
+				return CancelButton;
+			if (aComponent==CancelButton) 
+				return FieldID;
+			else return null;
+		}
+
+		@Override
+		public Component getComponentBefore(Container aContainer, Component aComponent) {
+			if (aComponent==FieldID) 
+				return CancelButton;
+			if (aComponent==FieldPassword) 
+				return FieldID;
+			if (aComponent==LoginButton) 
+				return FieldPassword;
+			if (aComponent==CancelButton) 
+				return LoginButton;
+			else return null;
+		}
+
+		@Override
+		public Component getDefaultComponent(Container aContainer) {
+			// TODO јвтоматически созданна€ заглушка метода
+			if (numberDefault)
+				return FieldPassword;
+			else
+				return FieldID;
+		}
+
+		@Override
+		public Component getFirstComponent(Container aContainer) {
+			// TODO јвтоматически созданна€ заглушка метода
+			return null;
+		}
+
+		@Override
+		public Component getLastComponent(Container aContainer) {
+			// TODO јвтоматически созданна€ заглушка метода
+			return null;
+		}				
+		
+	}
+	
 }

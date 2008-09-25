@@ -21,7 +21,7 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("G_No","Нет","Ні");
 INSERT INTO Localization (Name, RU, UA) VALUES
-	("G_Ok","","");
+	("G_Ok","Согласен","Згоден");
 
 -- AddConsultantDialog
 INSERT INTO Localization (Name, RU, UA) VALUES
