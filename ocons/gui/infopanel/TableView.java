@@ -12,7 +12,8 @@ public class TableView extends JPanel {
 	
 	private CommonTableModel tableModel;
 	//private Map<String, ToolBarAction> actionBar; 
-	private JToolBar actionBar;  
+	private JToolBar actionBar;
+	private InfoPanelDialog dialogBox;
 
 	public TableView(String sql, String[] headers) {
 		try {
@@ -40,7 +41,7 @@ public class TableView extends JPanel {
 
 	private void createActionBar(){
 		actionBar = new JToolBar();
-		ClientForm cf = new ClientForm();
+		ClientForm cf = new ClientForm("Clients","111");
 		actionBar.add(new ToolBarAction("Add",cf));		
 		actionBar.add(new ToolBarAction("Delete",cf));
 		actionBar.add(new ToolBarAction("Edit",cf));

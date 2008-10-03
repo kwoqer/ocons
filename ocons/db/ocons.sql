@@ -26,10 +26,10 @@ CREATE TABLE Prices (
 -- Специальные условия
 CREATE TABLE Conditions (
 	Cond_ID		INTEGER PRIMARY KEY AUTOINCREMENT,
-	CondType	NUMERIC(2),
-	N		NUMERIC(2),
-	M		NUMERIC(2),
-	K		NUMERIC(2),
+	CondType	CHAR(1),
+	N			NUMERIC(2),
+	M			NUMERIC(2),
+	K			NUMERIC(2),
 	Summa		NUMERIC(5,2)
 );
 
