@@ -22,10 +22,5 @@
 			<type>1</type>
 			<location>F:/Developing/Ocons Project/ocons/build.xml</location>
 		</link>
-		<link>
-			<name>bin/bin</name>
-			<type>2</type>
-			<location>F:/Developing/Ocons Project/bin</location>
-		</link>
 	</linkedResources>
 </projectDescription>

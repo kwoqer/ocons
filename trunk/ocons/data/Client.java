@@ -11,9 +11,9 @@ public class Client {
 	private String phone;
 	private String mobile;
 	private String adress;
-	private GregorianCalendar birthday;
+	private Calendar birthday;
 	private String otherEvent;
-	private GregorianCalendar otherEventDate;
+	private Calendar otherEventDate;
 	private float discount;
 	
 	// Параметры отображения таблицы клиентов
@@ -32,7 +32,7 @@ public class Client {
 	public String getAdress() {
 		return adress;
 	}
-	public GregorianCalendar getBirthday() {
+	public Calendar getBirthday() {
 		return birthday;
 	}
 	public float getDiscount() {
@@ -50,7 +50,7 @@ public class Client {
 	public String getOtherEvent() {
 		return otherEvent;
 	}
-	public GregorianCalendar getOtherEventDate() {
+	public Calendar getOtherEventDate() {
 		return otherEventDate;
 	}
 	public String getPhone() {
@@ -64,7 +64,7 @@ public class Client {
 		this.phone = phone;
 		this.mobile = mobile;
 		this.adress = adress;
-		GregorianCalendar bday = new GregorianCalendar();
+		//GregorianCalendar bday = new GregorianCalendar();
 		//bday.
 	}
 }

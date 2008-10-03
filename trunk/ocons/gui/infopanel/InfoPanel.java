@@ -19,6 +19,7 @@ public class InfoPanel extends JPanel {
 	private Map<String, JPanel> viewPanels; 
 	private JPanel currentPanel;
 	
+	
 	public InfoPanel(){
 		setLayout(new BorderLayout());
 		viewPanels = new HashMap<String, JPanel>();
