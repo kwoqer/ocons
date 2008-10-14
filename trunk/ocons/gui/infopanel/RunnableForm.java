@@ -7,10 +7,7 @@ public interface RunnableForm {
 	// Возвращает имя запускаемой формы
 	public String getName();
 	
-	// Запуск формы с пустыми полями
-	public void run();
-	
-	// Запуск с заполненными полями  
-	public void run(Object obj, Map<String,String> values);
+	// Запуск   
+	public void run(boolean isEdit);
 
 }

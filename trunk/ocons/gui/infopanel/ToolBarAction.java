@@ -81,7 +81,7 @@ public class ToolBarAction extends AbstractAction {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		executor.run(false);
 	}
 
 }

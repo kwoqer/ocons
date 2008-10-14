@@ -5,6 +5,16 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+	/**
+	 * ”ниверсальна€ модель дл€ таблиц.
+	 * ѕоскольку SQLite не работает с прокручиваемыми курсорами,
+	 * необходимо внутри модели хранить полную картину содержимого
+	 * таблицы Ѕƒ. ¬ случае добавлени€ строк или изменени€ содержимого,
+	 * нар€ду с SQL-командой, обновл€ющей Ѕƒ, необходимо добавл€ть или 
+	 * измен€ть содержимое массива rows из соответствующей модели
+	 * 
+	 */
+
 public class CommonTableModel extends AbstractTableModel {
 
 	private int columns;	

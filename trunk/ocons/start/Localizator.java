@@ -78,6 +78,9 @@ public class Localizator {
 	public static String IP_ClientBirthday;
 	public static String IP_ClientOther;
 	public static String IP_ClientOtherDate;
+	public static String IP_ClientStatus;
+	public static String IP_ClientStatus_1;
+	public static String IP_ClientStatus_2;
 	public static String IP_ClientDiscount;
 	public static String IP_OrderDate;
 	public static String IP_OrderQuantity;
@@ -95,6 +98,7 @@ public class Localizator {
 	public static String IP_EventsCompletion;
 	public static String IP_EventsFixed;
 	public static String IP_EventInfo;
+	
 	
 	
 	public  Localizator(String lang) throws SQLException{

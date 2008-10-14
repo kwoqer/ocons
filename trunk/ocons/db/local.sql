@@ -152,6 +152,12 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientOtherDate","Дата события","Дата події");
 INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientStatus","Статус","Статус");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientStatus_1","Обычный","Звичайний");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientStatus_2","Постоянный","Постійний");		
+INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientDiscount","Скидка","Знижка");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_OrderDate","Дата заказа","Дата заказу");
