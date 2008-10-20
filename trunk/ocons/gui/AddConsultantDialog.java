@@ -39,8 +39,7 @@ public class AddConsultantDialog extends JDialog {
 			LabelID.setForeground(Color.RED);
 			FieldID = new JFormattedTextField(new 
 						DefaultFormatter()
-						{
-							private static final long serialVersionUID = 1L;
+						{							
 							protected DocumentFilter getDocumentFilter(){
 								return filter;
 							}

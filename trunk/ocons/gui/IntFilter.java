@@ -1,13 +1,8 @@
 package gui;
 
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.DocumentFilter.FilterBypass;
+import javax.swing.text.*;
 
-
-class IntFilter extends DocumentFilter
-{
+public class IntFilter extends DocumentFilter{
    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) 
       throws BadLocationException{
       StringBuilder builder = new StringBuilder(string);

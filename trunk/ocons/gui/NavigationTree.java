@@ -28,18 +28,7 @@ public class NavigationTree extends JPanel {
 		tm.addItem(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Reports,"50","pict/documents22.png"));
 		root = tm.BuildTree();
-		/*
-		DefaultMutableTreeNode node10 = new DefaultMutableTreeNode();
-		DefaultMutableTreeNode node20 = new DefaultMutableTreeNode();
-		DefaultMutableTreeNode node30 = new DefaultMutableTreeNode();
-		DefaultMutableTreeNode node40 = new DefaultMutableTreeNode();
-		DefaultMutableTreeNode node50 = new DefaultMutableTreeNode();
-		root.add(node10);
-		root.add(node20);
-		root.add(node30);
-		root.add(node40);
-		root.add(node50);
-		*/
+		
 		setLayout(new BorderLayout());
 		JTree navtree = new JTree(new DefaultTreeModel(root));
 		navtree.setShowsRootHandles(true);
@@ -49,13 +38,7 @@ public class NavigationTree extends JPanel {
 		navtree.addTreeSelectionListener(new TreeListener());
 		JScrollPane scrollPane = new JScrollPane(navtree);
 		
-		//Dimension d = new Dimension(200,10000);
-		//Dimension dmax = new Dimension();
-		//d = scrollPane.getSize();
-		//dmax = scrollPane.getMaximumSize();
-		//d.height = dmax.height;
-		//scrollPane.setMinimumSize(d);
-		//scrollPane.setPreferredSize(d);
+		
 		add(scrollPane, BorderLayout.CENTER);
 		//setVisible(true);
 	}

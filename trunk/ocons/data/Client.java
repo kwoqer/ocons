@@ -14,7 +14,7 @@ public class Client {
 	private Calendar birthday;
 	private String otherEvent;
 	private Calendar otherEventDate;
-	private float discount;
+	private double discount;
 	
 	// Параметры отображения таблицы клиентов
 	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
@@ -35,7 +35,7 @@ public class Client {
 	public Calendar getBirthday() {
 		return birthday;
 	}
-	public float getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
 	public int getId() {
@@ -58,13 +58,15 @@ public class Client {
 	}
 
 	public Client(int id, String name, String phone, String mobile, String adress, 
-				  String birthday, String other_event, String other_event_date, String discount){
+				  Calendar birthday, String other_event, Calendar other_event_date, String discount){
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.mobile = mobile;
 		this.adress = adress;
-		//GregorianCalendar bday = new GregorianCalendar();
-		//bday.
-	}
+		this.birthday = birthday;
+		this.otherEvent = other_event;
+		this.otherEventDate = other_event_date;
+		//discount.
+	}	
 }
