@@ -1,13 +1,13 @@
 package gui.infopanel;
 
-import gui.GBC;
 
-import java.awt.GridBagLayout;
-import java.awt.Point;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Map;
 import javax.swing.*;
+import javax.swing.text.*;
 import start.*;
-
+import gui.*;
 import com.toedter.calendar.*;
 import data.Client;
 
@@ -30,7 +30,7 @@ public class ClientForm extends InfoPanelDialog {
 	private JTextField fieldOtherEvent;
 	private JDateChooser calendarOtherEvent;
 	private JLabel labelStatus;
-	private JCheckBox checkboxStatus;
+	private JComboBox comboboxStatus;
 	private JLabel labelDiscount;
 	private JFormattedTextField fieldDiscount;
 	private JPanel buttonPanel;
@@ -41,35 +41,69 @@ public class ClientForm extends InfoPanelDialog {
 	public ClientForm(String name, String title) {
 		super(name, title);
 		setLayout(new GridBagLayout());
-		int width = 350;
-		int height = 250;
+		int width = 400;
+		int height = 250;		
 		this.setSize(width, height);
+		setResizable(false);
 		Point p = MyTools.FramePosition(width, height);
 		this.setLocation(p.x,p.y);
+		Dimension nameDim = new Dimension(200,20);
+		Dimension phoneDim = new Dimension(110,20);
+		Dimension calDim = new Dimension(100,20);
+		Dimension discDim = new Dimension(60,20);
 		Icon ipict = MyTools.getImageResource("pict/userb.png");
 		pict = new JLabel(ipict);
 		labelName = new JLabel(Localizator.IP_ClientName);
 		fieldName = new JTextField();
-		fieldName.setColumns(30);
+		fieldName.setMinimumSize(nameDim);
 		labelAdress = new JLabel(Localizator.IP_ClientAdress);
 		fieldAdress = new JTextField();
 		labelPhone = new JLabel(Localizator.IP_ClientPhone);
 		fieldPhone = new JTextField();
+		fieldPhone.setMinimumSize(phoneDim);
 		labelMobile = new JLabel(Localizator.IP_ClientPhoneMob);
 		fieldMobile = new JTextField();
+		fieldMobile.setMinimumSize(phoneDim);
 		labelBirthday = new JLabel(Localizator.IP_ClientBirthday);
-		calendarBirthday = new JDateChooser();
-		labelOtherEvent = new JLabel(Localizator.IP_ClientOtherDate);
+		calendarBirthday = new JDateChooser();		
+		calendarBirthday.setMinimumSize(calDim);
+		calendarBirthday.getJCalendar().setWeekOfYearVisible(false);
+		labelOtherEvent = new JLabel(Localizator.IP_ClientOther);
 		fieldOtherEvent = new JTextField();
 		calendarOtherEvent = new JDateChooser();
+		calendarOtherEvent.setMinimumSize(calDim);
+		calendarOtherEvent.getJCalendar().setWeekOfYearVisible(false);
 		labelStatus = new JLabel(Localizator.IP_ClientStatus);
-		checkboxStatus = new JCheckBox();
-		labelDiscount = new JLabel(Localizator.IP_ClientDiscount);
-		fieldDiscount = new JFormattedTextField();
+		comboboxStatus = new JComboBox();
+		labelDiscount = new JLabel(Localizator.IP_ClientDiscount+"(%)");
+		fieldDiscount = new JFormattedTextField(new 
+				DefaultFormatter(){							
+					protected DocumentFilter getDocumentFilter(){
+						return filter;
+					}
+					private DocumentFilter filter = new CurrencyFilter();
+				});
+		fieldDiscount.setMaximumSize(discDim);
+		fieldDiscount.setMinimumSize(discDim);
 		buttonPanel = new JPanel();
 		saveButton = new JButton(Localizator.G_Save);
+		saveButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				double a = 1.54;
+				Double A = new Double(a);
+				MyTools.MessageBox(A.toString());
+				setVisible(false);				
+			}
+		});
 		cancelButton = new JButton(Localizator.G_Cancel);
-		add(pict,new GBC(0,0,1,2).setAnchor(GBC.CENTER));
+		cancelButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setVisible(false);				
+			}
+		});
+		comboboxStatus.addItem(Localizator.IP_ClientStatus_1);
+		comboboxStatus.addItem(Localizator.IP_ClientStatus_2);
+		add(pict,new GBC(0,0,1,2).setAnchor(GBC.EAST));
 		add(labelName,new GBC(1,0,3,1).setAnchor(GBC.CENTER));
 		add(fieldName,new GBC(1,1,3,1).setFill(GBC.HORIZONTAL).setInsets(1));
 		add(labelAdress, new GBC(0,2).setAnchor(GBC.EAST));
@@ -78,15 +112,15 @@ public class ClientForm extends InfoPanelDialog {
 		add(fieldPhone, new GBC(1,3).setFill(GBC.HORIZONTAL).setInsets(1));
 		add(labelMobile, new GBC(2,3).setAnchor(GBC.EAST));
 		add(fieldMobile, new GBC(3,3).setFill(GBC.HORIZONTAL).setInsets(1));
-		add(labelBirthday, new GBC(0,4,2,2).setAnchor(GBC.CENTER));
+		add(labelBirthday, new GBC(0,4,2,2).setAnchor(GBC.SOUTH));
 		add(labelOtherEvent, new GBC(2,4,2,1).setAnchor(GBC.CENTER));
-		add(fieldOtherEvent, new GBC(2,5,2,1).setAnchor(GBC.CENTER));
-		add(calendarBirthday, new GBC(0,6,2,1).setFill(GBC.HORIZONTAL).setInsets(1));
+		add(fieldOtherEvent, new GBC(2,5,2,1).setFill(GBC.HORIZONTAL).setInsets(1));
+		add(calendarBirthday, new GBC(0,6,2,1).setAnchor(GBC.NORTH).setInsets(1));
 		add(calendarOtherEvent, new GBC(2,6,2,1).setAnchor(GBC.CENTER));
 		add(labelStatus, new GBC(0,7).setAnchor(GBC.EAST));
-		add(checkboxStatus, new GBC(1,7).setFill(GBC.HORIZONTAL).setInsets(1));
+		add(comboboxStatus, new GBC(1,7).setFill(GBC.HORIZONTAL).setInsets(1));
 		add(labelDiscount, new GBC(2,7).setAnchor(GBC.EAST));
-		add(fieldDiscount,new GBC(3,7).setFill(GBC.HORIZONTAL).setInsets(1));
+		add(fieldDiscount,new GBC(3,7).setAnchor(GBC.WEST).setInsets(1));
 		buttonPanel.add(saveButton);
 		buttonPanel.add(cancelButton);
 		add(buttonPanel,new GBC(0,8,4,1).setAnchor(GBC.CENTER));

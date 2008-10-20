@@ -55,8 +55,7 @@ public class LoginDialog extends JDialog {
 			LabelID = new JLabel(Localizator.LD_Number);
 			FieldID = new JFormattedTextField(new 
 					DefaultFormatter()
-					{
-						private static final long serialVersionUID = 1L;
+					{						
 						protected DocumentFilter getDocumentFilter(){
 							return filter;
 						}

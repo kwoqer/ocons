@@ -123,7 +123,8 @@ public class Localizator {
 			catch (Exception e){
 				e.printStackTrace();
 			} 
-		}		
+		}
+		rs.close();
 	}
 	
 }

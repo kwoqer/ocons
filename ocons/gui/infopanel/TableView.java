@@ -15,8 +15,9 @@ public class TableView extends JPanel {
 	private JToolBar actionBar;
 	private InfoPanelDialog dialogBox;
 
-	public TableView(String sql, String[] headers) {
+	public TableView(String sql, String[] headers, InfoPanelDialog executor) {
 		try {
+			dialogBox = executor;
 			setLayout(new BorderLayout());
 			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
 			Statement stat = conn.createStatement();
@@ -41,11 +42,10 @@ public class TableView extends JPanel {
 
 	private void createActionBar(){
 		actionBar = new JToolBar();
-		ClientForm cf = new ClientForm("Clients","111");
-		actionBar.add(new ToolBarAction("Add",cf));		
-		actionBar.add(new ToolBarAction("Delete",cf));
-		actionBar.add(new ToolBarAction("Edit",cf));
-		actionBar.add(new ToolBarAction("Find",cf));
+		actionBar.add(new ToolBarAction("Add",dialogBox));		
+		actionBar.add(new ToolBarAction("Delete",dialogBox));
+		actionBar.add(new ToolBarAction("Edit",dialogBox));
+		actionBar.add(new ToolBarAction("Find",dialogBox));
 		add(actionBar,BorderLayout.NORTH);
 		
 	}

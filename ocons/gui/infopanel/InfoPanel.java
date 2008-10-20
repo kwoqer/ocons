@@ -40,7 +40,8 @@ public class InfoPanel extends JPanel {
 			if (id=="10") {
 				sql = Client.getSql();				
 				headers = Client.getTableHeader();
-				panel = new TableView(sql,headers);
+				InfoPanelDialog cf = new ClientForm("Clients","111");
+				panel = new TableView(sql,headers,cf);
 			}
 			else if (id=="20"){
 				panel = new JPanel();
