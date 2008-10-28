@@ -12,6 +12,7 @@ public abstract class InfoPanelDialog extends JDialog implements RunnableForm{
 	
 	public InfoPanelDialog(String name, String title){
 		this.name = name;
+		this.setModal(true);
 		JPanel contentPane = (JPanel)getContentPane();
 		contentPane.setBorder(new EmptyBorder(6,8,6,8));
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

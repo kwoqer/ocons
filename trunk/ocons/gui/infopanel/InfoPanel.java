@@ -1,7 +1,6 @@
 package gui.infopanel;
 
-import gui.TreeItem;
-
+import gui.*;
 import java.awt.BorderLayout;
 import java.util.*;
 import javax.swing.*;
@@ -42,6 +41,9 @@ public class InfoPanel extends JPanel {
 				headers = Client.getTableHeader();
 				InfoPanelDialog cf = new ClientForm("Clients","111");
 				panel = new TableView(sql,headers,cf);
+				// Для дополнительных кнопок
+				//TableView tv = (TableView)panel;
+				//tv.addAction(new ToolBarAction("Add",cf));
 			}
 			else if (id=="20"){
 				panel = new JPanel();

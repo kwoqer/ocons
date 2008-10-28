@@ -47,7 +47,11 @@ public class TableView extends JPanel {
 		actionBar.add(new ToolBarAction("Edit",dialogBox));
 		actionBar.add(new ToolBarAction("Find",dialogBox));
 		add(actionBar,BorderLayout.NORTH);
-		
+	}
+	
+	// Возможность добавления в тулбар кнопок, отличных от стандартных
+	public void addAction(ToolBarAction a){
+		actionBar.add(a);
 	}
 	
 

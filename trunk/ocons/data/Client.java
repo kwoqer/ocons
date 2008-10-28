@@ -1,20 +1,21 @@
 package data;
 
+import java.sql.*;
 import java.util.*;
-
-import start.Localizator;
+import start.*;
 
 public class Client {
 	
 	private int id;
-	private String name;
-	private String phone;
-	private String mobile;
-	private String adress;
-	private Calendar birthday;
-	private String otherEvent;
-	private Calendar otherEventDate;
-	private double discount;
+	private String name = null;
+	private String phone = null;
+	private String mobile = null;
+	private String adress = null;
+	private java.util.Date birthday = null;
+	private String otherEvent = null;
+	private java.util.Date otherEventDate = null;
+	private char status;
+	private double discount = 0;
 	
 	// Параметры отображения таблицы клиентов
 	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
@@ -32,7 +33,7 @@ public class Client {
 	public String getAdress() {
 		return adress;
 	}
-	public Calendar getBirthday() {
+	public java.util.Date getBirthday() {
 		return birthday;
 	}
 	public double getDiscount() {
@@ -50,15 +51,19 @@ public class Client {
 	public String getOtherEvent() {
 		return otherEvent;
 	}
-	public Calendar getOtherEventDate() {
+	public java.util.Date getOtherEventDate() {
 		return otherEventDate;
 	}
 	public String getPhone() {
-		return phone;
+		return phone;		
+	}
+	
+	public char getStatus(){
+		return status;
 	}
 
 	public Client(int id, String name, String phone, String mobile, String adress, 
-				  Calendar birthday, String other_event, Calendar other_event_date, String discount){
+			java.util.Date birthday, String other_event, java.util.Date other_event_date, String discount, char status){
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
@@ -67,6 +72,49 @@ public class Client {
 		this.birthday = birthday;
 		this.otherEvent = other_event;
 		this.otherEventDate = other_event_date;
-		//discount.
+		this.status = status;
 	}	
+	
+	public Client(){
+		this.id = 0;
+	}
+	
+	public boolean readFromDB(int clientID){
+		boolean finded = false;
+		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
+			if (rs.next()){				
+				name = rs.getString("Name");
+				phone = rs.getString("Phone");
+				mobile = rs.getString("PhoneMob");
+				adress = rs.getString("Adress");
+				birthday = rs.getDate("Birthday");
+				otherEvent = rs.getString("Other");
+				otherEventDate = rs.getDate("Otherdate");
+				status = rs.getString("Status").charAt(0);
+				finded = true;
+			}
+			conn.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return finded;
+	}
+	
+	public void addToDB(){
+		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		try{
+			PreparedStatement st = conn.prepareStatement("INSERT INTO Clients VALUES(?,?,?,?,?,?);");
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}	
+		
+	}
+	
+	
+	
 }

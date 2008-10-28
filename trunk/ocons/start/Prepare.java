@@ -54,6 +54,22 @@ public class Prepare {
 			for (String s: SQLst){
 				stat.execute(s);
 			}
+			// добавим в список клиентов самого себя (покупка товаров для себя и 
+			// установка автоинкремента в таблице клиентов)
+			// первый знак в номере клиента отбрасываем
+			Integer I = new Integer(c.substring(1));
+			I = I*1000;
+			stat.execute("INSERT INTO Clients VALUES(\""+I.toString()+
+														  "\",\"MySelf\","+
+														  "\"\","+
+														  "\"\","+
+														  "\"\","+
+														  "\"1970.01.01\","+
+														  "\"\","+
+														  "\"01.01.1970\","+
+														  "\"I\","+
+														  "0.0"+
+														  ");");
 			conn.close();
 		}
 		    
