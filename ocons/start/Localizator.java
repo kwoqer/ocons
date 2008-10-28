@@ -14,6 +14,7 @@ public class Localizator {
 	public static String G_Yes;
 	public static String G_No;
 	public static String G_Ok;
+	public static String G_AYouSure;
 	// AddConsultantDialog
 	public static String ACD_Title;
 	public static String ACD_PersonalNumber;

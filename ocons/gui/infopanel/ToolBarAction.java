@@ -20,19 +20,19 @@ public class ToolBarAction extends AbstractAction {
 		String prompt = "";
 		// Подставляем иконку
 		if (name=="Add"){
-			icon = "pict/add32.png";
+			icon = "pict/add22.png";
 			prompt = Localizator.IP_AddAction;
 		}
 		if (name=="Delete"){
-			icon = "pict/delete32.png";
+			icon = "pict/delete22.png";
 			prompt = Localizator.IP_DeleteAction;
 		}
 		if (name=="Edit"){
-			icon = "pict/edit32.png";
+			icon = "pict/edit22.png";
 			prompt = Localizator.IP_EditAction;
 		}
 		if (name=="Find"){
-			icon = "pict/find32.png";
+			icon = "pict/find22.png";
 			prompt = Localizator.IP_FindAction;
 		}
 		if (name=="Print"){
@@ -81,7 +81,15 @@ public class ToolBarAction extends AbstractAction {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		executor.run(false);
+		if (name=="Add")
+				executor.run(false);
+		else if	(name=="Edit")
+				executor.run(true);
+		else if (name=="Delete")
+				MyTools.AlertBox(Localizator.IP_DeleteAction+"?",Localizator.G_AYouSure+" "+prompt.toLowerCase()+"?");
 	}
 
+	public String getName(){
+		return name;
+	}
 }

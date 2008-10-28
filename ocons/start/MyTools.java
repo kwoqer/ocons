@@ -59,6 +59,13 @@ public class MyTools {
 		
 	}
 	
+	public static int AlertBox(String h, String s){
+		Object[] ops = {Localizator.G_Yes,Localizator.G_No};
+		return JOptionPane.showOptionDialog(null,s,h,
+				JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,null,ops,Localizator.G_Yes);
+		
+	}
+	
 	
 	
 	public static Point FramePosition(int width, int height){

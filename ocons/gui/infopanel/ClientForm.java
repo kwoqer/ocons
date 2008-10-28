@@ -46,7 +46,7 @@ public class ClientForm extends InfoPanelDialog {
 		this.setSize(width, height);
 		setResizable(false);
 		Point p = MyTools.FramePosition(width, height);
-		this.setLocation(p.x,p.y);
+		this.setLocation(p.x,p.y);		
 		Dimension nameDim = new Dimension(200,20);
 		Dimension phoneDim = new Dimension(110,20);
 		Dimension calDim = new Dimension(100,20);
