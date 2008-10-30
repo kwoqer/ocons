@@ -15,14 +15,14 @@ public class TableView extends JPanel {
 	private JToolBar actionBar;
 	private InfoPanelDialog dialogBox;
 
-	public TableView(String sql, String[] headers, InfoPanelDialog executor) {
+	public TableView(String sql,int fields, int[] columns, String[] headers, InfoPanelDialog executor) {
 		try {
 			dialogBox = executor;
 			setLayout(new BorderLayout());
 			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(sql);
-			tableModel = new CommonTableModel(rs, headers);
+			tableModel = new CommonTableModel(rs,fields,headers,columns);
 			rs.close();
 			JTable table = new JTable(tableModel);
 			JScrollPane scrollPane = new JScrollPane(table);

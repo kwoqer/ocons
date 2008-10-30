@@ -34,13 +34,17 @@ public class InfoPanel extends JPanel {
 		}
 		else {
 			String sql="";
+			int[] columns;
+			int fields;
 			String[] headers = {};	
 			JPanel panel;
 			if (id=="10") {
-				sql = Client.getSql();				
+				sql = Client.getSql();	
+				columns = Client.getTableColumns();
 				headers = Client.getTableHeader();
+				fields = Client.getTableFields();
 				InfoPanelDialog cf = new ClientForm("Clients","111");
-				panel = new TableView(sql,headers,cf);
+				panel = new TableView(sql,fields,columns,headers,cf);
 				// Для дополнительных кнопок
 				//TableView tv = (TableView)panel;
 				//tv.addAction(new ToolBarAction("Add",cf));
