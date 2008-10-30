@@ -17,20 +17,28 @@ import javax.swing.table.AbstractTableModel;
 
 public class CommonTableModel extends AbstractTableModel {
 
-	private int columns;	
+	// количество колонок в таблице
+	private int columns;
+	// количество полей из БД
+	private int fields;
+	// массив заголовков столбцов
 	private String[] columnnames;	
+	// массив с номерами полей, отображаемых в таблице
+	private int[] colnumbers;
 	private ArrayList<Row> rows;
 	
 	
-	public CommonTableModel(ResultSet rs, String[] names){
+	public CommonTableModel(ResultSet rs, int flds, String[] names, int[] clmnbrs){
 		columns = names.length;		
 		columnnames = names;
+		fields = flds;
 		rows = new ArrayList<Row>();
+		colnumbers = clmnbrs;
 		
 		try{			
 			while (rs.next()){
 				Row currentrow = new Row();
-				for (int i=1; i<=columns; i++){						
+				for (int i=1; i<=fields; i++){						
 					currentrow.add(rs.getObject(i));
 				}
 				rows.add(currentrow);				
@@ -40,6 +48,20 @@ public class CommonTableModel extends AbstractTableModel {
 	         e.printStackTrace();	       
 	    }
 	}
+	
+	/*
+	private boolean isVisible(int c){
+		boolean visible = false;
+		for (int i = 0; i <= colnumbers.length; i++) {
+			if (c==colnumbers[i]){
+				visible = true;
+				break;
+			}
+			
+		}
+		return visible;
+	}
+	*/
 	
 	public int getColumnCount() {
 		return columns;
@@ -55,7 +77,7 @@ public class CommonTableModel extends AbstractTableModel {
 
 	public Object getValueAt(int r, int c) {		
 		Row currentrow = rows.get(r);
-		return currentrow.get(c);
+		return currentrow.get(colnumbers[c]);
 	}
 	
 	public void addRow(ArrayList<Object> r){

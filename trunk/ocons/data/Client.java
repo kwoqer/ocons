@@ -20,14 +20,26 @@ public class Client {
 	// Параметры отображения таблицы клиентов
 	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
 											Localizator.IP_ClientPhone,Localizator.IP_ClientPhoneMob};
-	private static String sql = "SELECT Name, Adress, Phone, PhoneMob FROM Clients";
+	// отсчет полей в БД начинается с 0
+	private static int[] tableColumns = {1,4,2,3};
+	private static int tableFields = 10;
+	private static String sql = "SELECT * FROM Clients";
+	
 	
 	public static String[] getTableHeader(){
 		return tableHeader;
 	}
 	
+	public static int[] getTableColumns(){
+		return tableColumns;
+	}
+	
 	public static String getSql(){
 		return sql;
+	}
+	
+	public static int getTableFields(){
+		return tableFields;
 	}
 	
 	public String getAdress() {
