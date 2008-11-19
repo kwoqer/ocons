@@ -7,6 +7,7 @@ import javax.swing.border.*;
 public abstract class InfoPanelDialog extends JDialog implements RunnableForm{
 	
 	private String name;
+	private TableView table;
 	
 	private final static String CUSTOM_DISPOSE_EVENT = "CUSTOM_DISPOSE_EVENT";
 	
@@ -32,6 +33,13 @@ public abstract class InfoPanelDialog extends JDialog implements RunnableForm{
 		return name;
 	}
 	
+	//	 Установка ссылки на таблицу, чтобы можно было обновлять содержимое 
+	public void setTableView(TableView t){
+		table = t;
+	}
 	
+	public TableView getTableView(){
+		return table;
+	}
 	
 }

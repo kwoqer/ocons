@@ -45,6 +45,7 @@ public class InfoPanel extends JPanel {
 				fields = Client.getTableFields();
 				InfoPanelDialog cf = new ClientForm("Clients","111");
 				panel = new TableView(sql,fields,columns,headers,cf);
+				cf.setTableView((TableView)panel);
 				// Для дополнительных кнопок
 				//TableView tv = (TableView)panel;
 				//tv.addAction(new ToolBarAction("Add",cf));

@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 import start.*;
 
@@ -119,12 +120,46 @@ public class Client {
 	public void addToDB(){
 		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try{
-			PreparedStatement st = conn.prepareStatement("INSERT INTO Clients VALUES(?,?,?,?,?,?);");
+			PreparedStatement st = conn.prepareStatement("INSERT INTO Clients VALUES(?,?,?,?,?,?,?,?,?,?);");
+			//st.setInt(1, id);
+			st.setString(2, name);
+			st.setString(3, phone);
+			st.setString(4, mobile);
+			st.setString(5, adress);
+			if (birthday!=null) {
+				java.sql.Date d = new java.sql.Date(birthday.getTime());			
+				st.setDate(6, d);
+			}			
+			st.setString(7, otherEvent);
+			if (otherEventDate!=null){
+				java.sql.Date d1 = new java.sql.Date(otherEventDate.getTime());
+				st.setDate(8, d1);
+			}	
+			st.setString(9, String.valueOf(status));
+			st.setDouble(10, discount);
+			st.execute();
+			conn.close();
+			
 		}
 		catch (SQLException e){
 			e.printStackTrace();
 		}	
 		
+	}
+	
+	public ArrayList<Object> generateRow(){
+		ArrayList<Object> row = new ArrayList<Object>();
+		row.add(new Integer(id));
+		row.add(name);
+		row.add(phone);
+		row.add(mobile);
+		row.add(adress);
+		row.add(birthday);
+		row.add(otherEvent);
+		row.add(otherEventDate);
+		row.add(String.valueOf(status));
+		row.add(new Double(discount));
+		return row;
 	}
 	
 	
