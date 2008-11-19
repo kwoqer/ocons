@@ -97,9 +97,8 @@ public class Consultant {
 			st.setBoolean(5, IsDefault);
 			st.setInt(6, PasswordHash);
 			st.execute();
-			conn.close();
-			String cs = new Integer(ID).toString();
-			MyTools.setStatusBarMessage("Консультант "+cs+" успешно добавлен!");
+			conn.close();			
+			MyTools.setStatusBarMessage("Консультант "+ID+" успешно добавлен!");
 		}
 		catch (SQLException e){
 			e.printStackTrace();
@@ -112,5 +111,11 @@ public class Consultant {
 
 	public void setPasswordHash(int passwordhash) {
 		PasswordHash = passwordhash;
+	}
+	
+	public static int getOwnClientNumber(String s){
+		Integer I = new Integer(s.substring(1));
+		I = I*1000;
+		return I.intValue();
 	}
 }

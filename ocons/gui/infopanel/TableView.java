@@ -14,6 +14,8 @@ public class TableView extends JPanel {
 	//private Map<String, ToolBarAction> actionBar; 
 	private JToolBar actionBar;
 	private InfoPanelDialog dialogBox;
+	private JTable table;
+	private JScrollPane scrollPane;
 
 	public TableView(String sql,int fields, int[] columns, String[] headers, InfoPanelDialog executor) {
 		try {
@@ -24,11 +26,11 @@ public class TableView extends JPanel {
 			ResultSet rs = stat.executeQuery(sql);
 			tableModel = new CommonTableModel(rs,fields,headers,columns);
 			rs.close();
-			JTable table = new JTable(tableModel);
-			JScrollPane scrollPane = new JScrollPane(table);
+			table = new JTable(tableModel);
+			scrollPane = new JScrollPane(table);
 			createActionBar();
             add(scrollPane, BorderLayout.CENTER);
-            validate();            			
+            validate();                 
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -38,6 +40,11 @@ public class TableView extends JPanel {
 	
 	public CommonTableModel getTableModel(){
 		return tableModel;
+	}
+	
+	public void refresh(){
+		tableModel.fireTableDataChanged();
+		repaint();
 	}
 
 	private void createActionBar(){

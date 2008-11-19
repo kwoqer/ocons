@@ -15,6 +15,7 @@ public class ClientForm extends InfoPanelDialog {
 
 	private Client client;
 	
+	
 	private JLabel pict;
 	private JLabel labelName;
 	private JTextField fieldName;
@@ -89,9 +90,19 @@ public class ClientForm extends InfoPanelDialog {
 		saveButton = new JButton(Localizator.G_Save);
 		saveButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				double a = 1.54;
-				Double A = new Double(a);
-				MyTools.MessageBox(A.toString());
+				client = new Client(0,
+									fieldName.getText(),
+									fieldPhone.getText(),
+									fieldMobile.getText(),
+									fieldAdress.getText(),
+									calendarBirthday.getDate(),
+									fieldOtherEvent.getText(),
+									calendarOtherEvent.getDate(),
+									fieldDiscount.getText(),
+									'S');
+				client.addToDB();
+				getTableView().getTableModel().addRow(client.generateRow());
+				getTableView().refresh();
 				setVisible(false);				
 			}
 		});
@@ -125,12 +136,16 @@ public class ClientForm extends InfoPanelDialog {
 		buttonPanel.add(cancelButton);
 		add(buttonPanel,new GBC(0,8,4,1).setAnchor(GBC.CENTER));
 		this.getRootPane().setDefaultButton(saveButton);
+		setTitle(title);
 	}
 
 	public void run(boolean isEdit) {
 		setVisible(true);
 		
 	}
+	
+	
+	
 
 	
 	
