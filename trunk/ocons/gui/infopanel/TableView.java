@@ -2,7 +2,9 @@ package gui.infopanel;
 
 
 import javax.swing.*;
-import java.awt.BorderLayout;
+import javax.swing.table.*;
+
+import java.awt.*;
 import java.sql.*;
 import java.util.*;
 
@@ -27,6 +29,23 @@ public class TableView extends JPanel {
 			tableModel = new CommonTableModel(rs,fields,headers,columns);
 			rs.close();
 			table = new JTable(tableModel);
+			JTableHeader tableHeader = table.getTableHeader();
+			Color bg = new Color(179,216,0);
+			tableHeader.setBackground(bg);
+			/* Font f = tableHeader.getFont(); 
+			f.deriveFont(Font.BOLD);
+			f.deriveFont(Font.TRUETYPE_FONT);
+			tableHeader.setFont(f);
+			
+			TableColumnModel tcm = table.getColumnModel();
+			for (int i=1;i<=5;i++) {
+				TableColumn tc = new TableColumn();
+				tc.setHeaderValue(headers[columns[i-1]-1]);
+				tcm.addColumn(tc);
+			}			
+			tableHeader.setColumnModel(tcm);*/
+			table.setTableHeader(tableHeader);
+			
 			scrollPane = new JScrollPane(table);
 			createActionBar();
             add(scrollPane, BorderLayout.CENTER);
@@ -45,6 +64,10 @@ public class TableView extends JPanel {
 	public void refresh(){
 		tableModel.fireTableDataChanged();
 		repaint();
+	}
+	
+	public JTable getTable(){
+		return table;
 	}
 
 	private void createActionBar(){
