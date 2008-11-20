@@ -84,6 +84,15 @@ public class CommonTableModel extends AbstractTableModel {
 		Row row = new Row(r);
 		rows.add(row);
 	}
+	
+	// Возвращает ключевое значение элемента из строки таблицы 
+	// Ключевое значение всегда в 1-й позиции
+	public int getID(int row){
+		Row r = rows.get(row);
+		Integer key = (Integer)r.get(0);
+		//Integer i = new Integer(key.toString());
+		return key.intValue();
+	}
 		
 	
 	private class Row {

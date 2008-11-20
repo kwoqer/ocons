@@ -13,7 +13,7 @@ import data.Client;
 
 public class ClientForm extends InfoPanelDialog {
 
-	private Client client;
+	private Client client ;
 	
 	
 	private JLabel pict;
@@ -39,8 +39,9 @@ public class ClientForm extends InfoPanelDialog {
 	private JButton cancelButton;
 	
 	
-	public ClientForm(String name, String title) {
+	public ClientForm(String name, String title) {		
 		super(name, title);
+		client = new Client();
 		setLayout(new GridBagLayout());
 		int width = 400;
 		int height = 250;		
@@ -140,6 +141,21 @@ public class ClientForm extends InfoPanelDialog {
 	}
 
 	public void run(boolean isEdit) {
+		if (isEdit) {
+			int row = getTableView().getTable().getSelectedRow();
+			int id = getTableView().getTableModel().getID(row);			
+			boolean find = client.readFromDB(id); 
+			if (find){
+				fieldName.setText(client.getName());
+				fieldAdress.setText(client.getAdress());
+				fieldPhone.setText(client.getPhone());
+				fieldMobile.setText(client.getMobile());
+				calendarBirthday.setDate(client.getBirthday());
+				fieldOtherEvent.setText(client.getOtherEvent());
+				calendarOtherEvent.setDate(client.getOtherEventDate());
+				fieldDiscount.setText((new Double(client.getDiscount()).toString()));
+			}			
+		}
 		setVisible(true);
 		
 	}

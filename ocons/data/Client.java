@@ -20,9 +20,9 @@ public class Client {
 	
 	// Параметры отображения таблицы клиентов
 	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
-											Localizator.IP_ClientPhone,Localizator.IP_ClientPhoneMob};
+											Localizator.IP_ClientPhone,Localizator.IP_ClientPhoneMob,Localizator.IP_ClientBirthday};
 	// отсчет полей в БД начинается с 0
-	private static int[] tableColumns = {1,4,2,3};
+	private static int[] tableColumns = {1,4,2,3,5};
 	private static int tableFields = 10;
 	private static String sql = "SELECT * FROM Clients";
 	
@@ -92,7 +92,7 @@ public class Client {
 		this.id = 0;
 	}
 	
-	public boolean readFromDB(int clientID){
+	public boolean readFromDB(int clientID){		
 		boolean finded = false;
 		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try {
