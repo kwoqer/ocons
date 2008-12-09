@@ -146,7 +146,7 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientPhoneMob","Моб. телефон","Моб. телефон");
 INSERT INTO Localization (Name, RU, UA) VALUES 
-	("IP_ClientAdress","Адрес","Адрес");
+	("IP_ClientAdress","Адрес","Адреса");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientBirthday","День рождения","День народження");	
 INSERT INTO Localization (Name, RU, UA) VALUES 

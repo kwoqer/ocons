@@ -2,8 +2,11 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import data.Consultant;
 import gui.infopanel.*;
 import start.*;
 
@@ -14,10 +17,13 @@ public class MainFrame extends JFrame {
 	private InfoPanel infoPanel;
 	private JPanel workArea;
 	private JSplitPane workPanel;
+	private Map<String, Consultant> consultantList;
+	private Consultant consultant;
 	
+		
+
 	public MainFrame(){
-    
-		 
+    		 
 	      MainMenu mainMenu = new MainMenu();
 	      GlobalData.setMenu(mainMenu);
 	      mainMenu.BeforeLoginConsultantSettings();
@@ -29,7 +35,7 @@ public class MainFrame extends JFrame {
 		  workArea.setLayout(new BorderLayout());		  
 		  navigationTree = null;
 		  workPanel = new JSplitPane();
-		  infoPanel = new InfoPanel();
+		  //infoPanel = new InfoPanel();
 		  //workPanel.setLeftComponent(navigationTree);
 		  //workPanel.setRightComponent(infoPanel);
 		  workPanel.setBorder(BorderFactory.createEmptyBorder());
@@ -40,7 +46,7 @@ public class MainFrame extends JFrame {
 	      workArea.setVisible(false);
 		  add(workArea, BorderLayout.CENTER);
 	      add(statusBar, BorderLayout.SOUTH);
-	      
+	      consultantList = new HashMap<String, Consultant>();
 	
 	      addWindowListener(new WindowAdapter() {
 	            public void windowClosing(WindowEvent e) {
@@ -68,6 +74,10 @@ public class MainFrame extends JFrame {
 		return workArea;
 	}
 	
+	public void setWorkArea(JPanel workArea) {
+		this.workArea = workArea;
+	}
+	
 	public JSplitPane getWorkPanel(){
 		return workPanel;
 	}
@@ -81,17 +91,36 @@ public class MainFrame extends JFrame {
 		validate();
 	}
 	
+	public Map<String, Consultant> getConsultantList() {
+		return consultantList;
+	}
+	
+	public void addConsultant(Consultant c){
+		//Object fc = consultantList.get(c.getID());
+		//if (fc!=null)
+			consultantList.put(c.getID(), c);
+	}
+	
 	public void openWorkArea(String cn){
-		if (navigationTree==null) {
+		Consultant c = consultantList.get(cn);
+		if (c.getConsultantPanel()==null) {
 			navigationTree = new NavigationTree(cn);
-			workPanel.setLeftComponent(navigationTree);
-			workPanel.setRightComponent(infoPanel);
+			c.setConsultantTree(navigationTree);
+			infoPanel = new InfoPanel();
+			c.setConsultantPanel(infoPanel);
 		}
-		String so = ((TreeItem)navigationTree.getRootObject()).getName();		 
-	    if (so!=cn){
+		else {
+			infoPanel = c.getConsultantPanel();
+			navigationTree = c.getConsultantTree();
+		}
+		workPanel.setLeftComponent(navigationTree);
+		workPanel.setRightComponent(infoPanel);
+		
+		/*String so = ((TreeItem)navigationTree.getRootObject()).getName();		 
+	    //if (so!=cn){
 	    	navigationTree.setConsultantNumber(cn);
 	    	navigationTree.repaint();
-	    }	    	
+	    }*/	    	
 		workArea.setVisible(true);	    
 	}
 	

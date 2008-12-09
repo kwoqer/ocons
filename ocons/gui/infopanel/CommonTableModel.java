@@ -1,6 +1,7 @@
 package gui.infopanel;
 
 import java.sql.*;
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
@@ -38,8 +39,16 @@ public class CommonTableModel extends AbstractTableModel {
 		try{			
 			while (rs.next()){
 				Row currentrow = new Row();
-				for (int i=1; i<=fields; i++){						
-					currentrow.add(rs.getObject(i));
+				for (int i=1; i<=fields; i++){		
+					if (rs.getObject(i) instanceof java.sql.Date){
+						currentrow.add(rs.getObject(i));
+						//java.sql.Date l = new Date();
+						//java.text.DateFormat d = new DateFormat();
+						
+					}
+					else {
+						currentrow.add(rs.getObject(i));
+					}
 				}
 				rows.add(currentrow);				
 			}
