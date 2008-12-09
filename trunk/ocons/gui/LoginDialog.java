@@ -94,6 +94,7 @@ public class LoginDialog extends JDialog {
 								catch (Exception ex){
 									ex.printStackTrace();
 								}
+								GlobalData.getFrame().addConsultant(c);
 								GlobalData.getFrame().openWorkArea(c.getID());													
 								dispose();
 							}

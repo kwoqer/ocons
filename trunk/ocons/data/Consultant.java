@@ -1,6 +1,9 @@
 package data;
 
+import gui.*;
+import gui.infopanel.*;
 import java.sql.*;
+import javax.swing.JPanel;
 import start.MyTools;
 
 public class Consultant {
@@ -10,9 +13,11 @@ public class Consultant {
 	private String EMail;
 	private boolean IsDefault;
 	private int PasswordHash;
+	private NavigationTree consultantTree = null;
+	private InfoPanel consultantPanel = null;
 	
 	public Consultant(String id){
-		ID = id;
+		ID = id;		
 	}
 	
 	public String getEMail() {
@@ -46,6 +51,22 @@ public class Consultant {
 		Phone = phone;
 	}
 	
+	public InfoPanel getConsultantPanel() {
+		return consultantPanel;
+	}
+
+	public void setConsultantPanel(InfoPanel consultantPanel) {
+		this.consultantPanel = consultantPanel;
+	}
+
+	public NavigationTree getConsultantTree() {
+		return consultantTree;
+	}
+
+	public void setConsultantTree(NavigationTree consultantTree) {
+		this.consultantTree = consultantTree;
+	}
+
 	public boolean readFromDB(){
 		//Consultant c = new Consultant(id);
 		boolean find = false;
