@@ -60,15 +60,15 @@ public class Prepare {
 			Integer I = new Integer(c.substring(1));
 			I = I*1000;
 			stat.execute("INSERT INTO Clients VALUES(\""+I.toString()+
-														  "\",\"MySelf\","+
+														  "\",\"I am\","+
 														  "\"\","+
 														  "\"\","+
 														  "\"\","+
-														  "\"1970.01.01\","+
+														  "\"1970-01-01\","+
 														  "\"\","+
-														  "\"01.01.1970\","+
+														  "\"1970-02-02\","+
 														  "\"I\","+
-														  "0.0"+
+														  "30.0"+
 														  ");");
 			conn.close();
 		}
