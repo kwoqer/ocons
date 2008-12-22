@@ -26,7 +26,8 @@ public class NavigationTree extends JPanel {
 		tm.addItem(new TreeItem(Localizator.NT_Invoices,"20","pict/textfile22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Catalogs,"30","pict/favb22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
-		tm.addItem(new TreeItem(Localizator.NT_Reports,"50","pict/documents22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Orders,"50","pict/file22.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Reports,"60","pict/documents22.png"));
 		root = tm.BuildTree();
 		
 		setLayout(new BorderLayout());

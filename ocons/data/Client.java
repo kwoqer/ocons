@@ -75,6 +75,42 @@ public class Client {
 		return status;
 	}
 
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public void setBirthday(java.util.Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setOtherEvent(String otherEvent) {
+		this.otherEvent = otherEvent;
+	}
+
+	public void setOtherEventDate(java.util.Date otherEventDate) {
+		this.otherEventDate = otherEventDate;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+
 	public Client(int id, String name, String phone, String mobile, String adress, 
 			java.util.Date birthday, String other_event, java.util.Date other_event_date, String discount, char status){
 		this.id = id;
@@ -98,16 +134,21 @@ public class Client {
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
-			if (rs.next()){				
+			if (rs.next()){
+				id = rs.getInt("Client_ID");
 				name = rs.getString("Name");
 				phone = rs.getString("Phone");
 				mobile = rs.getString("PhoneMob");
 				adress = rs.getString("Adress");
-				birthday = rs.getDate("Birthday");
+				String Sb = rs.getString("Birthday");
+				//MyTools.MessageBox(Sb);
+				birthday = MyTools.YMDToDate(Sb);
 				otherEvent = rs.getString("Other");
-				otherEventDate = rs.getDate("Otherdate");
+				otherEventDate = MyTools.YMDToDate(rs.getString("Otherdate"));
+				discount = (new Double(rs.getString("Discount"))).doubleValue();
 				status = rs.getString("Status").charAt(0);
 				finded = true;
+				//MyTools.MessageBox(birthday.toString());
 			}
 			conn.close();
 		} 
@@ -126,14 +167,12 @@ public class Client {
 			st.setString(3, phone);
 			st.setString(4, mobile);
 			st.setString(5, adress);
-			if (birthday!=null) {
-				java.sql.Date d = new java.sql.Date(birthday.getTime());			
-				st.setDate(6, d);
+			if (birthday!=null) {						
+				st.setString(6, MyTools.DateToYMD(birthday));
 			}			
 			st.setString(7, otherEvent);
-			if (otherEventDate!=null){
-				java.sql.Date d1 = new java.sql.Date(otherEventDate.getTime());
-				st.setDate(8, d1);
+			if (otherEventDate!=null){				
+				st.setString(8, MyTools.DateToYMD(otherEventDate));
 			}	
 			st.setString(9, String.valueOf(status));
 			st.setDouble(10, discount);
@@ -147,6 +186,42 @@ public class Client {
 		
 	}
 	
+	public void updateRecord(){
+		if (id!=0){
+			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());			
+			String Sid = (new Integer(id)).toString();
+			try {
+				String prs =  "UPDATE Clients SET Name=?," +
+												 "Phone=?," +
+												 "PhoneMob=?," +
+												 "Adress=?," +
+												 "Birthday=?," +
+												 "Other=?," +
+												 "Otherdate=?," +
+												 "Status=?," +
+												 "Discount=? WHERE Client_ID="+Sid+";";
+				PreparedStatement st = conn.prepareStatement(prs);
+				st.setString(1, name);
+				st.setString(2, phone);
+				st.setString(3, mobile);
+				st.setString(4, adress);
+				if (birthday!=null) {						
+					st.setString(5, MyTools.DateToYMD(birthday));
+				}			
+				st.setString(6, otherEvent);
+				if (otherEventDate!=null){				
+					st.setString(7, MyTools.DateToYMD(otherEventDate));
+				}	
+				st.setString(8, String.valueOf(status));
+				st.setDouble(9, discount);
+				st.execute();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+	}
+	
 	public ArrayList<Object> generateRow(){
 		ArrayList<Object> row = new ArrayList<Object>();
 		row.add(new Integer(id));
@@ -154,7 +229,7 @@ public class Client {
 		row.add(phone);
 		row.add(mobile);
 		row.add(adress);
-		row.add(birthday);
+		row.add(MyTools.DateToYMD(birthday));
 		row.add(otherEvent);
 		row.add(otherEventDate);
 		row.add(String.valueOf(status));

@@ -94,6 +94,11 @@ public class CommonTableModel extends AbstractTableModel {
 		rows.add(row);
 	}
 	
+	public void updateRow(int index, ArrayList<Object> r){
+		Row row = new Row(r);
+		rows.set(index,row);
+	}
+	
 	// Возвращает ключевое значение элемента из строки таблицы 
 	// Ключевое значение всегда в 1-й позиции
 	public int getID(int row){

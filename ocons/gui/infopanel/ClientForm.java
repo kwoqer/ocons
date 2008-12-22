@@ -13,7 +13,7 @@ import data.Client;
 
 public class ClientForm extends InfoPanelDialog {
 
-	private Client client ;
+	private Client client;
 	
 	
 	private JLabel pict;
@@ -37,6 +37,7 @@ public class ClientForm extends InfoPanelDialog {
 	private JPanel buttonPanel;
 	private JButton saveButton;
 	private JButton cancelButton;
+	private boolean editMode;
 	
 	
 	public ClientForm(String name, String title) {		
@@ -91,7 +92,32 @@ public class ClientForm extends InfoPanelDialog {
 		saveButton = new JButton(Localizator.G_Save);
 		saveButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				client = new Client(0,
+				if (editMode) {
+					// при вызове run уже запускается readFromDB, поэтому поля client уже заполнены
+					// обновляем их вновь отредактированными значениями
+					client.setName(fieldName.getText());
+					client.setPhone(fieldPhone.getText());
+					client.setMobile(fieldMobile.getText());
+					client.setAdress(fieldAdress.getText());
+					client.setBirthday(calendarBirthday.getDate());
+					client.setOtherEvent(fieldOtherEvent.getText());
+					client.setOtherEventDate(calendarOtherEvent.getDate());
+					// при некорректном значении скидки она остается прежней
+					try {
+						client.setDiscount((new Double(fieldDiscount.getText()).doubleValue()));
+					}
+					catch (Exception ex){
+						MyTools.ErrorBox("Error" ,"Discount format error!");
+						ex.printStackTrace();
+					}
+					client.updateRecord();
+					// обновляем данные в таблице
+					int i = getTableView().getTable().getSelectedRow();
+					getTableView().getTableModel().updateRow(i, client.generateRow());
+					getTableView().refresh();
+				}
+				else {
+					client = new Client(0,
 									fieldName.getText(),
 									fieldPhone.getText(),
 									fieldMobile.getText(),
@@ -101,9 +127,11 @@ public class ClientForm extends InfoPanelDialog {
 									calendarOtherEvent.getDate(),
 									fieldDiscount.getText(),
 									'S');
-				client.addToDB();
-				getTableView().getTableModel().addRow(client.generateRow());
-				getTableView().refresh();
+					client.addToDB();
+					// обновляем данные в таблице
+					getTableView().getTableModel().addRow(client.generateRow());
+					getTableView().refresh();
+				}	
 				setVisible(false);				
 			}
 		});
@@ -142,6 +170,7 @@ public class ClientForm extends InfoPanelDialog {
 
 	public void run(boolean isEdit) {
 		if (isEdit) {
+			editMode = true;
 			int row = getTableView().getTable().getSelectedRow();
 			int id = getTableView().getTableModel().getID(row);			
 			boolean find = client.readFromDB(id); 
@@ -156,8 +185,27 @@ public class ClientForm extends InfoPanelDialog {
 				fieldDiscount.setText((new Double(client.getDiscount()).toString()));
 			}			
 		}
+		else {
+			clearFields();
+			editMode = false;
+		}	
 		setVisible(true);
 		
+	}
+	
+	private void clearFields(){
+		fieldName.setText(null);
+		fieldAdress.setText(null);
+		fieldMobile.setText(null);
+		fieldDiscount.setText(null);
+		fieldOtherEvent.setText(null);
+		fieldPhone.setText(null);
+		calendarBirthday.setDate(null);
+		calendarOtherEvent.setDate(null);
+	}
+	
+	public boolean isEditMode(){
+		return editMode;
 	}
 	
 	
