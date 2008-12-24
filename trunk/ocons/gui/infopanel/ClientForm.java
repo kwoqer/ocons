@@ -102,12 +102,13 @@ public class ClientForm extends InfoPanelDialog {
 					client.setBirthday(calendarBirthday.getDate());
 					client.setOtherEvent(fieldOtherEvent.getText());
 					client.setOtherEventDate(calendarOtherEvent.getDate());
+					client.setStatus(Client.getStatusVoc().getIndex(comboboxStatus.getSelectedIndex()));
 					// при некорректном значении скидки она остается прежней
 					try {
 						client.setDiscount((new Double(fieldDiscount.getText()).doubleValue()));
 					}
 					catch (Exception ex){
-						MyTools.ErrorBox("Error" ,"Discount format error!");
+						MyTools.ErrorBox(Localizator.G_Error ,Localizator.IP_ClientIncorrectDiscountFormat);
 						ex.printStackTrace();
 					}
 					client.updateRecord();
@@ -126,7 +127,7 @@ public class ClientForm extends InfoPanelDialog {
 									fieldOtherEvent.getText(),
 									calendarOtherEvent.getDate(),
 									fieldDiscount.getText(),
-									'S');
+									Client.getStatusVoc().getIndex(comboboxStatus.getSelectedIndex()));
 					client.addToDB();
 					// обновляем данные в таблице
 					getTableView().getTableModel().addRow(client.generateRow());
@@ -141,8 +142,17 @@ public class ClientForm extends InfoPanelDialog {
 				setVisible(false);				
 			}
 		});
-		comboboxStatus.addItem(Localizator.IP_ClientStatus_1);
-		comboboxStatus.addItem(Localizator.IP_ClientStatus_2);
+		// Установим отображаемые элементы в статусе, скроем код 0
+		// который соответствует первой записи - себе как клиенту
+		Client.getStatusVoc().setVItems(new int[] {1,2});
+		Client.getStatusVoc().first();
+		String item = Client.getStatusVoc().next();
+		while (item!= null){
+			comboboxStatus.addItem(item);
+			item = Client.getStatusVoc().next();
+		}	
+		
+		
 		add(pict,new GBC(0,0,1,2).setAnchor(GBC.EAST));
 		add(labelName,new GBC(1,0,3,1).setAnchor(GBC.CENTER));
 		add(fieldName,new GBC(1,1,3,1).setFill(GBC.HORIZONTAL).setInsets(1));
@@ -170,6 +180,7 @@ public class ClientForm extends InfoPanelDialog {
 
 	public void run(boolean isEdit) {
 		if (isEdit) {
+			setTitle(Localizator.IP_ClientEdit);
 			editMode = true;
 			int row = getTableView().getTable().getSelectedRow();
 			int id = getTableView().getTableModel().getID(row);			
@@ -182,10 +193,12 @@ public class ClientForm extends InfoPanelDialog {
 				calendarBirthday.setDate(client.getBirthday());
 				fieldOtherEvent.setText(client.getOtherEvent());
 				calendarOtherEvent.setDate(client.getOtherEventDate());
+				comboboxStatus.setSelectedIndex(Client.getStatusVoc().getBoxIndex(client.getStatus()));
 				fieldDiscount.setText((new Double(client.getDiscount()).toString()));
 			}			
 		}
 		else {
+			setTitle(Localizator.IP_ClientAdd);
 			clearFields();
 			editMode = false;
 		}	

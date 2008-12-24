@@ -72,6 +72,7 @@ public class Localizator {
 	public static String IP_CatalogReturnDate;
 	public static String IP_CatalogReturned;
 	public static String IP_CatalogInfo;
+	
 	public static String IP_ClientName;
 	public static String IP_ClientPhone;
 	public static String IP_ClientPhoneMob;
@@ -83,6 +84,10 @@ public class Localizator {
 	public static String IP_ClientStatus_1;
 	public static String IP_ClientStatus_2;
 	public static String IP_ClientDiscount;
+	public static String IP_ClientIncorrectDiscountFormat;
+	public static String IP_ClientAdd;
+	public static String IP_ClientEdit;
+	
 	public static String IP_OrderDate;
 	public static String IP_OrderQuantity;
 	public static String IP_InvoicesID;
