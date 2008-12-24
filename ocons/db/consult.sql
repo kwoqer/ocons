@@ -21,7 +21,7 @@ CREATE TABLE Clients (
 	Birthday	DATE,
 	Other		VARCHAR(50),
 	Otherdate	DATE,
-	Status		CHAR(1),
+	Status		INTEGER,
 	Discount	NUMERIC(3,2)
 );
 

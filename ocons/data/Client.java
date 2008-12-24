@@ -15,8 +15,10 @@ public class Client {
 	private java.util.Date birthday = null;
 	private String otherEvent = null;
 	private java.util.Date otherEventDate = null;
-	private char status;
+	private int status;
 	private double discount = 0;
+	
+	private static Vocabulary statusVoc = new Vocabulary(new String[] {"myself", Localizator.IP_ClientStatus_1, Localizator.IP_ClientStatus_2});
 	
 	// Параметры отображения таблицы клиентов
 	private static String[] tableHeader = {Localizator.IP_ClientName, Localizator.IP_ClientAdress,
@@ -24,7 +26,7 @@ public class Client {
 	// отсчет полей в БД начинается с 0
 	private static int[] tableColumns = {1,4,2,3,5};
 	private static int tableFields = 10;
-	private static String sql = "SELECT * FROM Clients";
+	private static String sql = "SELECT * FROM Clients WHERE Status!=0";
 	
 	
 	public static String[] getTableHeader(){
@@ -71,7 +73,7 @@ public class Client {
 		return phone;		
 	}
 	
-	public char getStatus(){
+	public int getStatus(){
 		return status;
 	}
 
@@ -107,12 +109,16 @@ public class Client {
 		this.phone = phone;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(int status) {
 		this.status = status;
+	}
+	
+	public static Vocabulary getStatusVoc(){
+		return statusVoc;
 	}
 
 	public Client(int id, String name, String phone, String mobile, String adress, 
-			java.util.Date birthday, String other_event, java.util.Date other_event_date, String discount, char status){
+			java.util.Date birthday, String other_event, java.util.Date other_event_date, String discount, int status){
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
@@ -146,7 +152,7 @@ public class Client {
 				otherEvent = rs.getString("Other");
 				otherEventDate = MyTools.YMDToDate(rs.getString("Otherdate"));
 				discount = (new Double(rs.getString("Discount"))).doubleValue();
-				status = rs.getString("Status").charAt(0);
+				status = rs.getInt("Status");
 				finded = true;
 				//MyTools.MessageBox(birthday.toString());
 			}
@@ -174,7 +180,7 @@ public class Client {
 			if (otherEventDate!=null){				
 				st.setString(8, MyTools.DateToYMD(otherEventDate));
 			}	
-			st.setString(9, String.valueOf(status));
+			st.setInt(9, status);
 			st.setDouble(10, discount);
 			st.execute();
 			conn.close();
@@ -212,7 +218,7 @@ public class Client {
 				if (otherEventDate!=null){				
 					st.setString(7, MyTools.DateToYMD(otherEventDate));
 				}	
-				st.setString(8, String.valueOf(status));
+				st.setInt(8, status);
 				st.setDouble(9, discount);
 				st.execute();
 				conn.close();
@@ -238,5 +244,8 @@ public class Client {
 	}
 	
 	
+	//{
+	//	statusVoc.setVItems(new int[] {1, 2});
+	//}
 	
 }

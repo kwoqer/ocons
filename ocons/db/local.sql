@@ -139,6 +139,7 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 	("IP_CatalogReturned","Возвращен","Повернуто");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_CatalogInfo","Примечания","Помітки");
+	
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientName","Ф.И.О. Клиента","П.І.Б. Клієнта");
 INSERT INTO Localization (Name, RU, UA) VALUES 
@@ -162,9 +163,17 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ClientDiscount","Скидка","Знижка");
 INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientIncorrectDiscountFormat","Неверный формат скидки!","Невірний формат знижки!");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientAdd","Добавить клиента","Додати клієнта");	
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ClientEdit","Редактировать клиента","Редагувати клієнта");		
+		
+INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_OrderDate","Дата заказа","Дата заказу");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_OrderQuantity","Количество товара","Кількість товару");
+	
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_InvoicesID","Номер накладной","Номер накладної");
 INSERT INTO Localization (Name, RU, UA) VALUES 
@@ -175,6 +184,7 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 	("IP_InvoicesPrice","Цена","Ціна");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_InvoicesPoints","Баллы","Бали");
+	
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ProductID","Код продукта","Код продукту");
 INSERT INTO Localization (Name, RU, UA) VALUES 
@@ -184,7 +194,8 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_ProductRealDate","Дата реализации","Дата реалізації");
 INSERT INTO Localization (Name, RU, UA) VALUES 
-	("IP_ProductRealPrice","Цена реализации","Ціна реалізації");	
+	("IP_ProductRealPrice","Цена реализации","Ціна реалізації");
+		
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_EventsComing","Начало события","Початок події");
 INSERT INTO Localization (Name, RU, UA) VALUES 
