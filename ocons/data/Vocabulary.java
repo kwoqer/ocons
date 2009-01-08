@@ -37,14 +37,18 @@ public class Vocabulary {
 		return items[vitems[i]];
 	}
 	
-	// Возвращает индекс элемента 
-	// по значению индекса в боксе
+	/** Возвращает индекс элемента 
+	 *  по значению индекса в боксе
+	 * 	 
+	 */
 	public int getIndex(int i){				
 		return vitems[i];
 	}
 	
-	// Возвращает индекс в боксе
-	// по индексу элемента
+	/** Возвращает индекс в боксе
+	 *  по индексу элемента
+	 * 	 
+	 */
 	public int getBoxIndex(int i){
 		for (int j = 0; j < vitems.length; j++) {
 			if (vitems[j]==i) 
@@ -53,7 +57,9 @@ public class Vocabulary {
 		return -1;
 	}
 	
-	// Возвращает индекс элемента по значению  
+	/** Возвращает индекс элемента по значению
+	 * 
+	 */  
 	public int getIndexByString(String word){		
 		for (int i = 0; i < items.length; i++) {
 			if (items[i]==word) {
@@ -71,7 +77,18 @@ public class Vocabulary {
 		return capacity;
 	}
 	
-	// установка указателя на первый отображаемый элемент 
+	/* first() & next() - набор методов для заполнения бокса через addItem()
+	 Пример - 
+	 	Client.getStatusVoc().first();
+		String item = Client.getStatusVoc().next();
+		while (item != null){
+			comboboxStatus.addItem(item);
+			item = Client.getStatusVoc().next();
+		}
+	*/
+	
+	/** установка указателя на первый отображаемый элемент	  
+	 */ 
 	public void first(){
 		pointer = 0;
 	}

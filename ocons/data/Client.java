@@ -164,6 +164,16 @@ public class Client {
 		return finded;
 	}
 	
+	public void deleteFromDB(int clientID){
+		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		try {
+			Statement st = conn.createStatement();
+			st.execute("DELETE FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addToDB(){
 		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try{
