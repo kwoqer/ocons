@@ -99,6 +99,10 @@ public class CommonTableModel extends AbstractTableModel {
 		rows.set(index,row);
 	}
 	
+	public void deleteRow(int index) {
+		rows.remove(index);
+	}
+	
 	// Возвращает ключевое значение элемента из строки таблицы 
 	// Ключевое значение всегда в 1-й позиции
 	public int getID(int row){

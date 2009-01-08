@@ -11,6 +11,11 @@ import gui.*;
 import com.toedter.calendar.*;
 import data.Client;
 
+/**
+ * Объект этого класса создается для любой работы с клиентом, даже не 
+ * требующей формы ввода, поскольку содержит в себе поле client
+ *
+ */
 public class ClientForm extends InfoPanelDialog {
 
 	private Client client;
@@ -40,6 +45,10 @@ public class ClientForm extends InfoPanelDialog {
 	private boolean editMode;
 	
 	
+	public Client getClient() {
+		return client;
+	}
+
 	public ClientForm(String name, String title) {		
 		super(name, title);
 		client = new Client();
@@ -93,8 +102,8 @@ public class ClientForm extends InfoPanelDialog {
 		saveButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if (editMode) {
-					// при вызове run уже запускается readFromDB, поэтому поля client уже заполнены
-					// обновляем их вновь отредактированными значениями
+					// при вызове run уже запускается readFromDB, поэтому поле client_ID уже заполнен
+					// обновляем поля вновь отредактированными значениями
 					client.setName(fieldName.getText());
 					client.setPhone(fieldPhone.getText());
 					client.setMobile(fieldMobile.getText());

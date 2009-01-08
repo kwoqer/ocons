@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.sql.*;
 import java.util.*;
 
@@ -19,6 +20,10 @@ public class TableView extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
+	public InfoPanelDialog getExecutor(){
+		return dialogBox;
+	}
+	
 	public TableView(String sql,int fields, int[] columns, String[] headers, InfoPanelDialog executor) {
 		try {
 			dialogBox = executor;
@@ -45,6 +50,17 @@ public class TableView extends JPanel {
 			}			
 			tableHeader.setColumnModel(tcm);*/
 			table.setTableHeader(tableHeader);
+			table.addFocusListener(new FocusListener(){
+
+				public void focusGained(FocusEvent e) {					
+					checkRowSelected();
+				}
+
+				public void focusLost(FocusEvent e) {
+					//checkRowSelected();
+				}
+				
+			});
 			
 			scrollPane = new JScrollPane(table);
 			createActionBar();
@@ -72,11 +88,12 @@ public class TableView extends JPanel {
 
 	private void createActionBar(){
 		actionBar = new JToolBar();
-		actionBar.add(new ToolBarAction("Add",dialogBox));		
-		actionBar.add(new ToolBarAction("Delete",dialogBox));
-		actionBar.add(new ToolBarAction("Edit",dialogBox));
-		actionBar.add(new ToolBarAction("Find",dialogBox));
+		actionBar.add(new ToolBarAction("Add",dialogBox,this));		
+		actionBar.add(new ToolBarAction("Delete",dialogBox,this));
+		actionBar.add(new ToolBarAction("Edit",dialogBox,this));
+		actionBar.add(new ToolBarAction("Find",dialogBox,this));
 		add(actionBar,BorderLayout.NORTH);
+		checkRowSelected();
 	}
 	
 	// Возможность добавления в тулбар кнопок, отличных от стандартных
@@ -84,5 +101,23 @@ public class TableView extends JPanel {
 		actionBar.add(a);
 	}
 	
+	private void setEditDeleteEnabled(){
+		actionBar.getComponent(1).setEnabled(true);
+		actionBar.getComponent(2).setEnabled(true);
+		actionBar.repaint();
+	}
+	
+	private void setEditDeleteDisabled(){
+		actionBar.getComponent(1).setEnabled(false);
+		actionBar.getComponent(2).setEnabled(false);
+		actionBar.repaint();
+	}
+	
+	private void checkRowSelected(){		
+		if (table.getSelectedRow()==-1)
+			setEditDeleteDisabled();
+		else
+			setEditDeleteEnabled();
+	}
 
 }
