@@ -108,7 +108,7 @@ public class Localizator {
 	
 	
 	public  Localizator(String lang) throws SQLException{
-		Connection conn = MyTools.ConnectDB();
+		Connection conn = DBTools.ConnectDB();
 		Statement stat = conn.createStatement();
 		ResultSet rs = stat.executeQuery("SELECT Name,"+lang+" FROM Localization");
 		

@@ -1,9 +1,7 @@
 package gui.infopanel;
 
-
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Map;
 import javax.swing.*;
 import javax.swing.text.*;
 import start.*;

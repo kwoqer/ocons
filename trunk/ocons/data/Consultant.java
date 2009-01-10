@@ -3,8 +3,7 @@ package data;
 import gui.*;
 import gui.infopanel.*;
 import java.sql.*;
-import javax.swing.JPanel;
-import start.MyTools;
+import start.*;
 
 public class Consultant {
 	private String ID;
@@ -70,7 +69,7 @@ public class Consultant {
 	public boolean readFromDB(){
 		//Consultant c = new Consultant(id);
 		boolean find = false;
-		Connection conn = MyTools.ConnectDB();
+		Connection conn = DBTools.ConnectDB();
 		try{
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+ID+";");
@@ -92,7 +91,7 @@ public class Consultant {
 	
 	public boolean ConsultantPresent(String id){
 		boolean cp = false;
-		Connection conn = MyTools.ConnectDB();
+		Connection conn = DBTools.ConnectDB();
 		try{
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM Consultants WHERE Cons_ID="+id+";");
@@ -108,7 +107,7 @@ public class Consultant {
 	}
 	
 	public void addToDB(){
-		Connection conn = MyTools.ConnectDB();
+		Connection conn = DBTools.ConnectDB();
 		try{
 			PreparedStatement st = conn.prepareStatement("INSERT INTO Consultants VALUES(?,?,?,?,?,?);");
 			st.setString(1, ID);

@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
-
 import data.Consultant;
 import gui.infopanel.*;
 import start.*;
@@ -96,9 +94,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void addConsultant(Consultant c){
-		//Object fc = consultantList.get(c.getID());
-		//if (fc!=null)
-			consultantList.put(c.getID(), c);
+		consultantList.put(c.getID(), c);
 	}
 	
 	public void openWorkArea(String cn){
@@ -114,13 +110,7 @@ public class MainFrame extends JFrame {
 			navigationTree = c.getConsultantTree();
 		}
 		workPanel.setLeftComponent(navigationTree);
-		workPanel.setRightComponent(infoPanel);
-		
-		/*String so = ((TreeItem)navigationTree.getRootObject()).getName();		 
-	    //if (so!=cn){
-	    	navigationTree.setConsultantNumber(cn);
-	    	navigationTree.repaint();
-	    }*/	    	
+		workPanel.setRightComponent(infoPanel);   	
 		workArea.setVisible(true);	    
 	}
 	

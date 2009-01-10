@@ -1,7 +1,6 @@
 package data;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 import start.*;
 
@@ -136,7 +135,7 @@ public class Client {
 	
 	public boolean readFromDB(int clientID){		
 		boolean finded = false;
-		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
@@ -148,9 +147,9 @@ public class Client {
 				adress = rs.getString("Adress");
 				String Sb = rs.getString("Birthday");
 				//MyTools.MessageBox(Sb);
-				birthday = MyTools.YMDToDate(Sb);
+				birthday = DBTools.YMDToDate(Sb);
 				otherEvent = rs.getString("Other");
-				otherEventDate = MyTools.YMDToDate(rs.getString("Otherdate"));
+				otherEventDate = DBTools.YMDToDate(rs.getString("Otherdate"));
 				discount = (new Double(rs.getString("Discount"))).doubleValue();
 				status = rs.getInt("Status");
 				finded = true;
@@ -165,7 +164,7 @@ public class Client {
 	}
 	
 	public void deleteFromDB(int clientID){
-		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try {
 			Statement st = conn.createStatement();
 			st.execute("DELETE FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
@@ -175,7 +174,7 @@ public class Client {
 	}
 	
 	public void addToDB(){
-		Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+		Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 		try{
 			PreparedStatement st = conn.prepareStatement("INSERT INTO Clients VALUES(?,?,?,?,?,?,?,?,?,?);");
 			//st.setInt(1, id);
@@ -184,11 +183,11 @@ public class Client {
 			st.setString(4, mobile);
 			st.setString(5, adress);
 			if (birthday!=null) {						
-				st.setString(6, MyTools.DateToYMD(birthday));
+				st.setString(6, DBTools.DateToYMD(birthday));
 			}			
 			st.setString(7, otherEvent);
 			if (otherEventDate!=null){				
-				st.setString(8, MyTools.DateToYMD(otherEventDate));
+				st.setString(8, DBTools.DateToYMD(otherEventDate));
 			}	
 			st.setInt(9, status);
 			st.setDouble(10, discount);
@@ -204,7 +203,7 @@ public class Client {
 	
 	public void updateRecord(){
 		if (id!=0){
-			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());			
+			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());			
 			String Sid = (new Integer(id)).toString();
 			try {
 				String prs =  "UPDATE Clients SET Name=?," +
@@ -222,11 +221,11 @@ public class Client {
 				st.setString(3, mobile);
 				st.setString(4, adress);
 				if (birthday!=null) {						
-					st.setString(5, MyTools.DateToYMD(birthday));
+					st.setString(5, DBTools.DateToYMD(birthday));
 				}			
 				st.setString(6, otherEvent);
 				if (otherEventDate!=null){				
-					st.setString(7, MyTools.DateToYMD(otherEventDate));
+					st.setString(7, DBTools.DateToYMD(otherEventDate));
 				}	
 				st.setInt(8, status);
 				st.setDouble(9, discount);
@@ -245,7 +244,7 @@ public class Client {
 		row.add(phone);
 		row.add(mobile);
 		row.add(adress);
-		row.add(MyTools.DateToYMD(birthday));
+		row.add(DBTools.DateToYMD(birthday));
 		row.add(otherEvent);
 		row.add(otherEventDate);
 		row.add(String.valueOf(status));

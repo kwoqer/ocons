@@ -1,7 +1,5 @@
 package gui.infopanel;
 
-import java.util.Map;
-
 public interface RunnableForm {
 	
 	// Возвращает имя запускаемой формы
