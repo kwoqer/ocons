@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 public class StatusBar extends JPanel {
 		

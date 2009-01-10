@@ -89,9 +89,9 @@ public class AddConsultantDialog extends JDialog {
 						else {
 							// В случае установки нового консультанта по умолчанию убираем предыдущего по умолчанию 
 							if (c.isDefault()){
-								String cn = MyTools.findDefaultConsultant();
+								String cn = DBTools.findDefaultConsultant();
 								if (cn!=null){
-									Connection conn = MyTools.ConnectDB();
+									Connection conn = DBTools.ConnectDB();
 									try{
 										Statement stat = conn.createStatement();										
 										stat.executeUpdate("UPDATE Consultants SET First=0 WHERE Cons_ID="+cn+";");

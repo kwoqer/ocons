@@ -5,7 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
-import data.Consultant;
 import start.*;
 
 public class NavigationTree extends JPanel {

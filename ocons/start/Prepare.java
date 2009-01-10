@@ -19,16 +19,16 @@ public class Prepare {
 			//MyTools.MessageBox("Create DB");
 			// если файл системной БД не существует - создаем его и формируем структуру таблиц
 			// из файла ocons.sql
-			Connection conn = MyTools.ConnectDB();
+			Connection conn = DBTools.ConnectDB();
 			Statement stat = conn.createStatement();	
 	    
-			ArrayList<String> SQLst = MyTools.convSQL("db/ocons.sql");
+			ArrayList<String> SQLst = DBTools.convSQL("db/ocons.sql");
 			for (String s: SQLst){
 				//MyTools.MessageBox(s);
 				stat.execute(s);
 			}
 			// таблица локализации
-			ArrayList<String> SQLst2 = MyTools.convSQL("db/local.sql");
+			ArrayList<String> SQLst2 = DBTools.convSQL("db/local.sql");
 			for (String s: SQLst2){				
 				stat.execute(s);
 			}
@@ -47,10 +47,10 @@ public class Prepare {
 			// если файл БД консультанта не существует - создаем его и формируем структуру таблиц
 			// из файла consultant.sql
 			
-			Connection conn = MyTools.ConnectCDB(c);
+			Connection conn = DBTools.ConnectCDB(c);
 			Statement stat = conn.createStatement();	
 	    
-			ArrayList<String> SQLst = MyTools.convSQL("db/consult.sql");
+			ArrayList<String> SQLst = DBTools.convSQL("db/consult.sql");
 			for (String s: SQLst){
 				stat.execute(s);
 			}

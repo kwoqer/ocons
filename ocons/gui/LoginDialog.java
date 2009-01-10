@@ -64,7 +64,7 @@ public class LoginDialog extends JDialog {
 			// Подставляем консультанта по умолчанию, если он есть
 			this.setFocusTraversalPolicy(new LoginDialogFocusPolicy(false));
 			if (getEmptyNumber()==0){				
-				String n = MyTools.findDefaultConsultant();
+				String n = DBTools.findDefaultConsultant();
 				if (n != null){					
 					FieldID.setValue(n);
 					this.setFocusTraversalPolicy(new LoginDialogFocusPolicy(true));

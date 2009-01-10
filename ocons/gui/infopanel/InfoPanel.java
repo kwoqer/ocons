@@ -1,6 +1,5 @@
 package gui.infopanel;
 
-import gui.*;
 import java.awt.BorderLayout;
 import java.util.*;
 import javax.swing.*;

@@ -3,12 +3,9 @@ package gui.infopanel;
 
 import javax.swing.*;
 import javax.swing.table.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.util.*;
-
 import start.*;
 
 public class TableView extends JPanel {
@@ -28,7 +25,7 @@ public class TableView extends JPanel {
 		try {
 			dialogBox = executor;
 			setLayout(new BorderLayout());
-			Connection conn = MyTools.ConnectCDB(GlobalData.getConsultantNumber());
+			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 			Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(sql);
 			tableModel = new CommonTableModel(rs,fields,headers,columns);
