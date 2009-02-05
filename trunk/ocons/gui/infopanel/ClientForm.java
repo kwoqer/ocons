@@ -137,7 +137,11 @@ public class ClientForm extends InfoPanelDialog {
 									Client.getStatusVoc().getIndex(comboboxStatus.getSelectedIndex()));
 					client.addToDB();
 					// обновляем данные в таблице
-					getTableView().getTableModel().addRow(client.generateRow());
+					// 
+					// 
+					// 
+					getTableView().readFromDB();
+					// getTableView().getTableModel().addRow(client.generateRow());
 					getTableView().refresh();
 				}	
 				setVisible(false);				
@@ -201,7 +205,7 @@ public class ClientForm extends InfoPanelDialog {
 				fieldOtherEvent.setText(client.getOtherEvent());
 				calendarOtherEvent.setDate(client.getOtherEventDate());
 				comboboxStatus.setSelectedIndex(Client.getStatusVoc().getBoxIndex(client.getStatus()));
-				fieldDiscount.setText((new Double(client.getDiscount()).toString()));
+				fieldDiscount.setText((new Double(client.getDiscount()).toString()));				
 			}			
 		}
 		else {

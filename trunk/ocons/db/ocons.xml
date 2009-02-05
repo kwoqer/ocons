@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE DBStructure[
-    <!ELEMENT DBStructure (database)>
-    <!ELEMENT database (databasename, tables)>
-    <!ELEMENT tables (table)+>
-    <!ELEMENT table (tablename, fields)>
-    <!ELEMENT fields (field)+>
-    <!ELEMENT field (fieldname, fieldtype)>
-    <!ELEMENT databasename (#PCDATA)>
-    <!ELEMENT tablename (#PCDATA)>
-    <!ELEMENT fieldname (#PCDATA)>
-    <!ELEMENT fieldtype (#PCDATA)>
-]>
+<!DOCTYPE DBStructure SYSTEM "struct.dtd">
 <DBStructure>
     <database>
         <databasename>ocons</databasename>

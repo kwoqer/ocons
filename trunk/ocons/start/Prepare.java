@@ -15,6 +15,9 @@ public class Prepare {
 			File dbfile = new File("db/ocons.db");
 			fileexist = dbfile.exists(); 
 		}
+		String sd = DBTools.XMLToSQL("db/ocons.xml");
+		//System.out.print(sd);
+		ArrayList<String> al = DBTools.convSQLfromString(sd);
 		if (!fileexist){
 			//MyTools.MessageBox("Create DB");
 			// если файл системной БД не существует - создаем его и формируем структуру таблиц

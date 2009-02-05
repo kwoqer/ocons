@@ -16,6 +16,11 @@ public class TableView extends JPanel {
 	private InfoPanelDialog dialogBox;
 	private JTable table;
 	private JScrollPane scrollPane;
+	
+	private String sql;
+	private int fields;
+	private int[] columns;
+	private String[] headers;
 
 	public InfoPanelDialog getExecutor(){
 		return dialogBox;
@@ -23,14 +28,14 @@ public class TableView extends JPanel {
 	
 	public TableView(String sql,int fields, int[] columns, String[] headers, InfoPanelDialog executor) {
 		try {
+			this.sql = sql;
+			this.fields = fields;
+			this.columns = columns;
+			this.headers = headers;
 			dialogBox = executor;
 			setLayout(new BorderLayout());
-			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
-			Statement stat = conn.createStatement();
-			ResultSet rs = stat.executeQuery(sql);
-			tableModel = new CommonTableModel(rs,fields,headers,columns);
-			rs.close();
-			table = new JTable(tableModel);
+			table = new JTable();
+			readFromDB();			
 			JTableHeader tableHeader = table.getTableHeader();
 			Color bg = new Color(179,216,0);
 			tableHeader.setBackground(bg);
@@ -117,4 +122,19 @@ public class TableView extends JPanel {
 			setEditDeleteEnabled();
 	}
 
+	public void readFromDB(){
+		try {
+			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(sql);
+			tableModel = new CommonTableModel(rs,fields,headers,columns);
+			rs.close();
+			table.setModel(tableModel);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
+
+
