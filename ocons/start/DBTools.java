@@ -19,7 +19,7 @@ public class DBTools {
 	public static Connection ConnectDB(){
 		try{
 			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:db/ocons.db");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:db/ocons.db");			
 			return conn;
 		}
 		catch (Exception e){

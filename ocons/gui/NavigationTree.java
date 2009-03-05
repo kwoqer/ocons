@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
+
+import settings.Localizator;
 import start.*;
 
 public class NavigationTree extends JPanel {
@@ -27,6 +29,7 @@ public class NavigationTree extends JPanel {
 		tm.addItem(new TreeItem(Localizator.NT_Pricelist,"40","pict/money22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Orders,"50","pict/file22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Reports,"60","pict/documents22.png"));
+		//tm.addItem(new TreeItem(Localizator.NT_Reports,"70","pict/struct.png"));
 		root = tm.BuildTree();
 		
 		setLayout(new BorderLayout());

@@ -6,6 +6,8 @@ import data.Consultant;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+
+import settings.Localizator;
 import start.*;
 
 

@@ -1,7 +1,9 @@
-package start;
+package settings;
 
 import java.lang.reflect.*;
 import java.sql.*;
+
+import start.DBTools;
 
 public class Localizator {
 	// Общие

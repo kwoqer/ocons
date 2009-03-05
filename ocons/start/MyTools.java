@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.*;
 import javax.swing.*;
 
+import settings.Localizator;
+
 public class MyTools {
 	
 	public static void  MessageBox(String s){

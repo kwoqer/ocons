@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.*;
+
+import settings.Localizator;
 import start.*;
 import gui.*;
 import com.toedter.calendar.*;

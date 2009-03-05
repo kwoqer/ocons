@@ -2,6 +2,8 @@ package data;
 
 import java.sql.*;
 import java.util.*;
+
+import settings.Localizator;
 import start.*;
 
 public class Client {
