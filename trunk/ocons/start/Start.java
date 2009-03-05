@@ -3,6 +3,8 @@ package start;
 import gui.*;
 import java.awt.*;
 
+import settings.Localizator;
+
 public class Start {
 	
 		public static void main(String[] args) {

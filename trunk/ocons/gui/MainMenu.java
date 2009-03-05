@@ -3,6 +3,8 @@ package gui;
 
 import java.awt.event.*;
 import javax.swing.*;
+
+import settings.Localizator;
 import start.*;
 
 public class MainMenu extends JMenuBar{

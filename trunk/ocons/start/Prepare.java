@@ -15,9 +15,9 @@ public class Prepare {
 			File dbfile = new File("db/ocons.db");
 			fileexist = dbfile.exists(); 
 		}
-		String sd = DBTools.XMLToSQL("db/ocons.xml");
+		//String sd = DBTools.XMLToSQL("db/ocons.xml");
 		//System.out.print(sd);
-		ArrayList<String> al = DBTools.convSQLfromString(sd);
+		//ArrayList<String> al = DBTools.convSQLfromString(sd);
 		if (!fileexist){
 			//MyTools.MessageBox("Create DB");
 			// если файл системной Ѕƒ не существует - создаем его и формируем структуру таблиц
@@ -25,7 +25,7 @@ public class Prepare {
 			Connection conn = DBTools.ConnectDB();
 			Statement stat = conn.createStatement();	
 	    
-			ArrayList<String> SQLst = DBTools.convSQL("db/ocons.sql");
+			ArrayList<String> SQLst = DBTools.convSQLfromString(DBTools.XMLToSQL("db/ocons.xml"));
 			for (String s: SQLst){
 				//MyTools.MessageBox(s);
 				stat.execute(s);
@@ -53,14 +53,18 @@ public class Prepare {
 			Connection conn = DBTools.ConnectCDB(c);
 			Statement stat = conn.createStatement();	
 	    
-			ArrayList<String> SQLst = DBTools.convSQL("db/consult.sql");
+			ArrayList<String> SQLst = DBTools.convSQLfromString(DBTools.XMLToSQL("db/consult.xml"));
 			for (String s: SQLst){
 				stat.execute(s);
 			}
 			// добавим в список клиентов самого себ€ (покупка товаров дл€ себ€ и 
 			// установка автоинкремента в таблице клиентов)
 			// первый знак в номере клиента отбрасываем
-			Integer I = new Integer(c.substring(1));
+			Integer I;
+			if (c.length()>=7) 
+				I = new Integer(c.substring(1));
+			else
+				I = new Integer(c);
 			I = I*1000;
 			stat.execute("INSERT INTO Clients VALUES(\""+I.toString()+
 														  "\",\"0\","+

@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.*;
 import data.Consultant;
+import settings.Localizator;
 import start.*;
 
 public class LoginDialog extends JDialog {

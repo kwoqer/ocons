@@ -2,6 +2,8 @@ package gui.infopanel;
 
 import java.awt.event.ActionEvent;
 import javax.swing.*;
+
+import settings.Localizator;
 import start.*;
 
 
