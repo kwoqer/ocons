@@ -13,6 +13,7 @@ public class Vocabulary {
 	// фактический размер словаря
 	private int capacity;
 	private String[] items;
+	
 	// список тех значений, которые будут отображаться в боксе
 	private int[] vitems;
 	// указатель на значение
