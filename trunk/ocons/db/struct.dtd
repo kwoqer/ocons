@@ -3,8 +3,10 @@
 <!ELEMENT tables (table)+>
 <!ELEMENT table (tablename, fields)>
 <!ELEMENT fields (field)+>
-<!ELEMENT field (fieldname, fieldtype)>
+<!ELEMENT field (fieldname, fieldtype, fieldsize?, fieldkey?)>
 <!ELEMENT databasename (#PCDATA)>
 <!ELEMENT tablename (#PCDATA)>
 <!ELEMENT fieldname (#PCDATA)>
 <!ELEMENT fieldtype (#PCDATA)>
+<!ELEMENT fieldsize (#PCDATA)>
+<!ELEMENT fieldkey (#PCDATA)>

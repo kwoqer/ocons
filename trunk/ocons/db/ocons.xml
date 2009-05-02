@@ -9,7 +9,7 @@
                 <fields>
                     <field>
                         <fieldname>Cat_ID</fieldname>
-                        <fieldtype>INTEGER</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>                        
                     </field>
                     <field>
                         <fieldname>Prod_ID</fieldname>
@@ -17,27 +17,33 @@
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>CatPage</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -46,39 +52,48 @@
                 <fields>
                     <field>
                         <fieldname>Prod_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Cat_ID</fieldname>
-                        <fieldtype>NUMERIC(6)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>6</fieldsize>
                     </field>
                     <field>
                         <fieldname>CatPage</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Special</fieldname>
-                        <fieldtype>CHAR(1)</fieldtype>
+                        <fieldtype>CHAR</fieldtype>
+                        <fieldsize>1</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -87,11 +102,13 @@
                 <fields>
                     <field>
                         <fieldname>Cond_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY AUTOINCREMENT</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY AUTOINCREMENT</fieldkey>
                     </field>
                     <field>
                         <fieldname>CondType</fieldname>
-                        <fieldtype>CHAR(1)</fieldtype>
+                        <fieldtype>CHAR</fieldtype>
+                        <fieldsize>1</fieldsize>
                     </field>
                     <field>
                         <fieldname>N</fieldname>
@@ -107,7 +124,8 @@
                     </field>
                     <field>
                         <fieldname>Summa</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -116,7 +134,8 @@
                 <fields>
                     <field>
                         <fieldname>Group_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>Cond_ID</fieldname>
@@ -124,7 +143,8 @@
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(15)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>15</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -145,21 +165,24 @@
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
-
                 </fields>
             </table>
             <table>
@@ -179,19 +202,23 @@
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -200,7 +227,8 @@
                 <fields>
                     <field>
                         <fieldname>Cat_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>CatBegin</fieldname>
@@ -217,19 +245,24 @@
                 <fields>
                     <field>
                         <fieldname>Cons_ID</fieldname>
-                        <fieldtype>VARCHAR(10) UNIQUE</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>10</fieldsize>
+                        <fieldkey>UNIQUE</fieldkey>
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(30)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>30</fieldsize>
                     </field>
                     <field>
                         <fieldname>Phone</fieldname>
-                        <fieldtype>VARCHAR(20)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>20</fieldsize>
                     </field>
                     <field>
                         <fieldname>EMail</fieldname>
-                        <fieldtype>VARCHAR(30)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>40</fieldsize>
                     </field>
                     <field>
                         <fieldname>First</fieldname>
@@ -246,15 +279,18 @@
                 <fields>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>RU</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>UA</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>                    
                 </fields>
             </table>            

@@ -90,7 +90,7 @@ public class DBStructure {
 		return result;
 	}
 	
-	public void generateStructure(){
+	/*public void generateStructure(){
 		DatabaseMetaData dmd = conn.getMetaData();
 		ResultSet rs = dmd.getTables(conn.getCatalog(), "%", "%", new String[] {"TABLE"});
 		String r; 
@@ -103,5 +103,6 @@ public class DBStructure {
 			System.out.print(r+'\n');
 		}	
 	}
-		
+
+	*/
 }
