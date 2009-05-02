@@ -28,8 +28,18 @@ public class FieldSpecification {
 		this.keys = "";
 	}
 	
+	/**
+	 * возращает строку спецификации sql без запятой в конце
+	 */
 	public String getFullString(){
-		return name+space+type+size+space+keys;
+		String s = name+space+type;
+		if (size != "") {
+			s = s+"("+size+")";
+		}
+		if (keys != "") {
+			s = s+space+keys;
+		}
+		return s;
 	}
 	
 	public String getName(){
@@ -37,6 +47,6 @@ public class FieldSpecification {
 	}
 	
 	public String getSpecification(){
-		return space+type+size+space+keys;
+		return type+size+space+keys;
 	}
 }

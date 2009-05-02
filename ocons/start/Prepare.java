@@ -1,10 +1,10 @@
 package start;
 
 import java.sql.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import settings.dbcontrol.*;
 
 
 public class Prepare {
@@ -18,6 +18,8 @@ public class Prepare {
 		//String sd = DBTools.XMLToSQL("db/ocons.xml");
 		//System.out.print(sd);
 		//ArrayList<String> al = DBTools.convSQLfromString(sd);
+		
+		
 		if (!fileexist){
 			//MyTools.MessageBox("Create DB");
 			// если файл системной БД не существует - создаем его и формируем структуру таблиц
@@ -25,7 +27,11 @@ public class Prepare {
 			Connection conn = DBTools.ConnectDB();
 			Statement stat = conn.createStatement();	
 	    
-			ArrayList<String> SQLst = DBTools.convSQLfromString(DBTools.XMLToSQL("db/ocons.xml"));
+			DataBaseSpecification dbs = new DataBaseSpecification("ocons","org.sqlite.JDBC","jdbc:sqlite:","db/",".db");
+			dbs.readFromXML("db/ocons.xml");
+			String sql = dbs.createSQLDatabase();
+			
+			ArrayList<String> SQLst = DBTools.convSQLfromString(sql);
 			for (String s: SQLst){
 				//MyTools.MessageBox(s);
 				stat.execute(s);
