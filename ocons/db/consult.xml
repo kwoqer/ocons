@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE DBStructure[
-    <!ELEMENT DBStructure (database)>
-    <!ELEMENT database (databasename, tables)>
-    <!ELEMENT tables (table)+>
-    <!ELEMENT table (tablename, fields)>
-    <!ELEMENT fields (field)+>
-    <!ELEMENT field (fieldname, fieldtype)>
-    <!ELEMENT databasename (#PCDATA)>
-    <!ELEMENT tablename (#PCDATA)>
-    <!ELEMENT fieldname (#PCDATA)>
-    <!ELEMENT fieldtype (#PCDATA)>
-]>
+<!DOCTYPE DBStructure SYSTEM "struct.dtd">
 <DBStructure>
     <database>
         <databasename>consult</databasename>
@@ -24,11 +13,12 @@
                     </field>
                     <field>
                         <fieldname>GetDate</fieldname>
-                        <fieldtype>DATE</fieldtype>
+                        <fieldtype>DATE</fieldtype>                        
                     </field>
                     <field>
                         <fieldname>GetPrice</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>RealDate</fieldname>
@@ -36,7 +26,8 @@
                     </field>
                     <field>
                         <fieldname>RealPrice</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Inv_ID</fieldname>
@@ -53,23 +44,28 @@
                 <fields>
                     <field>
                         <fieldname>Client_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY AUTOINCREMENT</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY AUTOINCREMENT</fieldkey>
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>Phone</fieldname>
-                        <fieldtype>VARCHAR(20)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>20</fieldsize>
                     </field>
                     <field>
                         <fieldname>PhoneMob</fieldname>
-                        <fieldtype>VARCHAR(20)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>20</fieldsize>
                     </field>
                     <field>
                         <fieldname>Adress</fieldname>
-                        <fieldtype>VARCHAR(30)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>30</fieldsize>
                     </field>
                     <field>
                         <fieldname>Birthday</fieldname>
@@ -89,50 +85,59 @@
                     </field>
                     <field>
                         <fieldname>Discount</fieldname>
-                        <fieldtype>NUMERIC(3,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3,2</fieldsize>
                     </field>
 
                 </fields>
             </table>
-
             <table>
                 <tablename>Prices</tablename>
                 <fields>
                     <field>
                         <fieldname>Prod_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(50)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>50</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Cat_ID</fieldname>
-                        <fieldtype>NUMERIC(6)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>6</fieldsize>
                     </field>
                     <field>
                         <fieldname>CatPage</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Special</fieldname>
-                        <fieldtype>CHAR(1)</fieldtype>
+                        <fieldtype>CHAR</fieldtype>
+                        <fieldsize>1</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -141,11 +146,13 @@
                 <fields>
                     <field>
                         <fieldname>Cond_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY AUTOINCREMENT</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY AUTOINCREMENT</fieldkey>
                     </field>
                     <field>
                         <fieldname>CondType</fieldname>
-                        <fieldtype>CHAR(1)</fieldtype>
+                        <fieldtype>CHAR</fieldtype>
+                        <fieldkey>1</fieldkey>
                     </field>
                     <field>
                         <fieldname>N</fieldname>
@@ -161,7 +168,8 @@
                     </field>
                     <field>
                         <fieldname>Summa</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -170,7 +178,8 @@
                 <fields>
                     <field>
                         <fieldname>Group_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>Cond_ID</fieldname>
@@ -178,7 +187,8 @@
                     </field>
                     <field>
                         <fieldname>Name</fieldname>
-                        <fieldtype>VARCHAR(15)</fieldtype>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>15</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -199,19 +209,23 @@
                     </field>
                     <field>
                         <fieldname>Price1</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price2</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price3</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -220,7 +234,8 @@
                 <fields>
                     <field>
                         <fieldname>Inv_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY</fieldkey>
                     </field>
                     <field>
                         <fieldname>Prod_ID</fieldname>
@@ -228,19 +243,23 @@
                     </field>
                     <field>
                         <fieldname>Ordered</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Received</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                     <field>
                         <fieldname>Price</fieldname>
-                        <fieldtype>NUMERIC(5,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>5,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -249,7 +268,8 @@
                 <fields>
                     <field>
                         <fieldname>Order_ID</fieldname>
-                        <fieldtype>INTEGER PRIMARY KEY AUTOINCREMENT</fieldtype>
+                        <fieldtype>INTEGER</fieldtype>
+                        <fieldkey>PRIMARY KEY AUTOINCREMENT</fieldkey>
                     </field>
                     <field>
                         <fieldname>Client_ID</fieldname>
@@ -274,7 +294,8 @@
                     </field>
                     <field>
                         <fieldname>Quantity</fieldname>
-                        <fieldtype>NUMERIC(3)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>3</fieldsize>
                     </field>
                 </fields>
             </table>
@@ -337,18 +358,74 @@
                     </field>
                     <field>
                         <fieldname>Income</fieldname>
-                        <fieldtype>NUMERIC(7,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>7,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Expence</fieldname>
-                        <fieldtype>NUMERIC(7,2)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>7,2</fieldsize>
                     </field>
                     <field>
                         <fieldname>Points</fieldname>
-                        <fieldtype>NUMERIC(7)</fieldtype>
+                        <fieldtype>NUMERIC</fieldtype>
+                        <fieldsize>7</fieldsize>
                     </field>
                 </fields>
             </table>
+            <table>
+                <tablename>Contacts</tablename>
+                <fields>
+                    <field>
+                        <fieldname>Contact_ID</fieldname>
+                        <fieldtype>Integer</fieldtype>
+                        <fieldkey>PRIMARY KEY AUTOINCREMENT</fieldkey>
+                    </field>
+                    <field>
+                        <fieldname>Phone</fieldname>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>20</fieldsize>
+                    </field>
+                    <field>
+                        <fieldname>WhereFind</fieldname>
+                        <fieldtype>INTEGER</fieldtype>                        
+                    </field>
+                    <field>
+                        <fieldname>Name</fieldname>
+                        <fieldtype>VARCHAR</fieldtype>
+                        <fieldsize>30</fieldsize>
+                    </field>
+                    <field>
+                        <fieldname>Date</fieldname>
+                        <fieldtype>DATE</fieldtype>
+                    </field><field><fieldname>Last</fieldname><fieldtype>DATE</fieldtype></field>
+                    <field>
+                        <fieldname>Status</fieldname>
+                        <fieldtype>INTEGER</fieldtype>                        
+                    </field><field><fieldname>Info</fieldname><fieldtype>TEXT</fieldtype></field><field><fieldname>Client_ID</fieldname><fieldtype>INTEGER</fieldtype></field><field><fieldname>Consultant_ID</fieldname><fieldtype>INTEGER</fieldtype></field>                    
+                </fields>
+            </table>
+            <table>
+                <tablename>ContactHistory</tablename>
+                <fields>
+                    <field>
+                        <fieldname>Contact_ID</fieldname>
+                        <fieldtype>INTEGER</fieldtype>
+                    </field>
+                    <field>
+                        <fieldname>EventDate</fieldname>
+                        <fieldtype>DATETIME</fieldtype>
+                    </field>
+                    <field>
+                        <fieldname>Type</fieldname>
+                        <fieldtype>INTEGER</fieldtype>                        
+                    </field>
+                    <field>
+                        <fieldname>Comment</fieldname>
+                        <fieldtype>TEXT</fieldtype>
+                    </field>                    
+                </fields>
+            </table>            
         </tables>
     </database>
 </DBStructure>

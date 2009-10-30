@@ -165,19 +165,21 @@ public class Client {
 		return finded;
 	}
 	
-	public void deleteFromDB(int clientID){
-		Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
+	public void deleteFromDB(int clientID){		
 		try {
+			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 			Statement st = conn.createStatement();
 			st.execute("DELETE FROM Clients WHERE Client_ID="+Integer.toString(clientID)+";");
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
-	public void addToDB(){
-		Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
+	public void addToDB(){		
 		try{
+			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());
 			PreparedStatement st = conn.prepareStatement("INSERT INTO Clients VALUES(?,?,?,?,?,?,?,?,?,?);");
 			//st.setInt(1, id);
 			st.setString(2, name);
@@ -204,10 +206,10 @@ public class Client {
 	}
 	
 	public void updateRecord(){
-		if (id!=0){
-			Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());			
+		if (id!=0){				
 			String Sid = (new Integer(id)).toString();
 			try {
+				Connection conn = DBTools.ConnectCDB(GlobalData.getConsultantNumber());		
 				String prs =  "UPDATE Clients SET Name=?," +
 												 "Phone=?," +
 												 "PhoneMob=?," +
@@ -255,8 +257,6 @@ public class Client {
 	}
 	
 	
-	//{
-	//	statusVoc.setVItems(new int[] {1, 2});
-	//}
+	
 	
 }

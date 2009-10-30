@@ -54,7 +54,7 @@ public class Prepare {
 		}
 		if (!fileexist){
 			// если файл БД консультанта не существует - создаем его и формируем структуру таблиц
-			// из файла consultant.sql
+			// из файла consultant.xml
 			
 			Connection conn = DBTools.ConnectCDB(c);
 			Statement stat = conn.createStatement();	

@@ -56,7 +56,9 @@ public class DBTools {
 		}
 		return cn;
 	}
-	
+	/*
+	 * Разбивает файл с набором sql-команд на команды и помещает их в массив
+	 */
 	public static ArrayList<String> convSQL(String SQLfile){
 		StringBuffer buf = new StringBuffer();
 		ArrayList<String> reslist = new ArrayList<String>();
@@ -79,7 +81,9 @@ public class DBTools {
 		}
 		return reslist;
 	}
-	
+	/*
+	 * То же самое, только в sql-программа не в файле, а в String-e
+	 */
 	public static ArrayList<String> convSQLfromString(String s){
 		StringBuffer buf = new StringBuffer();
 		ArrayList<String> reslist = new ArrayList<String>();
@@ -152,7 +156,9 @@ public class DBTools {
 		}
 	return s;
 	}
-	
+	/*
+	 * Разбор xml-файла со структурой БД и формирование из него sql-запроса в String
+	 */
 	public static String XMLToSQL(String xmlfile){
 		String sqlcommand, result = "";
 		Element table,tablename, fields, field, fieldname, fieldtype;

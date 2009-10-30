@@ -30,6 +30,7 @@ public class NavigationTree extends JPanel {
 		tm.addItem(new TreeItem(Localizator.NT_Orders,"50","pict/file22.png"));
 		tm.addItem(new TreeItem(Localizator.NT_Reports,"60","pict/documents22.png"));
 		//tm.addItem(new TreeItem(Localizator.NT_Reports,"70","pict/struct.png"));
+		tm.addItem(new TreeItem(Localizator.NT_Contacts,"80","pict/network22.png"));
 		root = tm.BuildTree();
 		
 		setLayout(new BorderLayout());
