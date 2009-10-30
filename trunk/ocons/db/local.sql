@@ -98,6 +98,8 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 	("NT_Pricelist","Прайслист","Прайслист");
 INSERT INTO Localization (Name, RU, UA) VALUES
 	("NT_Reports","Отчеты","Звіти");
+INSERT INTO Localization (Name, RU, UA) VALUES
+	("NT_Contacts","Контакты","Контакти");
 
 
 -- InfoPanel
@@ -204,6 +206,25 @@ INSERT INTO Localization (Name, RU, UA) VALUES
 	("IP_EventsFixed","Завершено","Завершено");
 INSERT INTO Localization (Name, RU, UA) VALUES 
 	("IP_EventInfo","Событие","Подія");	
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactPhone","Телефон","Телефон");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactWhereFind","Как найден","Як знайдено");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactWhereFind_1","SMS-викторина","SMS-викторина");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactWhereFind_2","Анкетирование","Анкетування");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactWhereFind_3","Рекомендация","Пропозиція");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactWhereFind_4","Другое","Інше");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactName","Имя","Ім'я");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactDate","Дата","Дата");
+INSERT INTO Localization (Name, RU, UA) VALUES 
+	("IP_ContactStatus","Состояние","Стан");
+
 
 -- INSERT INTO Localization (Name, RU, UA) VALUES 
 --	("","","")

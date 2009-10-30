@@ -23,7 +23,10 @@ public class Start {
 	        
 	        // Запуск Localizator-а
 	        try {
-	        	new Localizator(GlobalData.getLanguage());
+	        	Localizator localizator = new Localizator(GlobalData.getLanguage());
+	        	// Служебный запуск. Нужен при обновлениях файлов локализации
+	        	// localizator.createDTD();
+	        	localizator.setLang(GlobalData.getLanguage());
 	        	
 	        }
 	        catch (Exception e) {

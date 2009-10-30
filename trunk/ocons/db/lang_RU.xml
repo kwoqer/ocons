@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Localization SYSTEM "local.dtd">
+<Localization lang="RU">
+    <locallist>
+        <G_Language>Язык</G_Language>
+        <G_Attention>Внимание!</G_Attention>
+        <G_Error>Ошибка!</G_Error>
+        <G_Open>Открыть</G_Open>
+        <G_Save>Сохранить</G_Save>
+        <G_Cancel>Отмена</G_Cancel>
+        <G_Yes>Да</G_Yes>
+        <G_No>Нет</G_No>
+        <G_Ok>Согласен</G_Ok>
+        <G_AYouSure>Вы действительно хотите</G_AYouSure>
+        <ACD_Title>Новый консультант</ACD_Title>
+        <ACD_PersonalNumber>Личный номер</ACD_PersonalNumber>
+        <ACD_Name>Фамилия И.О.</ACD_Name>
+        <ACD_Phone>Телефон</ACD_Phone>
+        <ACD_EMail>E-Mail</ACD_EMail>
+        <ACD_Remember>Запомнить меня</ACD_Remember>
+        <ACD_Password>Пароль</ACD_Password>
+        <ACD_RepeatPassword>Еще раз</ACD_RepeatPassword>
+        <ACD_RedLighting>Красным выделены обязательные поля</ACD_RedLighting>
+        <ACD_ConsultantPresent>Консультант с таким номером уже есть!</ACD_ConsultantPresent>
+        <ACD_PasswordsNotCoincide>Пароли не совпадают!</ACD_PasswordsNotCoincide>
+        <LD_Title>Вход</LD_Title>
+        <LD_Number>Номер</LD_Number>
+        <LD_Password>Пароль</LD_Password>
+        <LD_Enter>Вход</LD_Enter>
+        <LD_ConsultantNumberNotPoint>Номер консультанта не указан!</LD_ConsultantNumberNotPoint>
+        <LD_IncorrectPassword>Неправильный пароль!</LD_IncorrectPassword>
+        <LD_ConsultantNumberNotFound>Консультант с таким номером не найден!</LD_ConsultantNumberNotFound>
+        <MM_1_Control>Управление</MM_1_Control>
+        <MM_Config>Настройки</MM_Config>
+        <MM_AboutProgram>О программе</MM_AboutProgram>
+        <MM_Exit>Выход</MM_Exit>
+        <MM_2_Consultant>Консультант</MM_2_Consultant>
+        <MM_NewConsultant>Новый консультант</MM_NewConsultant>
+        <MM_Enter>Вход</MM_Enter>
+        <MM_OtherConsultant>Другой консультант</MM_OtherConsultant>
+        <MM_ConfirmOtherConsultant>Вы действительно хотите зайти другим консультантом?</MM_ConfirmOtherConsultant>
+        <NT_Clients>Клиенты</NT_Clients>
+        <NT_Invoices>Накладные</NT_Invoices>
+        <NT_Catalogs>Каталоги</NT_Catalogs>
+        <NT_Pricelist>Прайслист</NT_Pricelist>
+        <NT_Reports>Отчеты</NT_Reports>
+        <NT_Orders>Заказы</NT_Orders>
+        <NT_Contacts>Контакты</NT_Contacts>
+        <IP_Clients>клиента</IP_Clients>
+        <IP_Catalogs>каталог</IP_Catalogs>
+        <IP_Orders>заказ</IP_Orders>
+        <IP_Invoices>накладную</IP_Invoices>
+        <IP_Prices>прайслист</IP_Prices>
+        <IP_AddAction>Добавить</IP_AddAction>
+        <IP_DeleteAction>Удалить</IP_DeleteAction>
+        <IP_EditAction>Редактировать</IP_EditAction>
+        <IP_FindAction>Найти</IP_FindAction>
+        <IP_PreviewAction>Просмотреть</IP_PreviewAction>
+        <IP_PrintAction>Печатать</IP_PrintAction>
+        <IP_CatalogNumber>Номер каталога</IP_CatalogNumber>
+        <IP_CatalogGiveDate>Дата выдачи</IP_CatalogGiveDate>
+        <IP_CatalogReturnDate>Вернуть</IP_CatalogReturnDate>
+        <IP_CatalogReturned>Возвращен</IP_CatalogReturned>
+        <IP_CatalogInfo>Примечания</IP_CatalogInfo>
+        <IP_ClientName>Ф.И.О. Клиента</IP_ClientName>
+        <IP_ClientPhone>Дом. телефон</IP_ClientPhone>
+        <IP_ClientPhoneMob>Моб. телефон</IP_ClientPhoneMob>
+        <IP_ClientAdress>Адрес</IP_ClientAdress>
+        <IP_ClientBirthday>День рождения</IP_ClientBirthday>
+        <IP_ClientOther>Иное событие</IP_ClientOther>
+        <IP_ClientOtherDate>Дата события</IP_ClientOtherDate>
+        <IP_ClientStatus>Статус</IP_ClientStatus>
+        <IP_ClientStatus_1>Обычный</IP_ClientStatus_1>
+        <IP_ClientStatus_2>Постоянный</IP_ClientStatus_2>
+        <IP_ClientDiscount>Скидка</IP_ClientDiscount>
+        <IP_ClientIncorrectDiscountFormat>Неверный формат скидки!</IP_ClientIncorrectDiscountFormat>
+        <IP_ClientAdd>Добавить клиента</IP_ClientAdd>
+        <IP_ClientEdit>Редактировать клиента</IP_ClientEdit>
+        <IP_OrderDate>Дата заказа</IP_OrderDate>
+        <IP_OrderQuantity>Количество товара</IP_OrderQuantity>
+        <IP_InvoicesID>Номер накладной</IP_InvoicesID>
+        <IP_InvoicesOrdered>Заказано</IP_InvoicesOrdered>
+        <IP_InvoicesReceived>Получено</IP_InvoicesReceived>
+        <IP_InvoicesPrice>Цена</IP_InvoicesPrice>
+        <IP_InvoicesPoints>Баллы</IP_InvoicesPoints>
+        <IP_ProductID>Код продукта</IP_ProductID>
+        <IP_ProductGetDate>Дата накладной</IP_ProductGetDate>
+        <IP_ProductGetPrice>Цена накладной</IP_ProductGetPrice>
+        <IP_ProductRealDate>Дата реализации</IP_ProductRealDate>
+        <IP_ProductRealPrice>Цена реализации</IP_ProductRealPrice>
+        <IP_EventsComing>Начало события</IP_EventsComing>
+        <IP_EventsCompletion>Конец события</IP_EventsCompletion>
+        <IP_EventsFixed>Завершено</IP_EventsFixed>
+        <IP_EventInfo>Событие</IP_EventInfo>
+	    <IP_Contact>Контакт</IP_Contact>
+        <IP_ContactPhone>Телефон</IP_ContactPhone>
+        <IP_ContactWhereFind>Как найден</IP_ContactWhereFind>
+        <IP_ContactWhereFind_1>SMS-викторина</IP_ContactWhereFind_1>
+        <IP_ContactWhereFind_2>Анкетирование</IP_ContactWhereFind_2>
+        <IP_ContactWhereFind_3>Рекомендация</IP_ContactWhereFind_3>
+        <IP_ContactWhereFind_4>Другое</IP_ContactWhereFind_4>
+        <IP_ContactName>Имя</IP_ContactName>
+        <IP_ContactDate>Дата</IP_ContactDate>
+        <IP_ContactStatus>Состояние</IP_ContactStatus>
+    </locallist>
+</Localization>

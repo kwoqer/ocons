@@ -1,7 +1,17 @@
 package settings;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.lang.reflect.*;
 import java.sql.*;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import start.DBTools;
 
@@ -54,6 +64,7 @@ public class Localizator {
 	public static String NT_Pricelist;
 	public static String NT_Reports;
 	public static String NT_Orders;
+	public static String NT_Contacts;
 	// InfoPanel
 	//  ---- GLOBAL
 	public static String IP_Clients;
@@ -88,7 +99,7 @@ public class Localizator {
 	public static String IP_ClientDiscount;
 	public static String IP_ClientIncorrectDiscountFormat;
 	public static String IP_ClientAdd;
-	public static String IP_ClientEdit;
+	public static String IP_ClientEdit;	
 	
 	public static String IP_OrderDate;
 	public static String IP_OrderQuantity;
@@ -107,18 +118,41 @@ public class Localizator {
 	public static String IP_EventsFixed;
 	public static String IP_EventInfo;
 	
+	public static String IP_Contact;
+	public static String IP_ContactPhone;
+	public static String IP_ContactWhereFind;
+	public static String IP_ContactWhereFind_1;
+	public static String IP_ContactWhereFind_2;
+	public static String IP_ContactWhereFind_3;
+	public static String IP_ContactWhereFind_4;
+	public static String IP_ContactName;
+	public static String IP_ContactDate;
+	public static String IP_ContactStatus;
 	
 	
-	public  Localizator(String lang) throws SQLException{
+	private String lang;
+	
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
+		readXML(lang);
+	}
+
+	public  Localizator(String lang) {
+		this.lang = lang;
+		/*
 		Connection conn = DBTools.ConnectDB();
 		Statement stat = conn.createStatement();
 		ResultSet rs = stat.executeQuery("SELECT Name,"+lang+" FROM Localization");
 		
-		/*	Имена полей перечислены в БД
+		 *	Имена полей перечислены в БД
 		 * 	Извлекаем имена и значения, соответствующие нужному языку
 		 *  и присваиваем их
 		 *  G - ключевое значение - название языка
-		 */
+		 *
 		while (rs.next()) {
 			String fieldname = rs.getString("Name");
 			String value = rs.getString(lang);
@@ -133,6 +167,75 @@ public class Localizator {
 			} 
 		}
 		rs.close();
+		*/
+	}
+	
+	/*
+	 * Формирование dtd-файла с перичислением всех public static полей
+	 * Служебная функция, используется для формирования dtd при обновлениях.
+	 * На его основе формируется xml с локализацией.
+	 * Плюс - всегда формируется список из всех полей Localizator-а, если 
+	 * 		  чего-то не будет хватать, xml будет невалидным
+	 * Минус - порядок полей в xml должен соответствовать dtd, т.е порядку
+	 * 		   объявления полей в Localizator
+	 */
+	public void createDTD(){
+		ArrayList<String> locs = new ArrayList<String>();		
+		Class lc = this.getClass();
+		Field[] fields = lc.getDeclaredFields();
+		for (Field field : fields) {
+			int m = field.getModifiers();
+			boolean isLoc = Modifier.isPublic(m) && Modifier.isStatic(m);
+			if (isLoc) {
+				locs.add(field.getName());
+			}			
+		}					
+		try {			
+			FileWriter dtd_file = new FileWriter("db/local.dtd");
+			dtd_file.write("<!ELEMENT Localization (locallist)>\n");
+			dtd_file.write("<!ATTLIST Localization lang CDATA #REQUIRED>\n");
+			String llist = "<!ELEMENT locallist (";
+			for (String  s : locs) {
+				llist += s+",";
+			}
+			// убираем последнюю запятую
+			llist = llist.substring(0, llist.length()-1);		
+			llist += ")>\n"; 
+			dtd_file.write(llist);
+			for (String s : locs) {
+				dtd_file.write("<!ELEMENT "+s+" (#PCDATA)>\n");
+			}
+			dtd_file.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	private void readXML(String lang){
+		DocumentBuilder builder;
+		try {
+			File f = new File("db/lang_"+lang+".xml");
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();			
+			factory.setValidating(true);
+			factory.setIgnoringElementContentWhitespace(true);
+			builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(f);			
+			Element root = doc.getDocumentElement(); // Localization
+			NodeList rootlist = root.getChildNodes();
+			Element locallist = (Element)rootlist.item(0); // locallist
+			NodeList nodelist = locallist.getChildNodes();
+			for (int i = 0; i < nodelist.getLength(); i++) {
+				Element element = (Element)nodelist.item(i);
+				String name = element.getNodeName();
+				String value = element.getTextContent();
+				Field field = this.getClass().getDeclaredField(name);
+				field.set(null,value);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
